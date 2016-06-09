@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/abe732/Crowded.git"
+    "url": "git+https://github.com/crowdedProject/Crowded.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/abe732/Crowded/issues"
+    "url": "https://github.com/crowdedProject/Crowded/issues"
   },
-  "homepage": "https://github.com/abe732/Crowded#readme",
+  "homepage": "https://github.com/crowdedProject/Crowded#readme",
   "devDependencies": {
     "babel-core": "^6.9.1",
     "babel-loader": "^6.2.4",
