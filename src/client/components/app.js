@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import _ from 'lodash';
 
 import SearchBar from '../containers/search-bar';
+import CafeList from './cafe-list';
 
 class App extends Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class App extends Component {
     //post to server at endpoint that server recognizes
 
     //receive cafe data from server
-    
+
   }
 
   render() {
@@ -32,7 +33,12 @@ class App extends Component {
 
     return (
       <div>
-        <SearchBar onSearchTermChange={cafeSearch}/>
+        <div>
+          <SearchBar onSearchTermChange={cafeSearch} />
+        </div>
+        <div>
+          <CafeList />
+        </div>
       </div>
     );
   }
