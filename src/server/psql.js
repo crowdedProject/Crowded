@@ -1,8 +1,9 @@
-var Sequelize = require('sequelize');
-var connection = 'postgres://localhost:8080/database';
-//("postgres://" + process.env.PORT) || 
-var pg = new Sequelize(connection);
+const Sequelize = require('sequelize');
+const connection = require('./config/config.js');
 
+const db = process.env.DATABASE_URL || connection.local;
+
+var pg = new Sequelize(db);
 pg
   .authenticate()
   .then(function(err) {
@@ -12,16 +13,16 @@ pg
     console.log('unable to connect to database:', err);
   });
   
-  var Cafe = pg.define('cafe', {
-    id: {
-      type: Sequelize.INTEGER,
-      primaryKey: true,
-      autoIncrement: true
-    },
-    name: {
-      type: Sequelize.STRING
-    }
-  })
+let Cafe = pg.define('cafe', {
+  id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
+  name: {
+    type: Sequelize.STRING
+  }
+})
 
 Cafe.sync().then(function() {
   var data = {
