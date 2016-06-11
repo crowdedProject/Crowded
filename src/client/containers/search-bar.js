@@ -1,16 +1,29 @@
 import React, {Component} from 'react';
 
-export default class SearchBar extends Component {
+class SearchBar extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+
+    this.state= {term: ''};
+  }
+
+  onInputChange(term) {
+    this.setState({term});
+    this.props.onSearchTermChange(term);
   }
 
   render() {
+    
     return (
       <div>
-        <input type="text" placeHolder="Hello World!" />
+        <input 
+          value={this.state.term}
+          onChange={event => this.onInputChange(event.target.value)} />
+        Logging input to screen: {this.state.term}
       </div>
     );
   }
 }
+
+export default SearchBar;
