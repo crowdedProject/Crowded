@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import _ from 'lodash';
 
 import SearchBar from '../containers/search-bar';
-import CafeList from './cafe-list';
+import List from '../containers/list';
 
 class App extends Component {
   constructor(props) {
@@ -37,7 +37,7 @@ class App extends Component {
           <SearchBar onSearchTermChange={cafeSearch} />
         </div>
         <div>
-          <CafeList />
+          <List />
         </div>
       </div>
     );
