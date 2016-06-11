@@ -1,6 +1,6 @@
 let Sequelize = require('sequelize');
-
-let sequelize = new Sequelize('postgres://localhost:8080/database', {});
+let connection = process.env.DATABASE_URL || 'postgres://localhost:8080/database';
+let sequelize = new Sequelize(connection, {});
 
 sequelize
   .authenticate()
