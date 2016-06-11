@@ -1,9 +1,9 @@
 const Sequelize = require('sequelize');
-const connection = require('./config/config.js');
-
+const connection = require('./config/db-config.js');
 const db = process.env.DATABASE_URL || connection.local;
 
-var pg = new Sequelize(db);
+let pg = new Sequelize(db);
+
 pg
   .authenticate()
   .then(function(err) {
@@ -12,7 +12,8 @@ pg
   .catch(function (err) {
     console.log('unable to connect to database:', err);
   });
-  
+
+//eventually move into models folder
 let Cafe = pg.define('cafe', {
   id: {
     type: Sequelize.INTEGER,
