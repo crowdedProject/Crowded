@@ -1,6 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-
+var pg = require('./src/server/psql.js');
 var app = express();
 
 app.use(express.static(__dirname + '/dist'));                                                       
