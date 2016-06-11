@@ -4,6 +4,9 @@ const db = process.env.DATABASE_URL || connection.local;
 
 let pg = new Sequelize(db);
 
+const db = process.env.DATABASE_URL || connection.local;
+
+var pg = new Sequelize(db);
 pg
   .authenticate()
   .then(function(err) {
