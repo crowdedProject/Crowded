@@ -1,8 +1,20 @@
 const Sequelize = require('sequelize');
-const connection = require('./config/db-config.js');
+const connection = require('./config/db-connection.js');
 const db = process.env.DATABASE_URL || connection.local;
 
-let pg = new Sequelize(db);
+if (!global.hasOwnProperty('pg')) {
+  pg = (function() {
+    if (db === process.env.DATABASE_URL) {
+      return new Sequelize(db, {
+        dialectOptions: {
+        ssl: true
+        }
+      })
+    } else {
+      return new Sequelize(db);
+    }
+  })();
+}
 
 pg
   .authenticate()
@@ -12,24 +24,21 @@ pg
   .catch(function (err) {
     console.log('unable to connect to database:', err);
   });
+  
+const User = pg.import(__dirname + '/db-models/db-user');
+const Cafe = pg.import(__dirname + '/db-models/db-cafe');
+const Neighborhood = pg.import(__dirname + '/db-models/db-neighborhood');
 
-//eventually move into models folder
-let Cafe = pg.define('cafe', {
-  id: {
-    type: Sequelize.INTEGER,
-    primaryKey: true,
-    autoIncrement: true
-  },
-  name: {
-    type: Sequelize.STRING
-  }
-})
-
-Cafe.sync().then(function() {
-  var data = {
-    name: "test cafe"
-  }
-  Cafe.create(data).then(function(post) {
-    console.dir(post.get())
+pg.sync({force: true}).then(function(data) {
+  console.log('table', data.models);})
+  .catch(function(err) {
+    console.log('table not created', err);
   })
-})
+
+global.pg = {
+  Sequelize: Sequelize,
+  pg: pg,
+  User: User,
+  Cafe: Cafe,
+  Neighborhood: Neighborhood
+};
