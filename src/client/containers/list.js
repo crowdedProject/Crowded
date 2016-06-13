@@ -1,4 +1,5 @@
 import React from 'react';
+import Axios from 'axios';
 
 import CafeList from '../components/cafe-list';
 import HoodList from '../components/hood-list';
@@ -10,5 +11,15 @@ import PrefList from '../components/pref-list';
 
 //Initially, we will export PrefList 
 //to demonstrate that the files still work.
-
-export default PrefList;
+const cafeListTest = (term) => {
+	// console.log('in test function', term);
+	Axios.post('/cafeResult', term)
+	.then(response => {
+		console.log('cafe result starts here', response.data);
+	})
+	.catch(err => {
+		console.error(err);
+	});
+};
+cafeListTest('coffee');
+export default CafeList;
