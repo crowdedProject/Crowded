@@ -12,12 +12,7 @@ const yelp = new Yelp({
 module.exports.yelpResult = (term, res) => {
 	yelp.search({ term: term, location: 'san francisco mission', limit: 5 })
 	.then( (data) => {
-	  // const loc = data.businesses;
-	  // loc.forEach(function(i) {
-	  // 	console.log();
-	  // })
-	console.log(data);
-	res.send(data);
+	  res.send(data);
 	})
 	.catch( (err) => {
 	  console.error("WE HAD AN ERROR", err);
