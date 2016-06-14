@@ -20,7 +20,7 @@ module.exports.yelpResult = (term, res) => {
 	res.send(data);
 	})
 	.catch( (err) => {
-	  console.error(err);
+	  console.error("WE HAD AN ERROR", err);
 	});
 };
 
