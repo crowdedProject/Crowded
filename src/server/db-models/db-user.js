@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-module.exports = function (pg, DataTypes) {
+module.exports = (pg, DataTypes) => {
   return pg.define('user', {
     id: {
       type: DataTypes.INTEGER(11),

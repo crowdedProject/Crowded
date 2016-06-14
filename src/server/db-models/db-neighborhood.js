@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
-const nData = require(__dirname + '/../neighborhood.json');
+const nData = require(`${__dirname}/../neighborhood.json`);
 
-module.exports = function (pg, DataTypes) {
+module.exports = (pg, DataTypes) => {
   return pg.define('neighborhood', {
     id: {
       type: DataTypes.INTEGER,

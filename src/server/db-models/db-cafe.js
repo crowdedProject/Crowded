@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
-const User = pg.import(__dirname + '/db-user');
+const User = pg.import(`${__dirname}/db-user`);
 
-module.exports = function (db, DataTypes) {
+module.exports = (db, DataTypes) => {
   return pg.define('cafe', {
     id: {
       type: DataTypes.INTEGER,
