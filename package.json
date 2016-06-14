@@ -7,7 +7,7 @@
     "test": "tests"
   },
   "scripts": {
-    "start": "webpack && nodemon ./src/server/server.js",
+    "start": "webpack && nodemon ./src/server/psql.js && nodemon ./src/server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:watch": "npm run test -- --watch"
   },

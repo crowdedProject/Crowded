@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+const nData = require(__dirname + '/../neighborhood.json');
 
 module.exports = function (pg, DataTypes) {
   return pg.define('neighborhood', {
@@ -8,7 +9,11 @@ module.exports = function (pg, DataTypes) {
       autoIncrement: true
     },
     neighborhood_name: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING      
+    },
+    yelp_mapping: {
+      type: DataTypes.STRING
     }
   });
+  
 };
