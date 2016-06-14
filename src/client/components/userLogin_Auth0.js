@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 
 export default class auth0Login extends Component {
-	constructor(props) {
+  constructor(props) {
     super(props);
 
     this.state = {
