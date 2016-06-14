@@ -1,30 +1,43 @@
-import React from 'react';
-
+import React, {Component} from 'react';
+import Axios from 'axios';
 import Cafe from './cafe';
 
-const CafeList = (props) => {
-  //Dummy array is assigned to props since 
-  //it's not yet integrated with server.
-  
-  //sort the props by yelp rating, descending;
-  //SORT will be a function of user preferences.
-  props = props.sort((cafe1, cafe2) => {
-    return cafe2.rating - cafe1.rating;
-  });
+class CafeList extends Component {
 
-  const cafeArr = props.map((cafe) => {
+  constructor(props) {
+    super(props);
+    this.state = { cafeArr: null };
+    this.cafeListFetch('coffee');
+  }
+
+  cafeListFetch = (term) => {
+    Axios.post('/cafeResult', term)
+    .then(response => {     
+      let sortedResp = response.data.businesses.sort((cafe1, cafe2) => {
+        return cafe2.rating - cafe1.rating;
+      });
+      let cafeArr = sortedResp.map((cafe) => {
+        return (
+          <Cafe
+            key={cafe.name}
+            cafe={cafe} />
+        );
+      });
+      this.setState({ cafeArr: cafeArr});
+    })
+    .catch(err => {
+      console.error(err);
+    });
+  }
+
+  // Render the state
+  render() {
     return (
-      <Cafe
-        key={cafe.name}
-        cafe={cafe} />
+      <ul>
+        {this.state.cafeArr}
+      </ul>
     );
-  });
-  
-  return (
-    <ul>
-      {cafeArr}
-    </ul>
-  );
+  }
 };
 
 export default CafeList;
