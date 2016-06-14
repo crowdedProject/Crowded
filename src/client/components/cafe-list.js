@@ -10,7 +10,7 @@ class CafeList extends Component {
     this.cafeListFetch('sunset');
   }
 
-  cafeListFetch = (term) => {
+  cafeListFetch (term) {
     Axios.post('/cafeResult', term)
       .then(response => {
         let sortedResp = response.data.businesses.sort((cafe1, cafe2) => {
