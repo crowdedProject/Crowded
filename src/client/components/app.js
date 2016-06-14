@@ -3,6 +3,7 @@ import _ from 'lodash';
 
 import SearchBar from '../containers/search-bar';
 import List from '../containers/list';
+import userLoginAuth0 from './userLogin_Auth0';
 
 class App extends Component {
   constructor(props) {
@@ -38,6 +39,7 @@ class App extends Component {
         </div>
         <div>
           <List />
+          <userLoginAuth0 />
         </div>
       </div>
     );
