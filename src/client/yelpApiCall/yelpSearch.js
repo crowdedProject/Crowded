@@ -10,7 +10,7 @@ const yelp = new Yelp({
 });
 
 module.exports.yelpResult = (term, res) => {
-	yelp.search({ term: term, location: 'san francisco mission', limit: 5 })
+	yelp.search({ term: 'coffee', location: 'san francisco ' + term, limit: 5, radius_filter: 3000 })
 	.then( (data) => {
 	  res.send(data);
 	})
