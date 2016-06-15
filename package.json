@@ -7,7 +7,7 @@
     "test": "tests"
   },
   "scripts": {
-    "start": "webpack && node ./src/server/psql.js && nodemon ./src/server/server.js",
+    "start": "webpack && nodemon ./src/server/server.js",
     "test": "mocha"
   },
   "repository": {

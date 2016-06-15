@@ -8,4 +8,4 @@ import PrefList from '../components/pref-list';
 //cafe-list, hood-list, and pref-list
 //depending on which route we're at.
 
-export default CafeList;
+export default HoodList;
