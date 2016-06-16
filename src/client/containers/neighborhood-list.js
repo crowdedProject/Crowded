@@ -6,7 +6,7 @@ import {setPreferences} from '../actions/index';
 import {setNeighborhood} from '../actions/index';
 import {Link, browserHistory} from 'react-router';
 
-class PrefList extends Component {
+class NeighborhoodList extends Component {
   constructor (props)  {
     super(props);
     this.onPrefClick = this.onPrefClick.bind(this);
@@ -25,7 +25,7 @@ class PrefList extends Component {
     //start by using: this.props.yelpRating(props)
     //eventually we want this to be this.props.submitPrefList to handle all preferences, but for MvP we can test with just a yelp call
     // .then(() => {
-      browserHistory.push('/cafes') //change the route to render the cafe list
+      browserHistory.push('/') //change the route to render the cafe list
     // });
     
     //call cafe-api actions and pass in only the relevant state items
@@ -34,44 +34,41 @@ class PrefList extends Component {
   onNeighborhoodChange(props) {
     browserHistory.push('/neighborhood')
   }
-  //need to dynamically change "location set to {state.proximity || state.neighborhood}"
+  
   render() { 
     return (
       <div>
         <span>
-          <button type="submit" className="mdl-button--raised" onClick={this.onPrefSubmit}>Submit</button>
+          <button type="submit" className="mdl-button--raised" onClick={this.onPrefSubmit}>Return to Prefs</button>
         </span>
-        <div>Location set to nearest to your location</div>
-        <div>Click here to select a specific Neighborhood
-          <button type="submit" className="mdl-button--raised" onClick={this.onNeighborhoodChange}>Submit</button>
-        </div>
+        
         <div className="mdl-grid">
-          <div className="mdl-cell mdl-cell--4-col" value='coffeeQuality' onClick={this.onPrefClick}>
-            Coffee Quality
+          <div className="mdl-cell mdl-cell--4-col" value='Mission' onClick={this.onPrefClick}>
+            Mission
           </div>
           <div className="mdl-cell mdl-cell--4-col" value='ambiance' onClick={this.onPrefClick}>
-            Ambiance (change!!)
+            Castro
           </div>
-          <div className="mdl-cell mdl-cell--4-col" value='yelpRating' onClick={this.onPrefClick}>
-            Yelp Rating
+          <div className="mdl-cell mdl-cell--4-col" value='Sunset' onClick={this.onPrefClick}>
+            Sunset
           </div>
-          <div className="mdl-cell mdl-cell--4-col" value='seats' onClick={this.onPrefClick}>
-            Seats
+          <div className="mdl-cell mdl-cell--4-col" value='Richmond' onClick={this.onPrefClick}>
+            Richmond
           </div>
-          <div className="mdl-cell mdl-cell--4-col" value='outlets' onClick={this.onPrefClick}>
-            Outlets
+          <div className="mdl-cell mdl-cell--4-col" value='Marina' onClick={this.onPrefClick}>
+            Marina
           </div>
-          <div className="mdl-cell mdl-cell--4-col" value='bathroomQuality' onClick={this.onPrefClick}>
-            Bathroom Quality
+          <div className="mdl-cell mdl-cell--4-col" value='North Beach' onClick={this.onPrefClick}>
+            North Beach
           </div>
-          <div className="mdl-cell mdl-cell--4-col" value='line' onClick={this.onPrefClick}>
-            Line
+          <div className="mdl-cell mdl-cell--4-col" value='Haight' onClick={this.onPrefClick}>
+            Haight
           </div>
-          <div className="mdl-cell mdl-cell--4-col" value='noise' onClick={this.onPrefClick}>
-            Noise
+          <div className="mdl-cell mdl-cell--4-col" value='Soma' onClick={this.onPrefClick}>
+            FiDi / Soma
           </div>
-          <div className="mdl-cell mdl-cell--4-col" value='price' onClick={this.onPrefClick}>
-            Price
+          <div className="mdl-cell mdl-cell--4-col" value='Twin Peaks' onClick={this.onPrefClick}>
+            Twin Peaks
           </div>
         </div>
       </div>
@@ -83,4 +80,4 @@ function mapDispachToProps(dispatch) {
   return bindActionCreators({yelpRating, setPreferences, setNeighborhood}, dispatch);
 }
 
-export default connect(null, mapDispachToProps)(PrefList);
+export default connect(null, mapDispachToProps)(NeighborhoodList);

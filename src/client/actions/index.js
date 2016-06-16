@@ -4,6 +4,7 @@ import SEAT_DB from './cafe-db';
 
 export const USER_PREFS = 'USER_PREFS';
 export const SUBMIT_PREFS = 'SUBMIT_PREFS';
+export const NEIGBHORHOOD_PREFS = 'NEIGBHORHOOD_PREFS';
 
 export function setPreferences(pref) {
   //should be logic here if a pref exists, it should not be added again
@@ -13,6 +14,14 @@ export function setPreferences(pref) {
     payload: pref
   }
 };
+
+export function setNeighborhood(neighborhood) {
+  
+  return {
+    type: NEIGBHORHOOD_PREFS,
+    payload: neighborhood
+  }
+}
 
 export function submitPrefList(preferences) {
   let yelp = YELP_RATING;

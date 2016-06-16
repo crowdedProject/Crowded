@@ -1,9 +1,10 @@
 import {YELP_RATING} from '../actions/index';
 import {USER_PREFS} from '../actions/index';
+import {NEIGBHORHOOD_PREFS} from '../actions/index';
 
 var initState = {
+    proximity: true,
     neighborhood: false,
-    proximity: false,
     yelpRating: false,
     seats: false,
     outlets: false,
@@ -13,7 +14,7 @@ var initState = {
     price: false
 }
 //can change this to state=state;
-export default function(state=initState, action) {
+export default function(state=[initState], action) {
   // debugger;
   //update yelp state status to whatever comes back from the yelp action
   
@@ -35,21 +36,22 @@ export default function(state=initState, action) {
   switch(action.type) {
     case USER_PREFS:
       console.log(state);
+      return [action.payload, ...state]
       switch(action.payload) {
-        case 'neighborhood':
-          if (state.neighborhood === true) {
-            state.neighborhood = false;
+        case 'coffeeQuality':
+          if (state.coffeeQuality === true) {
+            state.coffeeQuality = false;
             return state;
           } else {
-            state.neighborhood = true;
+            state.coffeeQuality = true;
             return state;
           }
-        case 'proximity':
-          if (state.proximity === true) {
-            state.proximity = false;
+        case 'ambiance':
+          if (state.ambiance === true) {
+            state.ambiance = false;
             return state;
           } else {
-            state.proximity = true;
+            state.ambiance = true;
             return state;
           }
         case 'yelpRating':
