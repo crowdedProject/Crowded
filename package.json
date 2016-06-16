@@ -35,6 +35,8 @@
     "jsdom": "^9.2.1",
     "mocha": "^2.5.3",
     "react-addons-test-utils": "^15.1.0",
+    "supertest": "^1.2.0",
+    "supertest-as-promised": "^3.1.0",
     "webpack": "^1.13.1"
   },
   "dependencies": {
