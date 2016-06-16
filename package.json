@@ -7,7 +7,9 @@
     "test": "tests"
   },
   "scripts": {
-    "start": "webpack && nodemon ./src/server/server.js",
+    "start": "node ./src/server/server.js",
+    "dev": "nodemon ./src/server/server.js",
+    "build": "webpack --watch",
     "test": "mocha"
   },
   "repository": {
@@ -27,6 +29,8 @@
     "babel-preset-react": "^6.5.0",
     "chai": "^3.5.0",
     "chai-jquery": "^2.0.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "html-webpack-plugin": "^2.21.0",
     "jquery": "^2.2.4",
     "jsdom": "^9.2.1",
     "mocha": "^2.5.3",
@@ -46,7 +50,10 @@
     "react-dom": "^15.1.0",
     "react-redux": "^2.0.0",
     "react-router": "^2.4.1",
+    "react-sparklines": "^1.5.2",
     "redux": "^2.0.0",
+    "redux-form": "^5.2.5",
+    "redux-logger": "^2.6.1",
     "redux-promise": "^0.5.3",
     "sequelize": "^3.23.3",
     "supertest": "^1.2.0",

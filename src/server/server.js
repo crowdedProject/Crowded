@@ -1,5 +1,5 @@
 const app = require('./config/server-config.js');
-const Yelp = require('../client/yelpApiCall/yelpSearch');
+// const Yelp = require('../client/yelpApiCall/yelpSearch');
 const sequelize = require(`${__dirname}/psql.js`);
 
 let port = process.env.PORT || 8080;
