@@ -31,6 +31,7 @@ export default function(state=initState, action) {
 //   var inner = outer ? outer[action.payload] : null;
 //   inner()
 
+
   switch(action.type) {
     case USER_PREFS:
       console.log(state);
