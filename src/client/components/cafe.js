@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Cafe = (props) => {
+export default (props) => {
   return (
     <div>
       <div>
@@ -12,5 +12,3 @@ const Cafe = (props) => {
     </div>
   );
 };
-
-export default Cafe;
