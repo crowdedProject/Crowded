@@ -17,7 +17,7 @@ export function yelpRating(neighborhood) {
 //key is to return out the response from the yelp call as the value for the payload key
   return {
     type: YELP_RATING,
-    payload: request
+    payload: request //top 5 cafes from the yelp call
   }
 };
 
