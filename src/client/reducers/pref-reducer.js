@@ -5,8 +5,6 @@ import {NEIGBHORHOOD_PREFS} from '../actions/index';
 var initState = {
     proximity: true,
     neighborhood: false,
-    coffeeQuality: false,
-    ambiance: false,
     yelpRating: false,
     seats: false,
     outlets: false,
@@ -15,12 +13,30 @@ var initState = {
     noise: false,
     price: false
 }
+//can change this to state=state;
+export default function(state=[initState], action) {
+  // debugger;
+  //update yelp state status to whatever comes back from the yelp action
+  
+  //alternative way to write the swtich statements:
+//   var type = {};
+//   type[USER_PREFS]= {"neighborhood":function(){
+      
+//   }
+// }
+//   type[Y]= function(){
+//     //...
+//   }
+  
+//   var outer = type[action.type];
+//   var inner = outer ? outer[action.payload] : null;
+//   inner()
 
-export default function(state=initState, action) {
+
   switch(action.type) {
     case USER_PREFS:
       console.log(state);
-      // return [action.payload, ...state]
+      return [action.payload, ...state]
       switch(action.payload) {
         case 'coffeeQuality':
           if (state.coffeeQuality === true) {
@@ -95,24 +111,11 @@ export default function(state=initState, action) {
             return state;
           }
       }
+      //potentially another switch statement here to determine which pref
+      // return [action.payload, ...state];
+    
+    case YELP_RATING:
+      return [action.payload.data, ...state];
     }
   return state;
 }
-
-  // debugger;
-  //update yelp state status to whatever comes back from the yelp action
-  
-  //alternative way to write the swtich statements:
-//   var type = {};
-//   type[USER_PREFS]= {"neighborhood":function(){
-      
-//   }
-// }
-//   type[Y]= function(){
-//     //...
-//   }
-  
-//   var outer = type[action.type];
-//   var inner = outer ? outer[action.payload] : null;
-//   inner()
-
