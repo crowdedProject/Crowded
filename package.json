@@ -58,7 +58,6 @@
     "redux-logger": "^2.6.1",
     "redux-promise": "^0.5.3",
     "sequelize": "^3.23.3",
-    "supertest": "^1.2.0",
-    "yelp": "^1.0.1"
+    "supertest": "^1.2.0"
   }
 }
