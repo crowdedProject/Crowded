@@ -1,3 +1,4 @@
+const axios = require('axios');
 const app = require('./config/server-config.js');
 // const Yelp = require('../client/yelpApiCall/yelpSearch');
 const sequelize = require(`${__dirname}/psql.js`);
@@ -7,11 +8,6 @@ let port = process.env.PORT || 8080;
 app.listen(port, function() {
 		console.log("server listening on port " + port);
 	});
-
-app.post('/cafeResult', (req, res) => {
-	// console.log('serverPOST');
-	Yelp.yelpResult(req, res);
-});
 
 app.post('/signup', function(req, res) {
 		let first_name = req.body.firstName;
@@ -38,6 +34,24 @@ app.post('/cafeResult/seat', function(req, res) {
 		
 		console.log('this is a console log', global.pg.Cafe);
 });
+
+app.post('/cafeResult', function(req, res) {
+  getCafeList(req, res);
+})
+
+const getCafeList = function(req, res) {
+  const API_KEY = 'AIzaSyDkRyt36Yj2FYAiJklN810C_UWN8GF6gD0';
+  const ROOT_URL = `https://maps.googleapis.com/maps/api/place/textsearch/json?key=${API_KEY}&type=cafe`
+	const url = `${ROOT_URL}&query=san%20francisco%20${req.body.data}&radius=5000`;
+  axios.get(url)
+    .then(  Response => {
+      res.send(Response.data.results);
+    })
+    .catch( (err) => {
+      console.error(err)
+  });
+
+};
 
 // console.log('this is a neighborhood', global.pg.Neighborhood.all());
 

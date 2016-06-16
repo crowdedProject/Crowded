@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 // import Cafe from '../components/cafe';
 
-export default class CafeList extends Component {
+class CafeList extends Component {
   //should get render cafe infor from the cafe-list-reducer state
  renderCafe(cafeData) {
     const name = "datafromCafeData.name"
