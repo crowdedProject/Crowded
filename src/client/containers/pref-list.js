@@ -22,7 +22,6 @@ class PrefList extends Component {
   }
   
   onPrefSubmit(props) {
-    //somehow call the action "makeYelpCall" from the action file
     //start by using: this.props.yelpRating(props)
     //eventually we want this to be this.props.submitPrefList to handle all preferences, but for MvP we can test with just a yelp call
     // .then(() => {
