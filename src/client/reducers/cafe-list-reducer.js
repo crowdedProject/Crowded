@@ -214,7 +214,8 @@ import {FETCH_CAFELIST} from '../actions/cafe-api';
 export default function(state = [], action) {
   switch (action.type) {
   case FETCH_CAFELIST: 
-    return [action.payload.data, ...state];
+  console.log('this is what i have to work with', action.payload);
+    return [action.payload, ...state];
   }
   return state;
 }
