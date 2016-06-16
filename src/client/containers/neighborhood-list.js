@@ -1,23 +1,21 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {yelpRating} from '../actions/index';
-import {setPreferences} from '../actions/index';
 import {setNeighborhood} from '../actions/index';
 import {Link, browserHistory} from 'react-router';
 
 class NeighborhoodList extends Component {
   constructor (props)  {
     super(props);
-    this.onPrefClick = this.onPrefClick.bind(this);
+    this.onNeigbhorhoodClick = this.onNeigbhorhoodClick.bind(this);
     this.onPrefSubmit = this.onPrefSubmit.bind(this);
-    this.onNeighborhoodChange = this.onNeighborhoodChange.bind(this);
+    // this.onNeighborhoodChange = this.onNeighborhoodChange.bind(this);
   }
 
-  onPrefClick(event) {
+  onNeigbhorhoodClick(event) {
     // need logic here or in the div to change the color
     //logic for preventing double clicking and for removing pref from list by clicking should be in the action handler
-    this.props.setPreferences(event.target.value);
+    this.props.setNeighborhood(event.target.value);
     //this.setState = event.target
   }
   
@@ -31,9 +29,9 @@ class NeighborhoodList extends Component {
     //call cafe-api actions and pass in only the relevant state items
   }
   
-  onNeighborhoodChange(props) {
-    browserHistory.push('/neighborhood')
-  }
+  // onNeighborhoodChange(props) {
+  //   browserHistory.push('/neighborhood')
+  // }
   
   render() { 
     return (
@@ -43,31 +41,31 @@ class NeighborhoodList extends Component {
         </span>
         
         <div className="mdl-grid">
-          <div className="mdl-cell mdl-cell--4-col" value='Mission' onClick={this.onPrefClick}>
+          <div className="mdl-cell mdl-cell--4-col" value='mission' onClick={this.onNeigbhorhoodClick}>
             Mission
           </div>
-          <div className="mdl-cell mdl-cell--4-col" value='ambiance' onClick={this.onPrefClick}>
+          <div className="mdl-cell mdl-cell--4-col" value='castro' onClick={this.onNeigbhorhoodClick}>
             Castro
           </div>
-          <div className="mdl-cell mdl-cell--4-col" value='Sunset' onClick={this.onPrefClick}>
+          <div className="mdl-cell mdl-cell--4-col" value='sunset' onClick={this.onNeigbhorhoodClick}>
             Sunset
           </div>
-          <div className="mdl-cell mdl-cell--4-col" value='Richmond' onClick={this.onPrefClick}>
+          <div className="mdl-cell mdl-cell--4-col" value='richmond' onClick={this.onNeigbhorhoodClick}>
             Richmond
           </div>
-          <div className="mdl-cell mdl-cell--4-col" value='Marina' onClick={this.onPrefClick}>
+          <div className="mdl-cell mdl-cell--4-col" value='marina' onClick={this.onNeigbhorhoodClick}>
             Marina
           </div>
-          <div className="mdl-cell mdl-cell--4-col" value='North Beach' onClick={this.onPrefClick}>
+          <div className="mdl-cell mdl-cell--4-col" value='northBeach' onClick={this.onNeigbhorhoodClick}>
             North Beach
           </div>
-          <div className="mdl-cell mdl-cell--4-col" value='Haight' onClick={this.onPrefClick}>
+          <div className="mdl-cell mdl-cell--4-col" value='haight' onClick={this.onNeigbhorhoodClick}>
             Haight
           </div>
-          <div className="mdl-cell mdl-cell--4-col" value='Soma' onClick={this.onPrefClick}>
+          <div className="mdl-cell mdl-cell--4-col" value='soma' onClick={this.onNeigbhorhoodClick}>
             FiDi / Soma
           </div>
-          <div className="mdl-cell mdl-cell--4-col" value='Twin Peaks' onClick={this.onPrefClick}>
+          <div className="mdl-cell mdl-cell--4-col" value='twinPeaks' onClick={this.onNeigbhorhoodClick}>
             Twin Peaks
           </div>
         </div>
@@ -77,7 +75,7 @@ class NeighborhoodList extends Component {
 }
 
 function mapDispachToProps(dispatch) {
-  return bindActionCreators({yelpRating, setPreferences, setNeighborhood}, dispatch);
+  return bindActionCreators({setNeighborhood}, dispatch);
 }
 
 export default connect(null, mapDispachToProps)(NeighborhoodList);
