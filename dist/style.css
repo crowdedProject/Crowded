@@ -1,27 +1,98 @@
+.mdl-grid {
+  margin: auto;
+  width: 650px;
+  height: 650px;
+}
+.mdl-cell.mdl-cell--4-col {
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  padding: 85px 0;
+  color: white;
+  text-transform: uppercase;
+  font-size: 20pt;
+  background: #3E4EB8;
+}
+.small-print {
+  text-align: right;
+  font-style: italic;
+}
+.small-print-button {
+    text-align: right;
+    font-style: normal;
+}
+.search-button {
+  margin: auto;
+  text-align: center;
+  width: 256px;
+  height: 30px;
+  
+}
+.mdl-button--raised.main {
+  text-transform: uppercase;
+  font-size: 16pt;
+  padding: auto;
+  width: 200px;
+  height: 32px;
+  background: #AED073;
+}
+.div-holder {
+  margin: auto;
+  width: 650px;
+  height: 90px;
+}
 .demo-card-event.mdl-card {
   width: 256px;
   height: 256px;
   background: #3E4EB8;
 }
-.demo-card-event > .mdl-card__actions {
-  border-color: rgba(255, 255, 255, 0.2);
+.demo-switch{
+  padding:60px;
 }
-.demo-card-event > .mdl-card__title {
+
+/* /cafe route css below */
+.cafe-list-holder {
+  margin: auto;
+  width: 650px;
+  height: 650px;
+}
+div-holder-two {
+  margin: auto;
+  text-align: center;
+  width: 650px;
+  height: 100px;  
+}
+.mdl-data-table {
+  margin: auto;
+}
+.cafe-header {
+  margin: auto;
+  text-transform: uppercase;
+  color: #3E4EB8;
+  text-align: center;
+  font-size: 16pt;
+}
+
+
+.mdl-cell > .dl-cell--4-col__actions {
+  background: #737fd0;
+}
+.mdl-cell-event > .dl-cell--4-col__title {
   align-items: flex-start;
 }
-.demo-card-event > .mdl-card__title > h4 {
+.mdl-cell-event > .dl-cell--4-col__title > h4 {
   margin-top: 0;
 }
-.demo-card-event > .mdl-card__actions {
+.mdl-cell-event > .mdl-cell--4-col__actions {
   display: flex;
   box-sizing:border-box;
   align-items: center;
 }
-.demo-card-event > .mdl-card__actions > .material-icons {
+.mdl-cell-event > .dl-cell--4-col__actions > .material-icons {
   padding-right: 10px;
 }
-.demo-card-event > .mdl-card__title,
-.demo-card-event > .mdl-card__actions,
-.demo-card-event > .mdl-card__actions > .mdl-button {
+.mdl-cell-event > .dl-cell--4-col__title,
+.mdl-cell-event > .dl-cell--4-col__actions,
+.mdl-cell-event > .dl-cell--4-col__actions > .mdl-button {
   color: #fff;
 }

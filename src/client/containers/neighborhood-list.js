@@ -36,9 +36,9 @@ class NeighborhoodList extends Component {
   render() { 
     return (
       <div>
-        <span>
-          <button type="submit" className="mdl-button--raised" onClick={this.onPrefSubmit}>Return to Prefs</button>
-        </span>
+        <div className="search-button">
+          <button type="submit" className="mdl-button--raised main" onClick={this.onPrefSubmit}>Back to Prefs</button>
+        </div>
         
         <div className="mdl-grid">
           <div className="mdl-cell mdl-cell--4-col" value='mission' onClick={this.onNeigbhorhoodClick}>
