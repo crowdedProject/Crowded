@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Find an open seat in the coffee shop near you",
   "main": "index.js",
+  "engines": {
+    "node": "6.2.1"
+  },
   "directories": {
     "test": "tests"
   },
