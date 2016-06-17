@@ -36,7 +36,7 @@ import {NEIGHBORHOOD_PREFS} from '../actions/index';
 
 export default function(state=[], action) {
   switch (action.type) {
-    case FETCH_CAFELIST: 
+    case FETCH_CAFELIST:
       return [action.payload.data, ...state];
       // return [action.payload.data, ...state];
   }

@@ -31,18 +31,25 @@ class CafeList extends Component {
   render() {
     //eventually make column headers dynamic
     return (
-      <table className="mdl-data-table mdl-shadow--2dp">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Rating</th>
-            <th>Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          {this.props.cafe.map(this.renderCafe)}
-        </tbody>
-      </table>
+      <div>
+        <div className="div-holder-two">
+          <div className="cafe-header">Top Cafes</div>
+        </div>
+        <div className="cafe-list-holder">
+          <table className="mdl-data-table mdl-shadow--2dp">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Rating</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.props.cafe.map(this.renderCafe)}
+            </tbody>
+          </table>
+        </div>
+      </div>
     );
   }
 };

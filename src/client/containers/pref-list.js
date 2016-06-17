@@ -35,19 +35,21 @@ class PrefList extends Component {
   render() { 
     return (
       <div>
-        <span>
-          <button type="submit" className="mdl-button--raised" onClick={this.onPrefSubmit}>Submit</button>
-        </span>
-        <div>Location set to nearest to your location</div>
-        <div>Click here to select a specific Neighborhood
-          <button type="submit" className="mdl-button--raised" onClick={this.onNeighborhoodChange}>Submit</button>
+        <div className="div-holder">
+          <div className="small-print">Location set to nearest to you</div>
+            <div className="small-print-button">
+              <button type="submit" className="mdl-button--raised small-print" onClick={this.onNeighborhoodChange}>Choose Neigbhorhood</button>
+            </div>
+          <div className="search-button">
+            <button type="submit" className="mdl-button--raised main" onClick={this.onPrefSubmit}>Find Cafes</button>
+          </div>
         </div>
         <div className="mdl-grid">
           <div className="mdl-cell mdl-cell--4-col" value='coffeeQuality' onClick={this.onPrefClick}>
-            Coffee Quality
+            Coffee
           </div>
           <div className="mdl-cell mdl-cell--4-col" value='ambiance' onClick={this.onPrefClick}>
-            Ambiance (change!!)
+            Ambiance
           </div>
           <div className="mdl-cell mdl-cell--4-col" value='yelpRating' onClick={this.onPrefClick}>
             Yelp Rating
@@ -59,7 +61,7 @@ class PrefList extends Component {
             Outlets
           </div>
           <div className="mdl-cell mdl-cell--4-col" value='bathroomQuality' onClick={this.onPrefClick}>
-            Bathroom Quality
+            Bathrooms
           </div>
           <div className="mdl-cell mdl-cell--4-col" value='line' onClick={this.onPrefClick}>
             Line
