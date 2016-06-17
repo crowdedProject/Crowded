@@ -13,7 +13,7 @@
   "scripts": {
     "build": "webpack",
     "start": "node ./src/server/server.js",
-    "dev": "nodemon ./src/server/server.js",
+    "dev": "nodemon ./src/server/server.js"
   },
   "repository": {
     "type": "git",
