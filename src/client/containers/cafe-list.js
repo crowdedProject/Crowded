@@ -12,13 +12,14 @@ class CafeList extends Component {
  renderCafe(cafeData) {
    //this works for one item
    return _.map(cafeData, function(cafe) {
-      console.log('this is cafe data', cafe.name);
+      console.log('this is cafe data', cafe);
+      let id = cafe.place_id;
       let name = cafe.name;
       let rating = cafe.rating;
       let price = cafe.price_level;
 
      return (
-       <tr key={name}>
+       <tr key={id}>
          <td>{name}</td>
          <td>{rating}</td>
          <td>{price}</td>
