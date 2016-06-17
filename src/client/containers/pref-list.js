@@ -9,6 +9,7 @@ import {Link, browserHistory} from 'react-router';
 class PrefList extends Component {
   constructor (props)  {
     super(props);
+    this.state = {term: ''};
     this.onPrefClick = this.onPrefClick.bind(this);
     this.onPrefSubmit = this.onPrefSubmit.bind(this);
     this.onNeighborhoodChange = this.onNeighborhoodChange.bind(this);
@@ -21,9 +22,43 @@ class PrefList extends Component {
     //this.setState = event.target
   }
   
+  //fetching geolocation here
+  getCoords() {
+    // this.setState({term: position.coords.latitude + ',' + position.coords.longitude});
+    // console.log(this.state);
+    if ("geolocation" in navigator) {
+      
+       navigator.geolocation.getCurrentPosition(position => {
+         this.setState({term: position.coords.latitude + ',' + position.coords.longitude});
+         console.log(this.state);
+         
+       });
+      //  .then((position) => {
+      //    this.setState({term: position.coords.latitude + ',' + position.coords.longitude});
+      //  })
+      //  .then(() => {
+      //  })
+      //  .catch(err => {
+      //    console.error(err);
+      //  });
+   
+    } else {
+      console.log("TOO BAD");
+    }
+  }
+  
+  componentDidMount() {
+      this.getCoords();
+  }
+  
   onPrefSubmit() { //eventually pass in geolocation or hood
     //need switch logic here to switch between geolocation and hood, come from state 
-    this.props.fetchCafeListByHood('37.769105, -122.422600');
+    // e.preventDefault();
+  
+         this.props.fetchCafeListByHood(this.state.term);
+   
+    
+    
       browserHistory.push('/cafes') //change the route to render the cafe list
     
   }

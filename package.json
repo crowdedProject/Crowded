@@ -55,7 +55,7 @@
     "pg-hstore": "^2.3.2",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
-    "react-redux": "*",
+    "react-redux": "^2.0.0",
     "react-router": "^2.4.1",
     "react-sparklines": "^1.5.2",
     "redux": "*",
