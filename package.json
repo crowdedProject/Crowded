@@ -4,7 +4,8 @@
   "description": "Find an open seat in the coffee shop near you",
   "main": "index.js",
   "engines": {
-    "node": "6.2.1"
+    "node": "6.2.1",
+    "npm": "3.9.3"
   },
   "directories": {
     "test": "tests"
@@ -41,7 +42,7 @@
     "react-addons-test-utils": "^15.1.0",
     "supertest": "^1.2.0",
     "supertest-as-promised": "^3.1.0",
-    "webpack": "^1.13.1"
+    "webpack": "^1.13.1",
   },
   "dependencies": {
     "axios": "^0.12.0",
@@ -53,15 +54,14 @@
     "pg": "^5.1.0",
     "pg-hstore": "^2.3.2",
     "react": "^15.1.0",
+    "redux": "^2.0.0",
     "react-dom": "^15.1.0",
     "react-redux": "^2.0.0",
     "react-router": "^2.4.1",
     "react-sparklines": "^1.5.2",
-    "redux": "^2.0.0",
     "redux-form": "^5.2.5",
     "redux-logger": "^2.6.1",
     "redux-promise": "^0.5.3",
-    "sequelize": "^3.23.3",
-    "supertest": "^1.2.0"
+    "sequelize": "^3.23.3"
   }
 }
