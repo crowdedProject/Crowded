@@ -1,47 +1,53 @@
 import React, {Component} from 'react';
+import _ from 'lodash';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 // import Cafe from '../components/cafe';
 
 class CafeList extends Component {
   //should get render cafe infor from the cafe-list-reducer state
+  // constructor (props) {
+  //   super(props);
+  // }
  renderCafe(cafeData) {
-    const name = "datafromCafeData.name"
-    const yelpRating = "datafromCafeData.yelp"
-    const pressures = "datafromCafeData.seats"
+   //this works for one item
+   return _.map(cafeData, function(cafe) {
+      console.log('this is cafe data', cafe.name);
+      let name = cafe.name;
+      let rating = cafe.rating;
+      let price = cafe.price_level;
 
-    return (
-      //{name}, {seats}, etc should come from the state that has these
-      <tr key={name}>
-        <td><CafeField data={seats} /></td>
-      </tr>
-    );
-  }
+     return (
+       <tr key={name}>
+         <td>{name}</td>
+         <td>{rating}</td>
+         <td>{price}</td>
+       </tr>
+     );
+   });
+ }
   
   render() {
-    //will want to render the cafe-list-reducer here (which holds the state)
-    //not sure whether cafe should be a container (state aware), but right now it's a component and that could change. But ultimate, we want to render a cafe for each element of state
-      //previous code had it done via this: {this.state.cafeArr}
+    //eventually make column headers dynamic
     return (
       <table className="mdl-data-table mdl-shadow--2dp">
         <thead>
           <tr>
-            <th>Yelp Rating</th>
-            <th>StatedPref 1</th>
-            <th>StatedPref 1</th>
-            <th>StatedPref 1</th>
+            <th>Name</th>
+            <th>Rating</th>
+            <th>Price</th>
           </tr>
         </thead>
         <tbody>
-          Data from cafe api and db calls
+          {this.props.cafe.map(this.renderCafe)}
         </tbody>
       </table>
     );
   }
 };
 
-function mapStateToProps({cafeReducer}) {
-  return {cafeReducer};
+function mapStateToProps({cafe}) {
+  return {cafe};
 }
 
 export default connect(mapStateToProps)(CafeList);

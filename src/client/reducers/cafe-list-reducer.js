@@ -1,8 +1,10 @@
-// import {YELP_RATING} from '../actions/cafe-api';
-// import {USER_PREFS} from '../actions/index';
-// import {NEIGHBORHOOD_PREFS} from '../actions/index';
+import {FETCH_CAFELIST} from '../actions/cafe-api';
+import {USER_PREFS} from '../actions/index';
+import {NEIGHBORHOOD_PREFS} from '../actions/index';
 
 // let initState = {
+//   cafes: []
+// }
 //   prefList: 
 //     { 
 //       proximity: false,
@@ -31,6 +33,16 @@
 //   },
 //   cafeList: {}
 // };
+
+export default function(state=[], action) {
+  switch (action.type) {
+    case FETCH_CAFELIST: 
+      return [action.payload.data, ...state];
+      // return [action.payload.data, ...state];
+  }
+  return state;
+}
+
 
 // export default function(state=initState, action) {
 //   switch(action.type) {
@@ -210,12 +222,3 @@
 //       }
 //   return state;
 // };
-import {FETCH_CAFELIST} from '../actions/cafe-api';
-export default function(state = [], action) {
-  switch (action.type) {
-  case FETCH_CAFELIST: 
-  console.log('this is what i have to work with', action.payload);
-    return [action.payload, ...state];
-  }
-  return state;
-}

@@ -12,8 +12,6 @@ export const FETCH_CAFELIST = 'FETCH_CAFELIST';
 export function fetchCafeListByHood(data) {
   // const url = `${ROOT_URL}&query=san%20francisco%20${hood}`;
   const request = axios.post('/cafeResult', {data: data});
-  console.log(request);
-
   return {
     type: FETCH_CAFELIST,
     payload: request
