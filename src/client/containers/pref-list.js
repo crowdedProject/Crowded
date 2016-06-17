@@ -23,7 +23,7 @@ class PrefList extends Component {
   
   onPrefSubmit() { //eventually pass in geolocation or hood
     //need switch logic here to switch between geolocation and hood, come from state 
-    this.props.fetchCafeListByHood('north beach');
+    this.props.fetchCafeListByHood('37.769105, -122.422600');
       browserHistory.push('/cafes') //change the route to render the cafe list
     
   }

@@ -41,8 +41,9 @@ app.post('/cafeResult', function(req, res) {
 
 const getCafeList = function(req, res) {
   const API_KEY = 'AIzaSyDkRyt36Yj2FYAiJklN810C_UWN8GF6gD0';
-  const ROOT_URL = `https://maps.googleapis.com/maps/api/place/textsearch/json?key=${API_KEY}&type=cafe`
-	const url = `${ROOT_URL}&query=san%20francisco%20${req.body.data}&radius=5000`;
+  const ROOT_URL = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?radius=3000&type=cafe&key=${API_KEY}
+`
+	const url = `${ROOT_URL}&location=${req.body.data}&keyword=coffee%20tea`;
   axios.get(url)
     .then(  Response => {
       res.send(Response.data.results);
