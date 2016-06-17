@@ -23,11 +23,11 @@ export function setNeighborhood(neighborhood) {
 };
 
 export function submitPrefList(preferences) {
-  let yelp = YELP_RATING;
+  let googleCafeList = FETCH_CAFELIST;
   let seats = SEAT_DB;
   
   return {
     type: SUBMIT_PREFS,
-    payload: '' //yelp + db (but whatever was submitted as a pref)
+    payload: '' //googlePlace + db (but whatever was submitted as a pref)
   }
 };

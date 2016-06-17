@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {yelpRating} from '../actions/index';
 import {setPreferences} from '../actions/index';
+import {fetchCafeListByHood} from '../actions/cafe-api';
 import {setNeighborhood} from '../actions/index';
 import {Link, browserHistory} from 'react-router';
 
@@ -21,15 +21,11 @@ class PrefList extends Component {
     //this.setState = event.target
   }
   
-  onPrefSubmit(props) {
-    //somehow call the action "makeYelpCall" from the action file
-    //start by using: this.props.yelpRating(props)
-    //eventually we want this to be this.props.submitPrefList to handle all preferences, but for MvP we can test with just a yelp call
-    // .then(() => {
+  onPrefSubmit() { //eventually pass in geolocation or hood
+    //need switch logic here to switch between geolocation and hood, come from state 
+    this.props.fetchCafeListByHood('north beach');
       browserHistory.push('/cafes') //change the route to render the cafe list
-    // });
     
-    //call cafe-api actions and pass in only the relevant state items
   }
   
   onNeighborhoodChange(props) {
@@ -39,19 +35,21 @@ class PrefList extends Component {
   render() { 
     return (
       <div>
-        <span>
-          <button type="submit" className="mdl-button--raised" onClick={this.onPrefSubmit}>Submit</button>
-        </span>
-        <div>Location set to nearest to your location</div>
-        <div>Click here to select a specific Neighborhood
-          <button type="submit" className="mdl-button--raised" onClick={this.onNeighborhoodChange}>Submit</button>
+        <div className="div-holder">
+          <div className="small-print">Location set to nearest to you</div>
+            <div className="small-print-button">
+              <button type="submit" className="mdl-button--raised small-print" onClick={this.onNeighborhoodChange}>Choose Neigbhorhood</button>
+            </div>
+          <div className="search-button">
+            <button type="submit" className="mdl-button--raised main" onClick={this.onPrefSubmit}>Find Cafes</button>
+          </div>
         </div>
         <div className="mdl-grid">
           <div className="mdl-cell mdl-cell--4-col" value='coffeeQuality' onClick={this.onPrefClick}>
-            Coffee Quality
+            Coffee
           </div>
           <div className="mdl-cell mdl-cell--4-col" value='ambiance' onClick={this.onPrefClick}>
-            Ambiance (change!!)
+            Ambiance
           </div>
           <div className="mdl-cell mdl-cell--4-col" value='yelpRating' onClick={this.onPrefClick}>
             Yelp Rating
@@ -63,7 +61,7 @@ class PrefList extends Component {
             Outlets
           </div>
           <div className="mdl-cell mdl-cell--4-col" value='bathroomQuality' onClick={this.onPrefClick}>
-            Bathroom Quality
+            Bathrooms
           </div>
           <div className="mdl-cell mdl-cell--4-col" value='line' onClick={this.onPrefClick}>
             Line
@@ -81,7 +79,7 @@ class PrefList extends Component {
 }
 
 function mapDispachToProps(dispatch) {
-  return bindActionCreators({yelpRating, setPreferences, setNeighborhood}, dispatch);
+  return bindActionCreators({fetchCafeListByHood, setPreferences, setNeighborhood}, dispatch);
 }
 
 export default connect(null, mapDispachToProps)(PrefList);
