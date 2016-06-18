@@ -45,8 +45,8 @@ pg.sync({force: true})
  Cafe.hasMany(User, {as: 'Users'});
  User.belongsToMany(Cafe, {through: 'UserCafe'});
  Neighborhood.belongsToMany(Cafe, {through: 'NeighborhoodCafe'})
-
-global.pg = {
+ 
+pgDatabase = {
   Sequelize,
   pg,
   User,
@@ -54,4 +54,4 @@ global.pg = {
   Neighborhood
 };
 
-module.exports = global.pg;
+module.exports = pgDatabase;
