@@ -9,7 +9,8 @@ class CafeList extends Component {
   constructor (props) {
     super(props);
     // this.state = {term: ''};
-    this.renderCafe = this.renderCafe.bind(this)
+    this.renderCafe = this.renderCafe.bind(this);
+    this.columnHead = this.columnHead.bind(this);
     // this.props.fetchSeat = this.props.fetchSeat.bind(this);
   }
   
@@ -34,6 +35,20 @@ class CafeList extends Component {
      </tr>
    );
  }
+//  let colHeaders = _.filter(this.props.pref, (item) => {
+//      return (item === true)
+//    });
+   
+ columnHead() {
+   console.log(this.props.pref)
+   return _.map(this.props.pref, function(item, key) {
+     if (item === true) {
+       if (key !== 'proximity') {
+         return `<th>${key}</th>`;
+       }
+     }
+   })
+ }
   
   render() {
     //eventually make column headers dynamic
@@ -48,8 +63,7 @@ class CafeList extends Component {
               <tr>
                 <th>Name</th>
                 <th>Rating</th>
-                <th>Price</th>
-                <th>Seats</th>
+                {this.columnHead()}
               </tr>
             </thead>
             <tbody>
@@ -64,7 +78,8 @@ class CafeList extends Component {
 
 function mapStateToProps(state) {
   return ({
-    cafe: state.cafe
+    cafe: state.cafe,
+    pref: state.pref
   })
 }
 
