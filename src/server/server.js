@@ -5,7 +5,6 @@ const pgDatabase = require('./psql.js');
 
 let port = process.env.PORT || 8080;
 
-
 app.post('/signup', function(req, res) {
 	//placeholder
 });
@@ -31,40 +30,7 @@ app.post('/cafeResult', function(req, res) {
     .catch( (err) => {
       console.error(err)
   });
-
-};
-
-// app.get('*', function(req, res) {
-//   res.sendFile(__dirname + '/index.html');
-// });
-
-app.listen(port, function() {
-		console.log("server listening on port " + port);
-	});
-
-
-// console.log('this is a neighborhood', global.pg.Neighborhood.all());
-
-// app.post('/signup', function(req,res) {
-//   let name = req.body.name;
-//   let email = req.body.email;
-
-// 	new User({ email: email }).fetch().then(found => {
-//     if (found) {
-//    		console.log("already in database!");
-//     }
-//     else {
-//     	console.log("NOT FOUND! ADDED!");
-// 		  let testUser = new User({
-// 			  fullname: name,
-// 			  email: email
-// 		  });
-
-// 			testUser.save().then(newUser => {
-// 				Users.add(newUser);
-// 			});
-//     }
-// 	});
+});
 
 app.post('/cafeDatabase', function(req, res) {
 	let request = req.body.data;
@@ -92,3 +58,34 @@ app.post('/cafeDatabase', function(req, res) {
 		.catch((err) => { console.error(err) })
 	}
 });
+
+// app.get('*', function(req, res) {
+//   res.sendFile(__dirname + '/index.html');
+// });
+
+// console.log('this is a neighborhood', global.pg.Neighborhood.all());
+
+// app.post('/signup', function(req,res) {
+//   let name = req.body.name;
+//   let email = req.body.email;
+
+// 	new User({ email: email }).fetch().then(found => {
+//     if (found) {
+//    		console.log("already in database!");
+//     }
+//     else {
+//     	console.log("NOT FOUND! ADDED!");
+// 		  let testUser = new User({
+// 			  fullname: name,
+// 			  email: email
+// 		  });
+
+// 			testUser.save().then(newUser => {
+// 				Users.add(newUser);
+// 			});
+//     }
+// 	});
+
+app.listen(port, function() {
+		console.log("server listening on port " + port);
+	});
