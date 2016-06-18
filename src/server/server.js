@@ -43,7 +43,7 @@ app.post('/cafeDatabase', function(req, res) {
 		pgDatabase.pg.transaction(function (t) {
 			return pgDatabase.Cafe.findOrCreate({
 				where: {
-					place_id: place_id
+					place_id
 				},
 				defaults: {
 					name,
@@ -55,8 +55,16 @@ app.post('/cafeDatabase', function(req, res) {
 			});
 		})
 		.then(()=> res.send(req.body.data))
-		.catch((err) => { console.error(err) })
+		.catch((err) => console.error(err))
 	}
+});
+
+app.get('/seats', function(req, res) {
+	return pgDatabase.Cafe.findOne({
+		where: {place_id}
+	})
+	.then((rowData) => res.send(rowData))
+	.catch((err) => console.error(err))
 });
 
 // app.get('*', function(req, res) {
