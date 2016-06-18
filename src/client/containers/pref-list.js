@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {setPreferences} from '../actions/index';
-import {fetchCafeListByHood} from '../actions/cafe-api';
+import {fetchCafeListByGeoloc} from '../actions/cafe-api';
 import {setNeighborhood} from '../actions/index';
 import {Link, browserHistory} from 'react-router';
 
@@ -18,55 +18,39 @@ class PrefList extends Component {
   onPrefClick(event) {
     // need logic here or in the div to change the color
     //logic for preventing double clicking and for removing pref from list by clicking should be in the action handler
+    
     this.props.setPreferences(event.target.value);
     //this.setState = event.target
   }
   
   //fetching geolocation here
   getCoords() {
-    // this.setState({term: position.coords.latitude + ',' + position.coords.longitude});
-    // console.log(this.state);
     if ("geolocation" in navigator) {
-      
-       navigator.geolocation.getCurrentPosition(position => {
-         this.setState({term: position.coords.latitude + ',' + position.coords.longitude});
-         console.log(this.state);
-         
-       });
-      //  .then((position) => {
-      //    this.setState({term: position.coords.latitude + ',' + position.coords.longitude});
-      //  })
-      //  .then(() => {
-      //  })
-      //  .catch(err => {
-      //    console.error(err);
-      //  });
-   
-    } else {
-      console.log("TOO BAD");
+      navigator.geolocation.getCurrentPosition(position => {
+      this.setState({term: position.coords.latitude + ',' + position.coords.longitude});
+      });
+    }else {
+      console.log("Sorry your browser has not yet support Geo Location");
     }
   }
-  
+
   componentDidMount() {
-      this.getCoords();
+    this.getCoords();
   }
   
-  onPrefSubmit() { //eventually pass in geolocation or hood
-    //need switch logic here to switch between geolocation and hood, come from state 
-    // e.preventDefault();
-  
-         this.props.fetchCafeListByHood(this.state.term);
-   
-    
-    
-      browserHistory.push('/cafes') //change the route to render the cafe list
-    
+  onPrefSubmit() { // need switch logic here to switch to hood
+       if(this.state.term.length === 0) {
+         setTimeout(this.onPrefSubmit, 200);
+       } else {
+         this.props.fetchCafeListByGeoloc(this.state.term);
+         browserHistory.push('/cafes')
+       }    
   }
   
   onNeighborhoodChange(props) {
     browserHistory.push('/neighborhood')
   }
-  //need to dynamically change "location set to {state.proximity || state.neighborhood}"
+  
   render() { 
     return (
       <div>
@@ -114,7 +98,7 @@ class PrefList extends Component {
 }
 
 function mapDispachToProps(dispatch) {
-  return bindActionCreators({fetchCafeListByHood, setPreferences, setNeighborhood}, dispatch);
+  return bindActionCreators({fetchCafeListByGeoloc, setPreferences, setNeighborhood}, dispatch);
 }
 
 export default connect(null, mapDispachToProps)(PrefList);

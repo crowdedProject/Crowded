@@ -9,7 +9,7 @@ export const FETCH_CAFELIST = 'FETCH_CAFELIST';
 // const lng = -122.427380;
 
 //define this function properly:
-export function fetchCafeListByHood(data) {
+export function fetchCafeListByGeoloc(data) {
   // const url = `${ROOT_URL}&query=san%20francisco%20${hood}`;
   const request = axios.post('/cafeResult', {data: data});
   return {
