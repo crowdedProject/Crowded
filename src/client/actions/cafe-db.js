@@ -21,8 +21,8 @@ export const POST_NOISE = 'POST_NOISE';
 export const POST_PRICE = 'POST_PRICE';
 
 
-export function fetchSeat(cafeListObj) {
-  const request = axios.get('/seats', cafeListObj);
+export function fetchSeat(cafeId) {
+  const request = axios.post('/seats', {cafeId});
   return {
     type: FETCH_SEAT,
     payload: request

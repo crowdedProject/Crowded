@@ -2,30 +2,52 @@ import React, {Component} from 'react';
 import _ from 'lodash';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-// import Cafe from '../components/cafe';
+import {fetchSeat} from '../actions/cafe-db';
+import {Link, browserHistory} from 'react-router';
 
 class CafeList extends Component {
-  //should get render cafe infor from the cafe-list-reducer state
-  // constructor (props) {
-  //   super(props);
-  // }
+  constructor (props) {
+    super(props);
+    // this.state = {term: ''};
+    this.renderCafe = this.renderCafe.bind(this);
+    this.columnHead = this.columnHead.bind(this);
+    // this.props.fetchSeat = this.props.fetchSeat.bind(this);
+  }
+  
+  fetchCafeData(cafeId) {
+    this.props.fetchSeat(cafeId);
+  }
+  
  renderCafe(cafeData) {
    //this works for one item
-   return _.map(cafeData, function(cafe) {
-      // console.log('this is cafe data', cafe);
-      let id = cafe.place_id;
-      let name = cafe.name;
-      let rating = cafe.rating;
-      let price = cafe.price_level;
-
-     return (
-       <tr key={id}>
-         <td>{name}</td>
-         <td>{rating}</td>
-         <td>{price}</td>
-       </tr>
-     );
-   });
+   let id = cafeData.place_id;
+   let name = cafeData.name;
+   let rating = cafeData.rating;
+   let price = cafeData.price_level;
+   let seat = this.fetchCafeData(id);
+   
+   return (
+     <tr key={id}>
+       <td>{name}</td>
+       <td>{rating}</td>
+       <td>{price}</td>
+       <td>{seat}</td> 
+     </tr>
+   );
+ }
+//  let colHeaders = _.filter(this.props.pref, (item) => {
+//      return (item === true)
+//    });
+   
+ columnHead() {
+   console.log(this.props.pref)
+   return _.map(this.props.pref, function(item, key) {
+     if (item === true) {
+       if (key !== 'proximity') {
+         return `<th>${key}</th>`;
+       }
+     }
+   })
  }
   
   render() {
@@ -41,11 +63,11 @@ class CafeList extends Component {
               <tr>
                 <th>Name</th>
                 <th>Rating</th>
-                <th>Price</th>
+                {this.columnHead()}
               </tr>
             </thead>
             <tbody>
-              {this.props.cafe.map(this.renderCafe)}
+              {this.props.cafe.cafeList.map(this.renderCafe)}
             </tbody>
           </table>
         </div>
@@ -54,8 +76,15 @@ class CafeList extends Component {
   }
 };
 
-function mapStateToProps({cafe}) {
-  return {cafe};
+function mapStateToProps(state) {
+  return ({
+    cafe: state.cafe,
+    pref: state.pref
+  })
 }
 
-export default connect(mapStateToProps)(CafeList);
+function mapDispachToProps(dispatch) {
+  return bindActionCreators({fetchSeat}, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispachToProps)(CafeList);

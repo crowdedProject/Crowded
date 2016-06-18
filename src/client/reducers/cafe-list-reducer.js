@@ -1,45 +1,46 @@
-import {FETCH_CAFELIST} from '../actions/cafe-api';
+import {FETCH_SEAT, FETCH_CAFELIST} from '../actions/cafe-api';
 import {USER_PREFS} from '../actions/index';
 import {NEIGHBORHOOD_PREFS} from '../actions/index';
 
-// let initState = {
-//   cafes: []
-// }
-//   prefList: 
-//     { 
-//       proximity: false,
-//       neighborhood: true,
-//       coffeeQuality: false,
-//       ambiance: false,
-//       yelpRating: false,
-//       seats: false,
-//       outlets: false,
-//       bathroomQuality: false,
-//       line: false,
-//       noise: false,
-//       price: false
-//     },
-//   neighborhoodPref: 
-//   {
-//     mission: false,
-//     castro: false,
-//     sunset: false,
-//     richmond: false,
-//     marina: false,
-//     northBeach: false,
-//     haight: false,
-//     soma: false,
-//     twinPeaks: false
-//   },
-//   cafeList: {}
-// };
+var initState = {
+  prefList: 
+    { 
+      proximity: false,
+      neighborhood: false,
+      coffeeQuality: false,
+      ambiance: false,
+      rating: true,
+      seats: true,
+      outlets: false,
+      bathroomQuality: false,
+      line: false,
+      noise: false,
+      price: false
+    },
+  neighborhoodPref: 
+  {
+    mission: false,
+    castro: false,
+    sunset: false,
+    richmond: false,
+    marina: false,
+    northBeach: false,
+    haight: false,
+    soma: false,
+    twinPeaks: false
+  },
+  cafeList: []
+};
 
-export default function(state=[], action) {
+export default function(state=initState, action) {
   switch (action.type) {
     case FETCH_CAFELIST:
-      console.log(action.payload);
-      return [action.payload.data, ...state];
+      return {...state, cafeList: action.payload.data};
       // return [action.payload.data, ...state];
+    case FETCH_SEAT:
+      console.log('this is payload', action.payload.data)
+      return {...state, seats: action.payload.data};
+      return state;
   }
   return state;
 }
