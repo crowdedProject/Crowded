@@ -38,8 +38,7 @@ export default function(state=initState, action) {
       return {...state, cafeList: action.payload.data};
       // return [action.payload.data, ...state];
     case FETCH_SEAT:
-      let seats = action.payload.data;
-      state.prefList.seats = seats;
+      return {...state, seats: action.payload.data};
       return state;
   }
   return state;

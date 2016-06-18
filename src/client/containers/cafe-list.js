@@ -8,7 +8,7 @@ import {Link, browserHistory} from 'react-router';
 class CafeList extends Component {
   constructor (props) {
     super(props);
-    
+    // this.state = {term: ''};
     this.renderCafe = this.renderCafe.bind(this)
     // this.props.fetchSeat = this.props.fetchSeat.bind(this);
   }
@@ -23,14 +23,14 @@ class CafeList extends Component {
    let name = cafeData.name;
    let rating = cafeData.rating;
    let price = cafeData.price_level;
-    
-    
+   let seat = this.fetchCafeData(id);
+   
    return (
      <tr key={id}>
        <td>{name}</td>
        <td>{rating}</td>
        <td>{price}</td>
-       <td>5 seats</td> 
+       <td>{seat}</td> 
      </tr>
    );
  }

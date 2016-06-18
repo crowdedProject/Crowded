@@ -22,7 +22,7 @@ export const POST_PRICE = 'POST_PRICE';
 
 
 export function fetchSeat(cafeId) {
-  const request = axios.get('/seats', cafeId);
+  const request = axios.post('/seats', {cafeId});
   return {
     type: FETCH_SEAT,
     payload: request

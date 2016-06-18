@@ -59,7 +59,9 @@ app.post('/cafeDatabase', function(req, res) {
 	}
 });
 
-app.get('/seats', function(req, res) {
+app.post('/seats', function(req, res) {
+	let place_id = req.body.cafeId;
+	// console.log('this is req.body', req.body);
 	return pgDatabase.Cafe.findOne({
 		where: {place_id}
 	})
