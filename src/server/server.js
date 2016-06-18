@@ -5,9 +5,6 @@ const sequelize = require(`${__dirname}/psql.js`);
 
 let port = process.env.PORT || 8080;
 
-app.listen(port, function() {
-		console.log("server listening on port " + port);
-	});
 
 app.post('/signup', function(req, res) {
 		let first_name = req.body.firstName;
@@ -41,7 +38,7 @@ app.post('/cafeResult', function(req, res) {
 
 const getCafeList = function(req, res) {
   const API_KEY = 'AIzaSyDkRyt36Yj2FYAiJklN810C_UWN8GF6gD0';
-  const ROOT_URL = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?radius=3000&type=cafe&key=${API_KEY}
+  const ROOT_URL = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?radius=2000&type=cafe&key=${API_KEY}
 `
 	const url = `${ROOT_URL}&location=${req.body.data}&keyword=coffee%20tea`;
   axios.get(url)
@@ -53,6 +50,15 @@ const getCafeList = function(req, res) {
   });
 
 };
+
+// app.get('*', function(req, res) {
+//   res.sendFile(__dirname + '/index.html');
+// });
+
+app.listen(port, function() {
+		console.log("server listening on port " + port);
+	});
+
 
 // console.log('this is a neighborhood', global.pg.Neighborhood.all());
 
