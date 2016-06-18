@@ -1,46 +1,29 @@
 const axios = require('axios');
 const app = require('./config/server-config.js');
 // const Yelp = require('../client/yelpApiCall/yelpSearch');
-const sequelize = require(`${__dirname}/psql.js`);
+const pgDatabase = require('./psql.js');
 
 let port = process.env.PORT || 8080;
 
 
 app.post('/signup', function(req, res) {
-		let first_name = req.body.firstName;
-		let last_name = req.body.firstName;
-  	let email = req.body.email;
-		//check if email exists in db
-			//if it does, return err
-			//else create db entry
-				//route to logged in home screen
-		console.log('this is a console log', global.pg.User);
+	//placeholder
 });
 
 app.post('/login', function(req, res) {
-		let first_name = req.body.firstName;
-		let last_name = req.body.firstName;
-  	let email = req.body.email;
-		
-		console.log('this is a console log', global.pg.User);
+	//placeholder
 });
 
 app.post('/cafeResult/seat', function(req, res) {
-		let total_seat = req.body.totalSeat;
-		let curr_seat = req.body.currSeat;
-		
-		console.log('this is a console log', global.pg.Cafe);
+	//placeholder
 });
 
 app.post('/cafeResult', function(req, res) {
-  getCafeList(req, res);
-})
-
-const getCafeList = function(req, res) {
   const API_KEY = 'AIzaSyDkRyt36Yj2FYAiJklN810C_UWN8GF6gD0';
   const ROOT_URL = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?radius=2000&type=cafe&key=${API_KEY}
 `
 	const url = `${ROOT_URL}&location=${req.body.data}&keyword=coffee%20tea`;
+
   axios.get(url)
     .then(  Response => {
       res.send(Response.data.results);
@@ -83,5 +66,29 @@ app.listen(port, function() {
 //     }
 // 	});
 
-//   res.send('SERVER POST: ', name, email);
-// });
+app.post('/cafeDatabase', function(req, res) {
+	let request = req.body.data;
+	for (let i=0; i<request.length; i++) {
+		let name = request[i].name;
+		let rating = request[i].rating;
+		let price = request[i].price_level;
+		let place_id = request[i].place_id;
+	
+		pgDatabase.pg.transaction(function (t) {
+			return pgDatabase.Cafe.findOrCreate({
+				where: {
+					place_id: place_id
+				},
+				defaults: {
+					name,
+					price,
+					rating,
+					place_id
+				}, 
+				transaction: t
+			});
+		})
+		.then(()=> res.send(req.body.data))
+		.catch((err) => { console.error(err) })
+	}
+});

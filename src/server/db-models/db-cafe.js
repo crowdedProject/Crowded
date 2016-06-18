@@ -12,34 +12,48 @@ module.exports = (db, DataTypes) => {
       type: DataTypes.STRING
     },
     outlet: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      allowNull: true
     },
     total_seat: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      allowNull: true
     },
     curr_seat: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      allowNull: true
     },
     coffee_quality: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: true
     },
     line_length: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      allowNull: true
     },
     noise: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      allowNull: true
     },
     address: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: true
     },
     neighborhood: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: true
     },
     price: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: true
     },
-    yelp_stars: {
-      type: DataTypes.INTEGER
+    rating: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
+    place_id: {
+      type: DataTypes.STRING,
+      allowNull: true
     },
     foreign_key: {
       type: DataTypes.INTEGER,
