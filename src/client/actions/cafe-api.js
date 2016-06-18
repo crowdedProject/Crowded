@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const FETCH_CAFELIST = 'FETCH_CAFELIST';
 
-export function fetchCafeListByHood(data) {
+export function fetchCafeListByGeoloc(data) {
   const request = axios.post('/cafeResult', {data})
     .then(res => {
       return axios.post('/cafeDatabase', res)
