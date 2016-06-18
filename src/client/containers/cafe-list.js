@@ -12,13 +12,14 @@ class CafeList extends Component {
  renderCafe(cafeData) {
    //this works for one item
    return _.map(cafeData, function(cafe) {
-      console.log('this is cafe data', cafe.name);
+      console.log('this is cafe data', cafe);
+      let id = cafe.place_id;
       let name = cafe.name;
       let rating = cafe.rating;
       let price = cafe.price_level;
 
      return (
-       <tr key={name}>
+       <tr key={id}>
          <td>{name}</td>
          <td>{rating}</td>
          <td>{price}</td>
@@ -30,18 +31,25 @@ class CafeList extends Component {
   render() {
     //eventually make column headers dynamic
     return (
-      <table className="mdl-data-table mdl-shadow--2dp">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Rating</th>
-            <th>Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          {this.props.cafe.map(this.renderCafe)}
-        </tbody>
-      </table>
+      <div>
+        <div className="div-holder-two">
+          <div className="cafe-header">Top Cafes</div>
+        </div>
+        <div className="cafe-list-holder">
+          <table className="mdl-data-table mdl-shadow--2dp">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Rating</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.props.cafe.map(this.renderCafe)}
+            </tbody>
+          </table>
+        </div>
+      </div>
     );
   }
 };
