@@ -2,30 +2,37 @@ import React, {Component} from 'react';
 import _ from 'lodash';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-// import Cafe from '../components/cafe';
+import {fetchSeat} from '../actions/cafe-db';
+import {Link, browserHistory} from 'react-router';
 
 class CafeList extends Component {
-  //should get render cafe infor from the cafe-list-reducer state
-  // constructor (props) {
-  //   super(props);
-  // }
+  constructor (props) {
+    super(props);
+    
+    this.renderCafe = this.renderCafe.bind(this)
+    // this.props.fetchSeat = this.props.fetchSeat.bind(this);
+  }
+  
+  fetchCafeData(cafeId) {
+    this.props.fetchSeat(cafeId);
+  }
+  
  renderCafe(cafeData) {
    //this works for one item
-   return _.map(cafeData, function(cafe) {
-      // console.log('this is cafe data', cafe);
-      let id = cafe.place_id;
-      let name = cafe.name;
-      let rating = cafe.rating;
-      let price = cafe.price_level;
-
-     return (
-       <tr key={id}>
-         <td>{name}</td>
-         <td>{rating}</td>
-         <td>{price}</td>
-       </tr>
-     );
-   });
+   let id = cafeData.place_id;
+   let name = cafeData.name;
+   let rating = cafeData.rating;
+   let price = cafeData.price_level;
+    
+    
+   return (
+     <tr key={id}>
+       <td>{name}</td>
+       <td>{rating}</td>
+       <td>{price}</td>
+       <td>5 seats</td> 
+     </tr>
+   );
  }
   
   render() {
@@ -42,10 +49,11 @@ class CafeList extends Component {
                 <th>Name</th>
                 <th>Rating</th>
                 <th>Price</th>
+                <th>Seats</th>
               </tr>
             </thead>
             <tbody>
-              {this.props.cafe.map(this.renderCafe)}
+              {this.props.cafe.cafeList.map(this.renderCafe)}
             </tbody>
           </table>
         </div>
@@ -54,8 +62,14 @@ class CafeList extends Component {
   }
 };
 
-function mapStateToProps({cafe}) {
-  return {cafe};
+function mapStateToProps(state) {
+  return ({
+    cafe: state.cafe
+  })
 }
 
-export default connect(mapStateToProps)(CafeList);
+function mapDispachToProps(dispatch) {
+  return bindActionCreators({fetchSeat}, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispachToProps)(CafeList);
