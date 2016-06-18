@@ -6,11 +6,11 @@ var initState = {
   prefList: 
     { 
       proximity: false,
-      neighborhood: true,
+      neighborhood: false,
       coffeeQuality: false,
       ambiance: false,
-      yelpRating: false,
-      seats: false,
+      rating: true,
+      seats: true,
       outlets: false,
       bathroomQuality: false,
       line: false,
@@ -38,6 +38,7 @@ export default function(state=initState, action) {
       return {...state, cafeList: action.payload.data};
       // return [action.payload.data, ...state];
     case FETCH_SEAT:
+      console.log('this is payload', action.payload.data)
       return {...state, seats: action.payload.data};
       return state;
   }
