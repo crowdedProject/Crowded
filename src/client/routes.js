@@ -5,13 +5,13 @@ import App from './components/app';
 import PrefList from './containers/pref-list';
 import CafeList from './containers/cafe-list';
 import NeighborhoodList from './containers/neighborhood-list';
-import UserLogin from './components/user-login';
+import Auth0UserLogin from './containers/auth0_userLogin';
 
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={PrefList} />
     <Route path="/neighborhood" component={NeighborhoodList} />
-    <Route path="/login" component={UserLogin} />
+    <Route path="/login" component={Auth0UserLogin} />
     <Route path="/cafes" component={CafeList} />
   </Route>
 );
