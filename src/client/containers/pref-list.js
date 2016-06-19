@@ -6,6 +6,7 @@ import {fetchCafeListByGeoloc} from '../actions/cafe-api';
 import {setNeighborhood} from '../actions/index';
 import {Link, browserHistory} from 'react-router';
 
+
 class PrefList extends Component {
   constructor (props)  {
     super(props);
@@ -13,6 +14,7 @@ class PrefList extends Component {
     this.onPrefClick = this.onPrefClick.bind(this);
     this.onPrefSubmit = this.onPrefSubmit.bind(this);
     this.onNeighborhoodChange = this.onNeighborhoodChange.bind(this);
+    this.onLogInSubmit = this.onLogInSubmit.bind(this);
   }
 
   onPrefClick(event) {
@@ -30,7 +32,7 @@ class PrefList extends Component {
       this.setState({term: position.coords.latitude + ',' + position.coords.longitude});
       });
     }else {
-      console.log("Sorry your browser has not yet support Geo Location");
+      console.log("Sorry your browser has not yet supporting Geo Location");
     }
   }
 
@@ -51,6 +53,10 @@ class PrefList extends Component {
     browserHistory.push('/neighborhood')
   }
   
+  onLogInSubmit() {
+    browserHistory.push('/login')
+  }
+  
   render() { 
     return (
       <div>
@@ -58,6 +64,9 @@ class PrefList extends Component {
           <div className="small-print">Location set to nearest to you</div>
             <div className="small-print-button">
               <button type="submit" className="mdl-button--raised small-print" onClick={this.onNeighborhoodChange}>Choose Neigbhorhood</button>
+            </div>
+            <div className="small-print-button">
+              <button type="submit" className="mdl-button--raised small-print" onClick={this.onLogInSubmit}>Log In</button>
             </div>
           <div className="search-button">
             <button type="submit" className="mdl-button--raised main" onClick={this.onPrefSubmit}>Find Cafes</button>
