@@ -40,11 +40,23 @@ class CafeList extends Component {
 //    });
    
  columnHead() {
-   console.log(this.props.pref)
+   let referenceObj = {
+      proximity: 'Proximity',
+      neighborhood: 'Neighborhood',
+      coffeeQuality: 'Coffee Quality',
+      ambiance: 'Ambiance',
+      rating: 'Rating',
+      seats: 'Seats',
+      outlets: 'Outlets',
+      bathroomQuality: 'Bathroom Quality',
+      line: 'Line',
+      noise: 'Noise',
+      price: 'Price'
+   };
    return _.map(this.props.pref, function(item, key) {
      if (item === true) {
        if (key !== 'proximity') {
-         return `<th>${key}</th>`;
+         return <th key={key}>{referenceObj[key]}</th>;
        }
      }
    })
@@ -63,6 +75,7 @@ class CafeList extends Component {
               <tr>
                 <th>Name</th>
                 <th>Rating</th>
+                <th>Price</th>
                 {this.columnHead()}
               </tr>
             </thead>
