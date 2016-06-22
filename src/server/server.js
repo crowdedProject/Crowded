@@ -1,5 +1,6 @@
 const axios = require('axios');
 const app = require('./config/server-config.js');
+const path = require('path');
 // const Yelp = require('../client/yelpApiCall/yelpSearch');
 const pgDatabase = require('./psql.js');
 
@@ -69,9 +70,9 @@ app.post('/seats', function(req, res) {
 	.catch((err) => console.error(err))
 });
 
-// app.get('*', function(req, res) {
-//   res.sendFile(__dirname + '/index.html');
-// });
+app.get('*', function (request, response){
+  response.sendFile(path.resolve(__dirname, '../../dist/index.html'))
+})
 
 // console.log('this is a neighborhood', global.pg.Neighborhood.all());
 

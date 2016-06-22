@@ -11,6 +11,7 @@ class Auth0UserLogin extends Component{
     this.showLock = this.showLock.bind(this);
     this.AUTHO_ID = 'tLn1lajyn8kZGO75cXM3vuRQlyRzrMbo';
     this.AUTHO_DOMAIN = 'crowded.auth0.com';
+		this.logOut = this.logOut.bind(this);
   }
   
   getInitialState() {
@@ -57,6 +58,12 @@ class Auth0UserLogin extends Component{
     }
     return idToken;
   }
+
+
+  logOut() {
+    localStorage.removeItem('userToken');
+    window.location.href = '/';
+  }
   
   render() {
     if (this.state.idToken) {
@@ -66,7 +73,13 @@ class Auth0UserLogin extends Component{
          );
        }else {
          return (
-           <div className="loading">Loading profile</div>
+           <div className="loading">
+					   Loading profile
+					   <div>
+               <a onClick={this.logOut}>Log Out</a>
+						 </div>
+					 </div>
+        
          );
        }
     } else {
