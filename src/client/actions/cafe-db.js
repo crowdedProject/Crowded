@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const FETCH_SEAT = 'FETCH_SEAT';
+export const FETCH_DATA = 'FETCH_DATA';
 export const FETCH_COFFEE = 'FETCH_COFFEE';
 export const FETCH_AMBIANCE = 'FETCH_AMBIANCE';
 export const FETCH_RATING = 'FETCH_RATING';
@@ -10,28 +10,28 @@ export const FETCH_LINE = 'FETCH_LINE';
 export const FETCH_NOISE = 'FETCH_NOISE';
 export const FETCH_PRICE = 'FETCH_PRICE';
 
-export const POST_SEAT = 'POST_SEAT';
-export const POST_COFFEE = 'POST_COFFEE';
-export const POST_AMBIANCE = 'POST_AMBIANCE';
-export const POST_RATING = 'POST_RATING';
-export const POST_OUTLET = 'POST_OUTLET';
-export const POST_BATHROOM = 'POST_BATHROOM';
-export const POST_LINE = 'POST_LINE';
+export const UPDATE_SEAT = 'UPDATE_SEAT';
+export const UPDATE_COFFEE = 'UPDATE_COFFEE';
+export const UPDATE_AMBIANCE = 'UPDATE_AMBIANCE';
+export const UPDATE_RATING = 'UPDATE_RATING';
+export const UPDATE_OUTLET = 'UPDATE_OUTLET';
+export const UPDATE_BATHROOM = 'UPDATE_BATHROOM';
+export const UPDATE_LINE = 'UPDATE_LINE';
 export const POST_NOISE = 'POST_NOISE';
 export const POST_PRICE = 'POST_PRICE';
 
 
-export function fetchSeat(cafeId) {
-  const request = axios.post('/seats', {cafeId});
+export function fetchData(cafeId, field, value) {
+  const request = axios.post('/fetchCafeData', {cafeId});
   return {
-    type: FETCH_SEAT,
+    type: FETCH_DATA,
     payload: request
   }
 }
-export function postSeat(cafe) {
-  const request = axios.post('/seats', cafe);
+export function updateData(cafeId, field, value) {
+  const request = axios.post('/updateCafeData', cafe);
   return {
-    type: FETCH_SEAT,
+    type: UPDATE_DATA,
     payload: cafe
   }
 }

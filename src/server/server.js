@@ -60,9 +60,9 @@ app.post('/cafeDatabase', function(req, res) {
 	}
 });
 
-app.post('/seats', function(req, res) {
+app.post('/fetchCafeData', function(req, res) {
 	let place_id = req.body.cafeId;
-	// console.log('this is req.body', req.body);
+	console.log('this is req.body', req.body);
 	return pgDatabase.Cafe.findOne({
 		where: {place_id}
 	})
@@ -73,6 +73,27 @@ app.post('/seats', function(req, res) {
 app.get('*', function (request, response){
   response.sendFile(path.resolve(__dirname, '../../dist/index.html'))
 })
+
+app.post('/updateCafeData', function(req, res) {
+	//req = cafe unique id,
+	//header name
+	//new data value
+	let place_id = req.body.cafeId;
+	// console.log('this is req.body', req.body);
+	return pgDatabase.Cafe.update({
+		// where: {place_id},
+		// {headerName}: {newDataValue}
+	})
+	.then((rowData) => res.send(rowData)) // propbably should now return the updated row?
+	// .catch((err) => console.error(err))
+});
+
+
+
+// app.get('*', function(req, res) {
+//   res.sendFile(__dirname + '/index.html');
+// });
+>>>>>>> [feat] create db fetch and update calls
 
 // console.log('this is a neighborhood', global.pg.Neighborhood.all());
 
