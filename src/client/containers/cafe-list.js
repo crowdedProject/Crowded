@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import _ from 'lodash';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {fetchSeat} from '../actions/cafe-db';
+import {fetchData} from '../actions/cafe-db';
 import {Link, browserHistory} from 'react-router';
 
 class CafeList extends Component {
@@ -10,14 +10,14 @@ class CafeList extends Component {
     super(props);
     this.renderCafe = this.renderCafe.bind(this);
     this.columnHead = this.columnHead.bind(this);
-    // this.props.fetchSeat = this.props.fetchSeat.bind(this);
+    // this.props.fetchData = this.props.fetchData.bind(this);
+  }
+
+  fetchCafeData(cafeId, field, value) {
+    this.props.fetchData(cafeId);
   }
   
-  fetchCafeData(cafeId) {
-    this.props.fetchSeat(cafeId);
-  }
-  
- renderCafe(cafeData) {
+  renderCafe(cafeData) {
    //this works for one item
    let id = cafeData.place_id;
    let name = cafeData.name;
@@ -34,9 +34,6 @@ class CafeList extends Component {
      </tr>
    );
  }
-//  let colHeaders = _.filter(this.props.pref, (item) => {
-//      return (item === true)
-//    });
    
  columnHead() {
    let referenceObj = {
@@ -62,7 +59,6 @@ class CafeList extends Component {
  }
   
   render() {
-    //eventually make column headers dynamic
     return (
       <div>
         <div className="div-holder-two">
@@ -96,7 +92,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispachToProps(dispatch) {
-  return bindActionCreators({fetchSeat}, dispatch);
+  return bindActionCreators({fetchData}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispachToProps)(CafeList);
