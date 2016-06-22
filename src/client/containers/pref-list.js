@@ -21,10 +21,10 @@ class PrefList extends Component {
     this.props.setPreferences(event.target.value);
     let flag = this.props.pref.pref[event.target.value];
     if (flag)  {
-      event.target.className = 'mdl-cell.mdl-cell--4-col clicked';
+      event.target.className = 'mdl-cell mdl-cell--4-col clicked';
       flag === false;
     } else {
-      event.target.className = 'mdl-cell.mdl-cell--4-col unclicked';
+      event.target.className = 'mdl-cell mdl-cell--4-col unclicked';
       flag === true;
     }
   }
