@@ -29,9 +29,14 @@ export function fetchData(cafeId, field, value) {
   }
 }
 export function updateData(cafeId, field, value) {
-  const request = axios.post('/updateCafeData', cafe);
+  let updateReq = {
+    cafeId,
+    field,
+    value,
+  }
+  const request = axios.post('/updateCafeData', updateReq);
   return {
     type: UPDATE_DATA,
-    payload: cafe
+    payload: request
   }
 }
