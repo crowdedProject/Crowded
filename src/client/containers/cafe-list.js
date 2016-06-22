@@ -8,7 +8,6 @@ import {Link, browserHistory} from 'react-router';
 class CafeList extends Component {
   constructor (props) {
     super(props);
-    // this.state = {term: ''};
     this.renderCafe = this.renderCafe.bind(this);
     this.columnHead = this.columnHead.bind(this);
     // this.props.fetchSeat = this.props.fetchSeat.bind(this);
@@ -92,7 +91,7 @@ class CafeList extends Component {
 function mapStateToProps(state) {
   return ({
     cafe: state.cafe,
-    pref: state.pref
+    pref: state.pref.pref
   })
 }
 
