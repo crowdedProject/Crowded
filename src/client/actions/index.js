@@ -8,7 +8,6 @@ export const NEIGHBORHOOD_PREFS = 'NEIGBHORHOOD_PREFS';
 export const FETCH_COORD = 'FETCH_COORD';
 
 export function setPreferences(pref) {
-
   return {
     type: USER_PREFS,
     payload: pref
