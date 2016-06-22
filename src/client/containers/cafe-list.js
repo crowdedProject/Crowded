@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import _ from 'lodash';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {fetchData} from '../actions/cafe-db';
+import {fetchData, updateData} from '../actions/cafe-db';
 import {Link, browserHistory} from 'react-router';
 
 class CafeList extends Component {
@@ -13,8 +13,12 @@ class CafeList extends Component {
     // this.props.fetchData = this.props.fetchData.bind(this);
   }
 
-  fetchCafeData(cafeId, field, value) {
+  fetchCafeData(cafeId) {
     this.props.fetchData(cafeId);
+  }
+
+  updateCafeData(cafeId, columnHeader, newValue) {
+    this.props.updateData(cafeId, columnHeader, newValue);
   }
   
   renderCafe(cafeData) {
@@ -27,10 +31,10 @@ class CafeList extends Component {
    
    return (
      <tr key={id}>
-       <td>{name}</td>
-       <td>{rating}</td>
-       <td>{price}</td>
-       <td>{seat}</td> 
+       <td key={name}>{name}</td>
+       <td key={rating}>{rating}</td>
+       <td key={price}>{price}</td>
+       <td key={seat}>{seat}</td> 
      </tr>
    );
  }
@@ -92,7 +96,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispachToProps(dispatch) {
-  return bindActionCreators({fetchData}, dispatch);
+  return bindActionCreators({fetchData, updateData}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispachToProps)(CafeList);

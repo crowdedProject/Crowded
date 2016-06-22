@@ -70,53 +70,26 @@ app.post('/fetchCafeData', function(req, res) {
 	.catch((err) => console.error(err))
 });
 
+app.post('/updateCafeData', function(req, res) {
+	let place_id = req.body.cafeId;
+	let field = req.body.field;
+	let value = req.body.value;
+	// console.log('this is req.body', req.body);
+	return pgDatabase.Cafe.findOne({
+		where: {place_id}
+	})
+	.then((cafe) => {
+		cafe.update({
+			field: value
+		})
+	})
+	.then(() => res.send(console.log("Database entry successfully updated!")))
+	.catch((err) => console.error(err))
+});
+
 app.get('*', function (request, response){
   response.sendFile(path.resolve(__dirname, '../../dist/index.html'))
 })
-
-app.post('/updateCafeData', function(req, res) {
-	//req = cafe unique id,
-	//header name
-	//new data value
-	let place_id = req.body.cafeId;
-	// console.log('this is req.body', req.body);
-	return pgDatabase.Cafe.update({
-		// where: {place_id},
-		// {headerName}: {newDataValue}
-	})
-	.then((rowData) => res.send(rowData)) // propbably should now return the updated row?
-	// .catch((err) => console.error(err))
-});
-
-
-
-// app.get('*', function(req, res) {
-//   res.sendFile(__dirname + '/index.html');
-// });
->>>>>>> [feat] create db fetch and update calls
-
-// console.log('this is a neighborhood', global.pg.Neighborhood.all());
-
-// app.post('/signup', function(req,res) {
-//   let name = req.body.name;
-//   let email = req.body.email;
-
-// 	new User({ email: email }).fetch().then(found => {
-//     if (found) {
-//    		console.log("already in database!");
-//     }
-//     else {
-//     	console.log("NOT FOUND! ADDED!");
-// 		  let testUser = new User({
-// 			  fullname: name,
-// 			  email: email
-// 		  });
-
-// 			testUser.save().then(newUser => {
-// 				Users.add(newUser);
-// 			});
-//     }
-// 	});
 
 app.listen(port, function() {
 		console.log("server listening on port " + port);
