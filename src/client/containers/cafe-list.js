@@ -101,3 +101,4 @@ function mapDispachToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispachToProps)(CafeList);
+
