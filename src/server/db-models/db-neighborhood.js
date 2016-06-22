@@ -3,7 +3,7 @@ const nData = require(`${__dirname}/../neighborhood.json`);
 
 module.exports = (pg, DataTypes) => {
   return pg.define('neighborhood', {
-    id: {
+    neighborhoodId: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true

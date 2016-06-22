@@ -3,7 +3,7 @@ const User = pg.import(`${__dirname}/db-user`);
 
 module.exports = (db, DataTypes) => {
   return pg.define('cafe', {
-    id: {
+    cafeId: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
@@ -58,7 +58,7 @@ module.exports = (db, DataTypes) => {
     foreign_key: {
       type: DataTypes.INTEGER,
       model: global.pg.User,
-      key: 'id',
+      key: 'userId',
       deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
     }
   });
