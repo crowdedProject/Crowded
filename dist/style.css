@@ -3,7 +3,7 @@
   width: 650px;
   height: 650px;
 }
-.mdl-cell.mdl-cell--4-col {
+.mdl-cell.mdl-cell--4-col.unclicked {
   width: 200px;
   height: 200px;
   text-align: center;
@@ -12,6 +12,16 @@
   text-transform: uppercase;
   font-size: 20pt;
   background: #3E4EB8;
+}
+.mdl-cell.mdl-cell--4-col.clicked {
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  padding: 85px 0;
+  color: white;
+  text-transform: uppercase;
+  font-size: 20pt;
+  background: #737fd0;
 }
 .small-print {
   text-align: right;

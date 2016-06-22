@@ -8,7 +8,6 @@ import {Link, browserHistory} from 'react-router';
 class CafeList extends Component {
   constructor (props) {
     super(props);
-    // this.state = {term: ''};
     this.renderCafe = this.renderCafe.bind(this);
     this.columnHead = this.columnHead.bind(this);
     // this.props.fetchSeat = this.props.fetchSeat.bind(this);
@@ -40,11 +39,23 @@ class CafeList extends Component {
 //    });
    
  columnHead() {
-   console.log(this.props.pref)
+   let referenceObj = {
+      proximity: 'Proximity',
+      neighborhood: 'Neighborhood',
+      coffeeQuality: 'Coffee Quality',
+      ambiance: 'Ambiance',
+      rating: 'Rating',
+      seats: 'Seats',
+      outlets: 'Outlets',
+      bathroomQuality: 'Bathroom Quality',
+      line: 'Line',
+      noise: 'Noise',
+      price: 'Price'
+   };
    return _.map(this.props.pref, function(item, key) {
      if (item === true) {
        if (key !== 'proximity') {
-         return `<th>${key}</th>`;
+         return <th key={key}>{referenceObj[key]}</th>;
        }
      }
    })
@@ -63,6 +74,7 @@ class CafeList extends Component {
               <tr>
                 <th>Name</th>
                 <th>Rating</th>
+                <th>Price</th>
                 {this.columnHead()}
               </tr>
             </thead>
@@ -79,7 +91,7 @@ class CafeList extends Component {
 function mapStateToProps(state) {
   return ({
     cafe: state.cafe,
-    pref: state.pref
+    pref: state.pref.pref
   })
 }
 
@@ -88,3 +100,4 @@ function mapDispachToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispachToProps)(CafeList);
+

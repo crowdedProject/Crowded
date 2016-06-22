@@ -1,37 +1,41 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {setPreferences} from '../actions/index';
 import {fetchCafeListByGeoloc} from '../actions/cafe-api';
-import {setNeighborhood} from '../actions/index';
+import {setNeighborhood, setPreferences, fetchCoordinates} from '../actions/index';
 import {Link, browserHistory} from 'react-router';
 
 
 class PrefList extends Component {
   constructor (props)  {
     super(props);
-    this.state = {term: ''};
+    // this.state = {term: ''};
     this.onPrefClick = this.onPrefClick.bind(this);
     this.onPrefSubmit = this.onPrefSubmit.bind(this);
     this.onNeighborhoodChange = this.onNeighborhoodChange.bind(this);
     this.onLogInSubmit = this.onLogInSubmit.bind(this);
+    this.getCoords = this.getCoords.bind(this);
   }
 
   onPrefClick(event) {
-    // need logic here or in the div to change the color
-    //logic for preventing double clicking and for removing pref from list by clicking should be in the action handler
-    
     this.props.setPreferences(event.target.value);
-    //this.setState = event.target
+    let flag = this.props.pref.pref[event.target.value];
+    if (flag)  {
+      event.target.className = 'mdl-cell mdl-cell--4-col clicked';
+      flag === false;
+    } else {
+      event.target.className = 'mdl-cell mdl-cell--4-col unclicked';
+      flag === true;
+    }
   }
   
   //fetching geolocation here
   getCoords() {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(position => {
-      this.setState({term: position.coords.latitude + ',' + position.coords.longitude});
+        this.props.fetchCoordinates(position);
       });
-    }else {
+    } else {
       console.log("Sorry your browser has not yet supporting Geo Location");
     }
   }
@@ -39,12 +43,12 @@ class PrefList extends Component {
   componentDidMount() {
     this.getCoords();
   }
-  
+
   onPrefSubmit() { // need switch logic here to switch to hood
-       if(this.state.term.length === 0) {
+       if(this.props.term === false) {
          setTimeout(this.onPrefSubmit, 200);
        } else {
-         this.props.fetchCafeListByGeoloc(this.state.term);
+         this.props.fetchCafeListByGeoloc(this.props.term);
          browserHistory.push('/cafes')
        }    
   }
@@ -56,8 +60,9 @@ class PrefList extends Component {
   onLogInSubmit() {
     browserHistory.push('/login')
   }
-  
+  //hoverable and waves effect
   render() { 
+    let cardClass = 'mdl-cell mdl-cell--4-col unclicked';
     return (
       <div>
         <div className="div-holder">
@@ -73,31 +78,31 @@ class PrefList extends Component {
           </div>
         </div>
         <div className="mdl-grid">
-          <div className="mdl-cell mdl-cell--4-col" value='coffeeQuality' onClick={this.onPrefClick}>
+          <div className="mdl-cell mdl-cell--4-col unclicked" value='coffeeQuality' onClick={this.onPrefClick}>
             Coffee
           </div>
-          <div className="mdl-cell mdl-cell--4-col" value='ambiance' onClick={this.onPrefClick}>
+          <div className="mdl-cell mdl-cell--4-col unclicked" value='ambiance' onClick={this.onPrefClick}>
             Ambiance
           </div>
-          <div className="mdl-cell mdl-cell--4-col" value='yelpRating' onClick={this.onPrefClick}>
-            Yelp Rating
+          <div className="mdl-cell mdl-cell--4-col unclicked" value='rating' onClick={this.onPrefClick}>
+            Rating
           </div>
-          <div className="mdl-cell mdl-cell--4-col" value='seats' onClick={this.onPrefClick}>
+          <div className="mdl-cell mdl-cell--4-col unclicked" value='seats' onClick={this.onPrefClick}>
             Seats
           </div>
-          <div className="mdl-cell mdl-cell--4-col" value='outlets' onClick={this.onPrefClick}>
+          <div className="mdl-cell mdl-cell--4-col unclicked" value='outlets' onClick={this.onPrefClick}>
             Outlets
           </div>
-          <div className="mdl-cell mdl-cell--4-col" value='bathroomQuality' onClick={this.onPrefClick}>
+          <div className="mdl-cell mdl-cell--4-col unclicked" value='bathroomQuality' onClick={this.onPrefClick}>
             Bathrooms
           </div>
-          <div className="mdl-cell mdl-cell--4-col" value='line' onClick={this.onPrefClick}>
+          <div className="mdl-cell mdl-cell--4-col unclicked" value='line' onClick={this.onPrefClick}>
             Line
           </div>
-          <div className="mdl-cell mdl-cell--4-col" value='noise' onClick={this.onPrefClick}>
+          <div className="mdl-cell mdl-cell--4-col unclicked" value='noise' onClick={this.onPrefClick}>
             Noise
           </div>
-          <div className="mdl-cell mdl-cell--4-col" value='price' onClick={this.onPrefClick}>
+          <div className="mdl-cell mdl-cell--4-col unclicked" value='price' onClick={this.onPrefClick}>
             Price
           </div>
         </div>
@@ -106,8 +111,14 @@ class PrefList extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  return ({
+    term: state.pref.term,
+    pref: state.pref
+  })
+}
 function mapDispachToProps(dispatch) {
-  return bindActionCreators({fetchCafeListByGeoloc, setPreferences, setNeighborhood}, dispatch);
+  return bindActionCreators({fetchCafeListByGeoloc, setPreferences, setNeighborhood, fetchCoordinates}, dispatch);
 }
 
-export default connect(null, mapDispachToProps)(PrefList);
+export default connect(mapStateToProps, mapDispachToProps)(PrefList);
