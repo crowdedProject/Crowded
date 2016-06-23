@@ -16,7 +16,7 @@ export function updateData(cafeId, field, value) {
   let updateReq = {
     cafeId,
     field,
-    value,
+    value
   }
   const request = axios.post('/updateCafeData', updateReq);
   return {

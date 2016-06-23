@@ -31,10 +31,10 @@ class CafeList extends Component {
    
    return (
      <tr key={id}>
-       <td key={name}>{name}</td>
-       <td key={rating}>{rating}</td>
-       <td key={price}>{price}</td>
-       <td key={seat}>{seat}</td> 
+       <td key='1'>{name}</td>
+       <td key='2'>{rating}</td>
+       <td key='3'>{price}</td>
+       <td key='4'>{seat}</td> 
      </tr>
    );
  }
@@ -63,6 +63,7 @@ class CafeList extends Component {
  }
   
   render() {
+    // this.updateCafeData('ChIJ0dnhlWGAhYARMvNfEm11Yok', 'curr_seat', 3);
     return (
       <div>
         <div className="div-holder-two">
