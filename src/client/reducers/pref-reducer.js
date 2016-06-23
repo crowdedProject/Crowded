@@ -99,11 +99,14 @@ export default function(state=initState, action) {
             state.pref.price = true;
             return state;
           }
+        default:
+          return state;
       }
-    case FETCH_COORD:
-      state.term = `${action.payload.coords.latitude},${action.payload.coords.longitude}`;
-      // state.term = action.payload.coords.latitude + "," action.payload.coords.longitude;
-      return state;
+      case FETCH_COORD:
+          // state.term = action.payload.coords.latitude + "," action.payload.coords.longitude;
+          return Object.assign({}, state, {
+            term: `${action.payload.coords.latitude},${action.payload.coords.longitude}`
+          });
   }
   return state;
 }
