@@ -5,6 +5,7 @@ import {bindActionCreators} from 'redux';
 import {fetchData, updateData} from '../actions/cafe-db';
 import {Link, browserHistory} from 'react-router';
 import {Accordion, AccordionItem} from 'react-sanfona';
+import {CafeField} from '../components/cafe-field';
 
 class CafeList extends Component {
   constructor (props) {
@@ -49,6 +50,8 @@ class CafeList extends Component {
         //</div>
         //push to array?
     //take array and concat and insert below
+    //< CafeField />
+
       }
     }
     let cafeId = cafeData[0].place_id;
