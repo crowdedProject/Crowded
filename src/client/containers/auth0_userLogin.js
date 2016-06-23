@@ -26,19 +26,18 @@ class Auth0UserLogin extends Component{
   }
   
   componentDidMount() {
-
-    this.lock.getProfile(this.idToken, function (err, profile) {
-      if (err) {
-        console.log("Error loading the Profile", err);
-        return;
-      }
-      this.setState({profile: profile});
-    }.bind(this));
+		this.lock.getProfile(this.state.idToken, function (err, profile) {
+			if (err) {
+				console.log("Error loading the Profile", err);
+				return;
+			}
+			this.setState({profile: profile});
+		}.bind(this));
   }
   
   showLock() {
     this.lock.show({
-      icon: '../assets/coffee.jpg'
+      icon: 'http://icons.iconarchive.com/icons/tatice/cristal-intense/48/Java-icon.png'
     });
     browserHistory.push('/login');
   }
@@ -69,7 +68,15 @@ class Auth0UserLogin extends Component{
     if (this.state.idToken) {
        if (this.state.profile) {
          return (
-           <h2>Welcome {this.state.profile.nickname}</h2>
+					 <div>
+					   <h2>Welcome Back,</h2>
+						 <h2>{this.state.profile.nickname}</h2>
+						 <img className="avatar" src={this.state.profile.picture_large} />
+						 <a href='/'>Click Here to Continue</a>
+						 <div>
+								<a onClick={this.logOut}>Log Out</a>
+						 </div>
+					 </div>
          );
        }else {
          return (
