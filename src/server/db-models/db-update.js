@@ -9,6 +9,9 @@ module.exports = (pg, DataTypes) => {
       primaryKey: true,
       autoIncrement: true
     },
+    place_id: {
+      type: DataTypes.STRING      
+    },
     update_field: {
       type: DataTypes.STRING      
     },
