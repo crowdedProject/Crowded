@@ -4,12 +4,12 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {fetchData, updateData} from '../actions/cafe-db';
 import {Link, browserHistory} from 'react-router';
+import {Accordion, AccordionItem} from 'react-sanfona';
 
 class CafeList extends Component {
   constructor (props) {
     super(props);
     this.renderCafe = this.renderCafe.bind(this);
-    this.columnHead = this.columnHead.bind(this);
     // this.props.fetchData = this.props.fetchData.bind(this);
   }
 
@@ -22,25 +22,11 @@ class CafeList extends Component {
   }
   
   renderCafe(cafeData) {
-   //this works for one item
-   let id = cafeData.place_id;
-   let name = cafeData.name;
-   let rating = cafeData.rating;
-   let price = cafeData.price_level;
-   let seat = this.fetchCafeData(id);
-   
-   return (
-     <tr key={id}>
-       <td key='1'>{name}</td>
-       <td key='2'>{rating}</td>
-       <td key='3'>{price}</td>
-       <td key='4'>{seat}</td> 
-     </tr>
-   );
- }
-   
- columnHead() {
-   let referenceObj = {
+    console.log('testing data', cafeData);
+    console.log('preference props', this.props.pref);
+    let searchPref = this.props.pref;
+
+    let referenceObj = {
       proximity: 'Proximity',
       neighborhood: 'Neighborhood',
       coffeeQuality: 'Coffee Quality',
@@ -53,41 +39,47 @@ class CafeList extends Component {
       noise: 'Noise',
       price: 'Price'
    };
-   return _.map(this.props.pref, function(item, key) {
-     if (item === true) {
-       if (key !== 'proximity') {
-         return <th key={key}>{referenceObj[key]}</th>;
-       }
-     }
-   })
- }
-  
-  render() {
-    // this.updateCafeData('ChIJ0dnhlWGAhYARMvNfEm11Yok', 'curr_seat', 3);
+
+    for (let i=0; i<searchPref.length; i++) {
+      if (searchPref[i] === true) {
+        //create 
+        //<div>
+          //<p> referenceObj[searchPref[i]]</p?
+          //cafeData[0][searchPref[i]]
+        //</div>
+        //push to array?
+    //take array and concat and insert below
+      }
+    }
+    let cafeId = cafeData[0].place_id;
+    let name = cafeData[0].name;
+    let rating = cafeData[0].rating;
+    let price = cafeData[0].price_level;
+    let seat = cafeData[0].curr_seat;
+
     return (
-      <div>
-        <div className="div-holder-two">
-          <div className="cafe-header">Top Cafes</div>
-        </div>
-        <div className="cafe-list-holder">
-          <table className="mdl-data-table mdl-shadow--2dp">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Rating</th>
-                <th>Price</th>
-                {this.columnHead()}
-              </tr>
-            </thead>
-            <tbody>
-              {this.props.cafe.cafeList.map(this.renderCafe)}
-            </tbody>
-          </table>
-        </div>
-      </div>
+        <AccordionItem title={name} key={cafeId}>
+          <div>Checkin to Update data</div>
+          <div>Add cafe to favorites</div>
+          <div>
+            <p>rating</p>
+            {rating}
+            //arrayOfPrerenceDivsCreatedAbove
+          </div>
+        </AccordionItem>
     );
+ }
+
+  render() {
+    return (
+      <div className='cafe-list-holder'>
+        <Accordion>
+          {this.props.cafe.cafeList.map(this.renderCafe)}
+        </Accordion>
+      </div>
+    )
   }
-};
+}
 
 function mapStateToProps(state) {
   return ({

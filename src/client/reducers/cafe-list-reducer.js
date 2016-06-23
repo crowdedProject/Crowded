@@ -29,7 +29,7 @@ var initState = {
     soma: false,
     twinPeaks: false
   },
-  cafeList: []
+  cafeList: [],
 };
 
 export default function(state=initState, action) {
@@ -40,12 +40,10 @@ export default function(state=initState, action) {
       // return [action.payload.data, ...state];
     case FETCH_DATA:
       console.log('this is payload', action.payload.data)
-      return {...state, seats: action.payload.data};
-      return state;
+      return {...state, dbCafeList: action.payload.data};
     case UPDATE_DATA:
       console.log('this is payload', action.payload.data)
-      return {...state, seats: action.payload.data};
-      return state;
+      return {...state, cafeDbList: action.payload.data};
   }
   return state;
 }
