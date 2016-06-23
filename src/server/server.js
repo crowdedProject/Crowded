@@ -34,7 +34,8 @@ app.post('/cafeResult', function(req, res) {
 });
 
 app.post('/cafeDatabase', function(req, res) {
-	let request = req.body.data;
+	let request = req.body.data; 
+	let cafeArray =[]; //send this back as one res send
 	for (let i=0; i<request.length; i++) {
 		let name = request[i].name;
 		let rating = request[i].rating;
@@ -62,7 +63,7 @@ app.post('/cafeDatabase', function(req, res) {
 
 app.post('/fetchCafeData', function(req, res) {
 	let place_id = req.body.cafeId;
-	console.log('this is req.body', req.body);
+	// console.log('this is req.body', req.body);
 	return pgDatabase.Cafe.findOne({
 		where: {place_id}
 	})
@@ -74,13 +75,22 @@ app.post('/updateCafeData', function(req, res) {
 	let place_id = req.body.cafeId;
 	let field = req.body.field;
 	let value = req.body.value;
-	// console.log('this is req.body', req.body);
+	let foreign_key;
+	
 	return pgDatabase.Cafe.findOne({
 		where: {place_id}
 	})
 	.then((cafe) => {
+		foreign_key = cafe[foreign_key];
 		cafe.update({
 			field: value
+		}).then( () => { return pgDatabase.Update.create({ 
+			place_id,
+			update_field: field,
+			update_value: value,
+			foreign_key
+			})
+		.catch((err) => console.error(err))
 		})
 	})
 	.then(() => res.send(console.log("Database entry successfully updated!")))
