@@ -4,7 +4,7 @@ export const FETCH_DATA = 'FETCH_DATA';
 export const UPDATE_DATA = 'UPDATE_DATA';
 
 
-export function fetchData(cafeId, field, value) {
+export function fetchData(cafeId) {
   const request = axios.post('/fetchCafeData', {cafeId});
   return {
     type: FETCH_DATA,
