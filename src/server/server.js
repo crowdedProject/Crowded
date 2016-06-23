@@ -1,3 +1,5 @@
+"use strict";
+
 const axios = require('axios');
 const app = require('./config/server-config.js');
 const path = require('path');
