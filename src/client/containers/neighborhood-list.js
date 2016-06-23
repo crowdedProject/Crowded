@@ -63,7 +63,7 @@ class NeighborhoodList extends Component {
           <div className="mdl-cell mdl-cell--4-col unclicked" value='37.762462, -122.434905' onClick={this.onHoodSubmit}>
             Castro
           </div>
-          <div className="mdl-cell mdl-cell--4-col unclicked" value='s37.750581, -122.486192' onClick={this.onHoodSubmit}>
+          <div className="mdl-cell mdl-cell--4-col unclicked" value='37.750581, -122.486192' onClick={this.onHoodSubmit}>
             Sunset
           </div>
           <div className="mdl-cell mdl-cell--4-col unclicked" value='37.778871, -122.478834' onClick={this.onHoodSubmit}>
