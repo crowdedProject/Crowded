@@ -9,7 +9,6 @@ import {Link, browserHistory} from 'react-router';
 class PrefList extends Component {
   constructor (props)  {
     super(props);
-    // this.state = {term: ''};
     this.onPrefClick = this.onPrefClick.bind(this);
     this.onPrefSubmit = this.onPrefSubmit.bind(this);
     this.onNeighborhoodChange = this.onNeighborhoodChange.bind(this);
@@ -44,7 +43,7 @@ class PrefList extends Component {
     this.getCoords();
   }
 
-  onPrefSubmit() { // need switch logic here to switch to hood
+  onPrefSubmit() { 
        if(this.props.term === false) {
          setTimeout(this.onPrefSubmit, 200);
        } else {
