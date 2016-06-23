@@ -1,3 +1,5 @@
+"use strict";
+
 const Sequelize = require('sequelize');
 const connection = require('./config/db-connection.js');
 const db = process.env.DATABASE_URL || connection.local;
