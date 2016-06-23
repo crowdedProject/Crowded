@@ -35,14 +35,16 @@ app.post('/cafeResult', function(req, res) {
 
 app.post('/cafeDatabase', function(req, res) {
 	let request = req.body.data; 
-	let cafeArray =[]; //send this back as one res send
+	let cafeArray = []; //send this back as one res send
+	let promiseArray = [];
 	for (let i=0; i<request.length; i++) {
 		let name = request[i].name;
 		let rating = request[i].rating;
 		let price = request[i].price_level;
 		let place_id = request[i].place_id;
 	
-		pgDatabase.pg.transaction(function (t) {
+		promiseArray.push(
+			pgDatabase.pg.transaction(function (t) {
 			return pgDatabase.Cafe.findOrCreate({
 				where: {
 					place_id
@@ -55,10 +57,14 @@ app.post('/cafeDatabase', function(req, res) {
 				}, 
 				transaction: t
 			});
-		})
-		.then(()=> res.send(req.body.data))
-		.catch((err) => console.error(err))
+			})
+		);
 	}
+	
+	Promise.all(promiseArray).then((array) => {
+		console.log('this is resolve array', array);
+		res.send(array);
+	})
 });
 
 app.post('/fetchCafeData', function(req, res) {

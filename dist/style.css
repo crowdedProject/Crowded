@@ -64,8 +64,7 @@
 .cafe-list-holder {
   margin: auto;
   width: 650px;
-  height: 650px;
-}
+  }
 div-holder-two {
   margin: auto;
   text-align: center;
@@ -105,4 +104,40 @@ div-holder-two {
 .mdl-cell-event > .dl-cell--4-col__actions,
 .mdl-cell-event > .dl-cell--4-col__actions > .mdl-button {
   color: #fff;
+}
+
+.react-sanfona {
+  &-title {
+    background-color: #fafafa;
+    border-top: 1px solid $gray;
+    color: #333;
+    padding: 20px;
+    text-transform: uppercase;
+    transition: background-color .3s;
+  }
+
+  &:first-child &-title {
+    border-top: none;
+  }
+
+  &-expanded &-title {
+    background-color: $primary-color;
+    color: #fff;
+  }
+
+  &-body-wrapper {
+    color: #666;
+    padding: 20px;
+    position: relative;
+
+    &:hover .tooltip {
+      opacity: 1;
+    }
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
 }
