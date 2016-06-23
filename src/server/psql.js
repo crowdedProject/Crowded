@@ -5,8 +5,8 @@ const connection = require('./config/db-connection.js');
 const db = process.env.DATABASE_URL || connection.local;
 const nData = require(`${__dirname}/neighborhood.json`);
 
-if (!global.hasOwnProperty('pg')) {
-  pg = (() => {
+if (!pgDatabase.hasOwnProperty('pg')) {
+  let pg = (() => {
     if (db === process.env.DATABASE_URL) {
       return new Sequelize(db, {
         dialectOptions: {
