@@ -1,3 +1,5 @@
+"use strict";
+
 const Sequelize = require('sequelize');
 const User = pg.import(`${__dirname}/db-user`);
 
