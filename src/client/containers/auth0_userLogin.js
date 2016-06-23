@@ -11,7 +11,8 @@ class Auth0UserLogin extends Component{
     this.showLock = this.showLock.bind(this);
     this.AUTHO_ID = 'tLn1lajyn8kZGO75cXM3vuRQlyRzrMbo';
     this.AUTHO_DOMAIN = 'crowded.auth0.com';
-		this.logOut = this.logOut.bind(this);
+		this.socialLogOut = this.socialLogOut.bind(this);
+		this.selfLogOut = this.selfLogOut.bind(this);
   }
   
   getInitialState() {
@@ -59,10 +60,15 @@ class Auth0UserLogin extends Component{
   }
 
 
-  logOut() {
+  socialLogOut() {
     localStorage.removeItem('userToken');
-    window.location.href = '/';
+    window.location.href = 'https://crowded.auth0.com/v2/logout?federated';
   }
+
+	selfLogOut() {
+		localStorage.removeItem('userToken');
+		window.location.href = '/';
+	}
   
   render() {
     if (this.state.idToken) {
@@ -71,10 +77,13 @@ class Auth0UserLogin extends Component{
 					 <div>
 					   <h2>Welcome Back,</h2>
 						 <h2>{this.state.profile.nickname}</h2>
-						 <img className="avatar" src={this.state.profile.picture_large} />
+						 <img className="avatar" src={this.state.profile.picture} />
 						 <a href='/'>Click Here to Continue</a>
 						 <div>
-								<a onClick={this.logOut}>Log Out</a>
+						   <a onClick={this.socialLogOut}>Log in as different user on your favorite social network</a>
+						 </div>
+						 <div>
+						   <a onClick={this.selfLogOut}>Log Out</a>
 						 </div>
 					 </div>
          );
