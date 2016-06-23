@@ -1,101 +1,110 @@
-import {YELP_RATING} from '../actions/index';
+import {FETCH_CAFELIST} from '../actions/index';
 import {USER_PREFS} from '../actions/index';
 import {NEIGBHORHOOD_PREFS} from '../actions/index';
+import {FETCH_COORD} from '../actions/index';
 
 var initState = {
+  pref: {
     proximity: true,
     neighborhood: false,
     coffeeQuality: false,
     ambiance: false,
-    yelpRating: false,
+    rating: false,
     seats: false,
     outlets: false,
     bathroomQuality: false,
     line: false,
     noise: false,
     price: false
+  },
+  term: false
 }
+
 
 export default function(state=initState, action) {
   switch(action.type) {
     case USER_PREFS:
-      console.log(state);
+      // console.log(state);
       // return [action.payload, ...state]
       switch(action.payload) {
         case 'coffeeQuality':
-          if (state.coffeeQuality === true) {
-            state.coffeeQuality = false;
+          if (state.pref.coffeeQuality === true) {
+            state.pref.coffeeQuality = false;
             return state;
           } else {
-            state.coffeeQuality = true;
+            state.pref.coffeeQuality = true;
             return state;
           }
         case 'ambiance':
-          if (state.ambiance === true) {
-            state.ambiance = false;
+          if (state.pref.ambiance === true) {
+            state.pref.ambiance = false;
             return state;
           } else {
-            state.ambiance = true;
+            state.pref.ambiance = true;
             return state;
           }
-        case 'yelpRating':
-          if (state.yelpRating === true) {
-            state.yelpRating = false;
+        case 'rating':
+          if (state.pref.rating === true) {
+            state.pref.rating = false;
             return state;
           } else {
-            state.yelpRating = true;
+            state.pref.rating = true;
             return state;
           }
         case 'seats':
-          if (state.seats === true) {
-            state.seats = false;
+          if (state.pref.seats === true) {
+            state.pref.seats = false;
             return state;
           } else {
-            state.seats = true;
+            state.pref.seats = true;
             return state;
           }
         case 'outlets':
-          if (state.outlets === true) {
-            state.outlets = false;
+          if (state.pref.outlets === true) {
+            state.pref.outlets = false;
             return state;
           } else {
-            state.outlets = true;
+            state.pref.outlets = true;
             return state;
           }
         case 'bathroomQuality':
-          if (state.bathroomQuality === true) {
-            state.bathroomQuality = false;
+          if (state.pref.bathroomQuality === true) {
+            state.pref.bathroomQuality = false;
             return state;
           } else {
-            state.bathroomQuality = true;
+            state.pref.bathroomQuality = true;
             return state;
           }
         case 'line':
-          if (state.line === true) {
-            state.line = false;
+          if (state.pref.line === true) {
+            state.pref.line = false;
             return state;
           } else {
-            state.line = true;
+            state.pref.line = true;
             return state;
           }
         case 'noise':
-          if (state.noise === true) {
-            state.noise = false;
+          if (state.pref.noise === true) {
+            state.pref.noise = false;
             return state;
           } else {
-            state.noise = true;
+            state.pref.noise = true;
             return state;
           }
         case 'price':
-          if (state.price === true) {
-            state.price = false;
+          if (state.pref.price === true) {
+            state.pref.price = false;
             return state;
           } else {
-            state.price = true;
+            state.pref.price = true;
             return state;
           }
       }
-    }
+    case FETCH_COORD:
+      state.term = `${action.payload.coords.latitude},${action.payload.coords.longitude}`;
+      // state.term = action.payload.coords.latitude + "," action.payload.coords.longitude;
+      return state;
+  }
   return state;
 }
 

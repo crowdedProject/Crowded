@@ -1,14 +1,13 @@
 import axios from 'axios';
-import YELP_RATING from './cafe-api';
+import FETCH_CAFELIST from './cafe-api';
 import SEAT_DB from './cafe-db';
 
 export const USER_PREFS = 'USER_PREFS';
 export const SUBMIT_PREFS = 'SUBMIT_PREFS';
 export const NEIGHBORHOOD_PREFS = 'NEIGBHORHOOD_PREFS';
+export const FETCH_COORD = 'FETCH_COORD';
 
 export function setPreferences(pref) {
-  //should be logic here if a pref exists, it should not be added again
-  //instead it should be removed and color should change back to normal color
   return {
     type: USER_PREFS,
     payload: pref
@@ -19,6 +18,13 @@ export function setNeighborhood(neighborhood) {
   return {
     type: NEIGHBORHOOD_PREFS,
     payload: neighborhood
+  }
+};
+
+export function fetchCoordinates(position) {
+  return {
+    type: FETCH_COORD,
+    payload: position
   }
 };
 

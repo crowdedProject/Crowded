@@ -25,6 +25,7 @@ pg
 const User = pg.import(`${__dirname}/db-models/db-user`);
 const Cafe = pg.import(`${__dirname}/db-models/db-cafe`);
 const Neighborhood = pg.import(`${__dirname}/db-models/db-neighborhood`);
+const Update = pg.import(`${__dirname}/db-models/db-update`);
 
 pg.sync({force: true})
   .then(() => {
@@ -42,16 +43,25 @@ pg.sync({force: true})
     console.log('table not created', err);
   })
  
- Cafe.hasMany(User, {as: 'Users'});
- User.belongsToMany(Cafe, {through: 'UserCafe'});
- Neighborhood.belongsToMany(Cafe, {through: 'NeighborhoodCafe'})
+// create joins
+User.belongsToMany(Cafe, {through: 'UserCafe', foreignKey: 'userId' });
+Cafe.belongsToMany(User, {through: 'UserCafe', foreignKey: 'cafeId' });
 
-global.pg = {
+User.belongsToMany(Update, {through: 'UserUpdate', foreignKey: 'userId' });
+Update.belongsToMany(User, {through: 'UserUpdate', foreignKey: 'updateId' });
+
+Cafe.belongsToMany(Update, {through: 'CafeUpdate', foreignKey: 'cafeId' });
+Update.belongsToMany(Cafe, {through: 'CafeUpdate', foreignKey: 'updateId' });
+
+Neighborhood.belongsToMany(Cafe, {through: 'NeighborhoodCafe'})
+ 
+pgDatabase = {
   Sequelize,
   pg,
   User,
   Cafe,
-  Neighborhood
+  Neighborhood,
+  Update
 };
 
-module.exports = global.pg;
+module.exports = pgDatabase;

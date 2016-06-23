@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 //look at docs and update to include html webpack! (this will allow you to delete the style folder from dist)
 module.exports = {
+  devtool: 'source-map',
   entry: [
     './src/client/index.js'
   ],
