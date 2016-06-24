@@ -38,18 +38,28 @@
   height: 30px;
   
 }
-.mdl-button--raised.main {
+/*.mdl-button--raised.main {
   text-transform: uppercase;
   font-size: 16pt;
   padding: auto;
   width: 200px;
   height: 32px;
   background: #AED073;
-}
+}*/
+
+/*.mdl-button {
+
+}*/
 .div-holder {
   margin: auto;
   width: 650px;
-  height: 90px;
+  height: 120px;
+}
+
+.main-holder {
+  margin: auto;
+  width: 650px;
+  height: 650px;
 }
 .demo-card-event.mdl-card {
   width: 256px;
@@ -65,11 +75,15 @@
   margin: auto;
   width: 650px;
   }
-div-holder-two {
+.div-holder-two {
   margin: auto;
   text-align: center;
   width: 650px;
   height: 100px;  
+}
+.div-holder-no-height {
+  margin: auto;
+  width: 650px;
 }
 .mdl-data-table {
   margin: auto;
@@ -82,6 +96,15 @@ div-holder-two {
   font-size: 16pt;
 }
 
+.button-holder {
+  padding-bottom: 5px;
+  text-align: right;
+}
+
+#buttonImage {
+  height: 20px;
+  width: 20px
+}
 
 .mdl-cell > .dl-cell--4-col__actions {
   background: #737fd0;
