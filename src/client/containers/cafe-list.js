@@ -76,11 +76,13 @@ class CafeList extends Component {
   render() {
     return (
       <div>
-        <div>
-          <a href='/favorite'>Go to your favorite list</a>
-        </div>
-        <div>
-          <a href='/cafes'>Go back to change preferences</a>
+        <div className="div-holder-no-height">
+          <div className="button-holder">
+            <button type="submit " className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" id="button-image" src="src/client/assets/mdl-icons/undo.svg" onClick={() => browserHistory.push('/favorite')}>Favorites</button>
+          </div>
+          <div className="button-holder">
+            <button type="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" onClick={() => browserHistory.push('/')}>Reset Preferences</button>
+          </div>
         </div>
         <div className='cafe-list-holder'>
           <Accordion>

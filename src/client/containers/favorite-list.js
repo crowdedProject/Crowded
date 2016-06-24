@@ -85,13 +85,13 @@ class FavoriteList extends Component {
     console.log('this is a cafe', this.props.favorite.favoriteList);
     return (
       <div>
-        <div>
-          <div>
-            <a href='/'>Return to change preferences</a>
+        <div className="div-holder-no-height">
+          <div className="button-holder">
+            <button type="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" onClick={() => browserHistory.push('/')}>Return Home</button>
           </div>
-        </div>
-        <div>
-          <a href='/cafes'>Return to search results</a>
+          <div className="button-holder">
+            <button type="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" onClick={() => browserHistory.push('/cafe')}>Search Results</button>
+          </div>
         </div>
         <div className='cafe-list-holder'>
           <Accordion>
