@@ -1,3 +1,5 @@
+"use strict";
+
 const express = require('express');
 const bodyParser = require('body-parser');
 // const cafeRoutes = require('../routes/route-cafe');

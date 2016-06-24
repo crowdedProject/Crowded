@@ -1,20 +1,18 @@
+"use strict";
+
 const Sequelize = require('sequelize');
 const connection = require('./config/db-connection.js');
-const db = process.env.DATABASE_URL || connection.local;
+const db = process.env.DATABASE_URL || connection.public;
 const nData = require(`${__dirname}/neighborhood.json`);
 
 if (!global.hasOwnProperty('pg')) {
-  pg = (() => {
-    if (db === process.env.DATABASE_URL) {
+  global.pg = (() => {
       return new Sequelize(db, {
         dialectOptions: {
         ssl: true
         }
       })
-    } else {
-      return new Sequelize(db);
-    }
-  })();
+    })();
 }
 
 pg
@@ -55,7 +53,7 @@ Update.belongsToMany(Cafe, {through: 'CafeUpdate', foreignKey: 'updateId' });
 
 Neighborhood.belongsToMany(Cafe, {through: 'NeighborhoodCafe'})
  
-pgDatabase = {
+global.pgDatabase = {
   Sequelize,
   pg,
   User,
