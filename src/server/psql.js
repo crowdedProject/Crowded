@@ -5,8 +5,8 @@ const connection = require('./config/db-connection.js');
 const db = process.env.DATABASE_URL || connection.local;
 const nData = require(`${__dirname}/neighborhood.json`);
 
-if (!pgDatabase.hasOwnProperty('pg')) {
-  let pg = (() => {
+if (!global.hasOwnProperty('pg')) {
+  global.pg = (() => {
     if (db === process.env.DATABASE_URL) {
       return new Sequelize(db, {
         dialectOptions: {
@@ -57,7 +57,7 @@ Update.belongsToMany(Cafe, {through: 'CafeUpdate', foreignKey: 'updateId' });
 
 Neighborhood.belongsToMany(Cafe, {through: 'NeighborhoodCafe'})
  
-pgDatabase = {
+global.pgDatabase = {
   Sequelize,
   pg,
   User,
