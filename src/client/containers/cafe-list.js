@@ -6,6 +6,7 @@ import {fetchData, updateData} from '../actions/cafe-db';
 import {Link, browserHistory} from 'react-router';
 import {Accordion, AccordionItem} from 'react-sanfona';
 import {CafeField} from '../components/cafe-field';
+import AccordionData from '../components/accordion';
 
 class CafeList extends Component {
   constructor (props) {
@@ -41,33 +42,22 @@ class CafeList extends Component {
       price: 'Price'
    };
 
-    for (let i=0; i<searchPref.length; i++) {
-      if (searchPref[i] === true) {
-        //create 
-        //<div>
-          //<p> referenceObj[searchPref[i]]</p?
-          //cafeData[0][searchPref[i]]
-        //</div>
-        //push to array?
-    //take array and concat and insert below
-    //< CafeField />
-
-      }
-    }
-    let cafeId = cafeData[0].place_id;
-    let name = cafeData[0].name;
-    let rating = cafeData[0].rating;
-    let price = cafeData[0].price_level;
-    let seat = cafeData[0].curr_seat;
-
     return (
-        <AccordionItem title={name} key={cafeId}>
-          <div>Checkin to Update data</div>
-          <div>Add cafe to favorites</div>
+        <AccordionItem title={`${cafeData[0].name}           ${cafeData[0].curr_seat}`} key={cafeData[0].place_id}>
           <div>
-            <p>rating</p>
-            {rating}
-            //arrayOfPrerenceDivsCreatedAbove
+            <div>
+              <p>rating {cafeData[0].rating}</p>
+              //arrayOfPrerenceDivsCreatedAbove
+            </div>
+            <div>
+              <AccordionData 
+                cafeData={cafeData} 
+                searchPref={searchPref}
+                referenceObj={referenceObj} />
+            </div>
+            <div>Checkin to Update data</div>
+            <div>Add cafe to favorites</div>
+
           </div>
         </AccordionItem>
     );
