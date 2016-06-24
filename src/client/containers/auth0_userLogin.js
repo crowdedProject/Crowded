@@ -15,11 +15,11 @@ class Auth0UserLogin extends Component{
 		this.selfLogOut = this.selfLogOut.bind(this);
   }
   
-  getInitialState() {
-    return {
-      profile: null
-    }
-  }
+  // getInitialState() {
+  //   return {
+  //     profile: null
+  //   }
+  // }
  
   componentWillMount() {
     this.lock = new Auth0Lock(this.AUTHO_ID, this.AUTHO_DOMAIN);
@@ -78,7 +78,12 @@ class Auth0UserLogin extends Component{
 					   <h2>Welcome Back,</h2>
 						 <h2>{this.state.profile.nickname}</h2>
 						 <img className="avatar" src={this.state.profile.picture} />
-						 <a href='/'>Click Here to Continue</a>
+               <div>
+               <a href='/'>Click Here to Continue</a>
+               </div>
+               <div>
+               <a href='/favorite'>Go to your favorite list</a>
+               </div>
 						 <div>
 						   <a onClick={this.socialLogOut}>Log in as different user on your favorite social network</a>
 						 </div>
