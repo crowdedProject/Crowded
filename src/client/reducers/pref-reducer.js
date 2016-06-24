@@ -110,21 +110,3 @@ export default function(state=initState, action) {
   }
   return state;
 }
-
-  // debugger;
-  //update yelp state status to whatever comes back from the yelp action
-  
-  //alternative way to write the swtich statements:
-//   var type = {};
-//   type[USER_PREFS]= {"neighborhood":function(){
-      
-//   }
-// }
-//   type[Y]= function(){
-//     //...
-//   }
-  
-//   var outer = type[action.type];
-//   var inner = outer ? outer[action.payload] : null;
-//   inner()
-
