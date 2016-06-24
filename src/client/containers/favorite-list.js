@@ -90,7 +90,7 @@ class FavoriteList extends Component {
             <button type="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" onClick={() => browserHistory.push('/')}>Return Home</button>
           </div>
           <div className="button-holder">
-            <button type="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" onClick={() => browserHistory.push('/cafe')}>Search Results</button>
+            <button type="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" onClick={() => browserHistory.push('/cafes')}>Search Results</button>
           </div>
         </div>
         <div className='cafe-list-holder'>
