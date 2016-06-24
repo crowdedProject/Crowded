@@ -1,7 +1,9 @@
-/node_modules
-/dist
-
+node_modules/
+dist
 .DS_Store
+src/.DS_Store
+src/client/.DS_Store
+src/client/components/.DS_Store
 
 /server/config/db-config.js
 
