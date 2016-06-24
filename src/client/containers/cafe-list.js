@@ -75,10 +75,18 @@ class CafeList extends Component {
 
   render() {
     return (
-      <div className='cafe-list-holder'>
-        <Accordion>
-          {this.props.cafe.cafeList.map(this.renderCafe)}
-        </Accordion>
+      <div>
+        <div>
+          <a href='/favorite'>Go to your favorite list</a>
+        </div>
+        <div>
+          <a href='/cafes'>Go back to change preferences</a>
+        </div>
+        <div className='cafe-list-holder'>
+          <Accordion>
+            {this.props.cafe.cafeList.map(this.renderCafe)}
+          </Accordion>
+        </div>
       </div>
     )
   }

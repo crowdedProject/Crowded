@@ -1,6 +1,8 @@
 import axios from 'axios';
 import FETCH_CAFELIST from './cafe-api';
 import SEAT_DB from './cafe-db';
+import FETCH_DATA from './cafe-db';
+import DELETE_FAVORITE from './cafe-db';
 
 export const USER_PREFS = 'USER_PREFS';
 export const SUBMIT_PREFS = 'SUBMIT_PREFS';

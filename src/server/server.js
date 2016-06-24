@@ -105,6 +105,17 @@ app.post('/updateCafeData', function(req, res) {
 	.catch((err) => console.error(err))
 });
 
+//update so that it deletes!!
+app.post('/deleteFavorite', function(req, res) {
+	let user_id = req.body.userId;
+	let place_id = req.body.cafeId;
+	return pgDatabase.Cafe.findOne({
+		where: {place_id}
+	})
+	.then((rowData) => res.send(rowData))
+	.catch((err) => console.error(err))
+});
+
 app.get('*', function (request, response){
   response.sendFile(path.resolve(__dirname, '../../dist/index.html'))
 })
