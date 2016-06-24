@@ -1,9 +1,11 @@
+"use strict";
+
 const Sequelize = require('sequelize');
 
 module.exports = (pg, DataTypes) => {
   return pg.define('user', {
-    id: {
-      type: DataTypes.INTEGER(11),
+    userId: {
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true
