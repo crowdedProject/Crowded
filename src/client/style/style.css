@@ -3,6 +3,11 @@
   width: 650px;
   height: 650px;
 }
+.mdl-grid.small {
+  margin: auto;
+  width: 650px;
+  height: 90px;
+}
 .mdl-cell.mdl-cell--4-col.unclicked {
   width: 200px;
   height: 200px;
@@ -22,6 +27,16 @@
   text-transform: uppercase;
   font-size: 20pt;
   background: #737fd0;
+}
+.mdl-cell.mdl-cell--1-col.unclicked {
+  width: 65px;
+  height: 65px;
+  text-align: center;
+  padding: 5px 0;
+  color: white;
+  text-transform: lowercase;
+  box-shadow: 2px 2px 2px #888888;
+  background: #3E4EB8;
 }
 .small-print {
   text-align: right;
@@ -55,7 +70,11 @@
   width: 650px;
   height: 120px;
 }
-
+.div-holder-span {
+  margin: auto;
+  width: 650px;
+  height: 400px;
+}
 .main-holder {
   margin: auto;
   width: 650px;
@@ -89,20 +108,28 @@
   margin: auto;
 }
 .pref-span {
-  height: 50px;
-  width: 50px;
+  /*display: inline-block;
+  float: left;*/
+  height: 70px;
+  width: 70px;
   text-transform: uppercase;
   text-align: center;
   font-size: 10pt;
   padding-right: 5px;
+  padding-top: 5px;
   background: #737fd0;
+}
+#pref-number {
+  font-size: 20pt;
+  color: white;
+  text-align: center;
+  padding: 3px;
 }
 .cafe-header {
   margin: auto;
   text-transform: uppercase;
   color: #3E4EB8;
   text-align: center;
-   
 }
 
 .button-holder {
