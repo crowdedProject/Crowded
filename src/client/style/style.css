@@ -208,3 +208,8 @@ $gray: #ccc;
   position: absolute;
   transition: opacity .3s;
 }
+/* style for user profile page*/
+.avatar {
+  width: 75px;
+  height: 75px;
+}
