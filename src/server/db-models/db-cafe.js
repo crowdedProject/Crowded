@@ -41,6 +41,14 @@ module.exports = (db, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true
     },
+    coordLat: {
+      type: DataTypes.DECIMAL,
+      allowNull: true
+    },
+    coordLng: {
+      type: DataTypes.DECIMAL,
+      allowNull: true
+    },
     neighborhood: {
       type: DataTypes.STRING,
       allowNull: true

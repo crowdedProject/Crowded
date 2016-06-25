@@ -44,7 +44,9 @@ app.post('/cafeDatabase', function(req, res) {
 		let rating = request[i].rating;
 		let price = request[i].price_level;
 		let place_id = request[i].place_id;
-	
+		let coordLat = request[i].geometry.location.lat;
+		let coordLng = request[i].geometry.location.lng;
+		let address = request[i].vicinity;
 		promiseArray.push(
 			pgDatabase.pg.transaction(function (t) {
 			return pgDatabase.Cafe.findOrCreate({
@@ -55,7 +57,10 @@ app.post('/cafeDatabase', function(req, res) {
 					name,
 					price,
 					rating,
-					place_id
+					place_id,
+					address,
+					coordLat,
+					coordLng
 				}, 
 				transaction: t
 			});
