@@ -68,7 +68,7 @@ class PrefList extends Component {
           <div className="small-print-button">
             <button type="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" onClick={this.onLogInSubmit}>Log In</button>
           </div>
-          <div className="small-print">Location set nearest to you
+          <div className="small-print">Location set closest to you
           </div>
           <div className="small-print-button">
             <button type="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" onClick={this.onNeighborhoodChange}>Choose Neighborhood</button>
