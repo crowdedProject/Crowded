@@ -15,6 +15,7 @@
   padding: 85px 0;
   color: white;
   text-transform: uppercase;
+  box-shadow: 2px 2px 2px #888888;
   font-size: 20pt;
   background: #3E4EB8;
 }
@@ -25,6 +26,7 @@
   padding: 85px 0;
   color: white;
   text-transform: uppercase;
+  box-shadow: 2px 2px 2px #888888;
   font-size: 20pt;
   background: #737fd0;
 }
@@ -93,7 +95,8 @@
 .cafe-list-holder {
   margin: auto;
   width: 650px;
-  }
+}
+
 .div-holder-two {
   margin: auto;
   text-align: center;
@@ -107,9 +110,10 @@
 .mdl-data-table {
   margin: auto;
 }
+.expand-holder {
+  text-align: right;
+}
 .pref-span {
-  /*display: inline-block;
-  float: left;*/
   height: 70px;
   width: 70px;
   text-transform: uppercase;
@@ -131,72 +135,71 @@
   color: #3E4EB8;
   text-align: center;
 }
-
 .button-holder {
   padding-bottom: 5px;
   text-align: right;
 }
-
 #buttonImage {
   height: 20px;
   width: 20px
 }
 
-.mdl-cell > .dl-cell--4-col__actions {
-  background: #737fd0;
+/*$primary-color: #03a9f4;
+$gray: #ccc;
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
 }
-.mdl-cell-event > .dl-cell--4-col__title {
-  align-items: flex-start;
+*/
+
+.react-sanfona {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 30px;
 }
-.mdl-cell-event > .dl-cell--4-col__title > h4 {
-  margin-top: 0;
+
+.react-sanfona-item-title {
+    background-color: #03a9f4;
+    border-bottom: 1px solid #ccc;
+    color: white;
+    padding: 5px;
+    text-transform: uppercase;
+    box-shadow: 2px 2px 2px #888888;
+    transition: background-color .3s;
+    font-size: 20pt;
 }
-.mdl-cell-event > .mdl-cell--4-col__actions {
-  display: flex;
-  box-sizing:border-box;
-  align-items: center;
+.react-sanfona-item:first-child-title {
+  border-top: none;
 }
-.mdl-cell-event > .dl-cell--4-col__actions > .material-icons {
-  padding-right: 10px;
-}
-.mdl-cell-event > .dl-cell--4-col__title,
-.mdl-cell-event > .dl-cell--4-col__actions,
-.mdl-cell-event > .dl-cell--4-col__actions > .mdl-button {
+
+.react-sanfona-item-expanded-title {
+  background-color: #03a9f4;
   color: #fff;
 }
 
-.react-sanfona {
-  &-title {
-    background-color: #fafafa;
-    border-top: 1px solid $gray;
-    color: #333;
-    padding: 20px;
-    text-transform: uppercase;
-    transition: background-color .3s;
-  }
+.react-sanfona-item-body-wrapper {
+  color: #666;
+  padding: 20px;
+  position: relative;
+}
+.react-sanfona-item-body-wrapper:hover .tooltip {
+  opacity: 1;
+}
 
-  &:first-child &-title {
-    border-top: none;
-  }
-
-  &-expanded &-title {
-    background-color: $primary-color;
-    color: #fff;
-  }
-
-  &-body-wrapper {
-    color: #666;
-    padding: 20px;
-    position: relative;
-
-    &:hover .tooltip {
-      opacity: 1;
-    }
-  }
-
-  img {
-    display: block;
-    max-width: 100%;
-  }
-
+.react-sanfona-item-body-wrapper-img {
+  display: block;
+  max-width: 100%;
+}
+.tooltip {
+  background-color: #000;
+  bottom: -10px;
+  border-radius: 3px;
+  color: #fff;
+  left: 10px;
+  opacity: 0;
+  padding: 10px;
+  position: absolute;
+  transition: opacity .3s;
 }

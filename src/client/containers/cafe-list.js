@@ -45,7 +45,7 @@ class CafeList extends Component {
           <div>
             <div>Checkin to Update data</div>
             <div>Add cafe to favorites</div>
-            <div>
+            <div className="expand-holder">
               <AccordionData 
                 cafeData={cafeData} 
                 searchPref={searchPref}
