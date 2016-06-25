@@ -1,4 +1,4 @@
-import {FETCH_DATA, UPDATE_DATA, DELETE_FAVORITE} from '../actions/cafe-db';
+import {FETCH_JOIN, DELETE_FAVORITE, UPDATE_DATA} from '../actions/cafe-db';
 
 var initState = {
   userEmail: '',
@@ -20,11 +20,11 @@ var initState = {
 
 export default function(state=initState, action) {
   switch (action.type) {
-    case FETCH_DATA:
+    case DELETE_FAVORITE:
+      return {...state, favoriteList: action.payload.data};
+    case FETCH_JOIN:
       return {...state, favoriteList: action.payload.data};
     case UPDATE_DATA:
-      return {...state, favoriteList: action.payload.data};
-    case DELETE_FAVORITE:
       return {...state, favoriteList: action.payload.data};
   }
   return state;

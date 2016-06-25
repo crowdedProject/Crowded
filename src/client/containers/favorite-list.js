@@ -9,13 +9,15 @@ import {Accordion, AccordionItem} from 'react-sanfona';
 class FavoriteList extends Component {
   constructor (props) {
     super(props);
+    this.state = {};
     this.renderCafe = this.renderCafe.bind(this);
-    this.AUTHO_ID = 'tLn1lajyn8kZGO75cXM3vuRQlyRzrMbo';
-    this.AUTHO_DOMAIN = 'crowded.auth0.com';
+  }
+  componentWillMount() {
+    this.setState({favoriteList: this.fetchCafeData(this.props.profile.email)});
   }
 
   fetchCafeData(userEmail) {
-    this.props.fetchData(userId);
+    this.props.fetchData(userEmail);
   }
 
   updateCafeData(userEmail, columnHeader, newValue) {
