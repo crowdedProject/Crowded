@@ -49,7 +49,7 @@ class CafeList extends Component {
                 searchPref={searchPref}
                 referenceObj={referenceObj} />
             </div>
-            <button>Check-In & Update data</button>
+            <button>Check-In & Update Data</button>
             <button>Add cafe to favorites</button>
           </div>
         </AccordionItem>
