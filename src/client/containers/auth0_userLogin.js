@@ -38,9 +38,8 @@ class Auth0UserLogin extends Component{
   
   showLock() {
     this.lock.show({
-      icon: 'http://icons.iconarchive.com/icons/tatice/cristal-intense/48/Java-icon.png'
+      icon: 'http://icons.iconarchive.com/icons/tatice/cristal-intense/48/Java-icon.png',
     });
-    browserHistory.push('/login');
   }
   
   getIdToken() {
@@ -58,7 +57,6 @@ class Auth0UserLogin extends Component{
     }
     return idToken;
   }
-
 
   socialLogOut() {
     localStorage.removeItem('userToken');
@@ -104,10 +102,9 @@ class Auth0UserLogin extends Component{
          );
        }
     } else {
+      this.showLock();
       return (
-        <div className="login-box">
-          <a onClick={this.showLock}>Sign In</a>
-        </div>
+        <div></div>
       );
     }
   } 
