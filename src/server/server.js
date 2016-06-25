@@ -84,6 +84,21 @@ app.post('/fetchCafeData', function(req, res) {
 	.catch((err) => console.error(err))
 });
 
+app.post('/fetchJoin', function(req, res) {
+	let email = req.body.email
+	// console.log('this is req.body', req.body);
+	return pgDatabase.User.findOne({
+		where: {email}
+	})
+	.then((rowData) => {
+		let user_id = rowData.user_id;
+		pgDatabase.UserCafe.findAll({
+			where: {user_id}
+		});
+	}).then((joinData) => res.send(joinData))
+	.catch((err) => console.error(err))
+});
+
 app.post('/updateCafeData', function(req, res) {
 	let place_id = req.body.cafeId;
 	let field = req.body.field;
@@ -110,7 +125,28 @@ app.post('/updateCafeData', function(req, res) {
 	.catch((err) => console.error(err))
 });
 
-//update so that it deletes!!
+app.post('/addFavorite', function(req, res) {
+	let email = req.body.email;
+	let cafeId = req.body.cafeId;
+	
+	return pgDatabase.User.find({
+		where: {email}
+	})
+	.then((user) => {
+		user.addCafe(cafeId)
+		res.send(cafe);
+	})
+	// 	pg.Database.Cafe.find({
+	// 		where: {cafeId}
+	// 	})
+	// })
+	// .then((cafe) => {
+	// 	user.setCafe(cafe);
+	// 	res.send(cafe);
+	// })
+	.catch((err) => console.error(err))
+});
+
 app.post('/deleteFavorite', function(req, res) {
 	let user_id = req.body.userId;
 	let place_id = req.body.cafeId;

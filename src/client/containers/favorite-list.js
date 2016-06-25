@@ -2,20 +2,22 @@ import React, {Component} from 'react';
 import _ from 'lodash';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {fetchData, updateData, deleteFavorite, addUserData} from '../actions/cafe-db';
+import {fetchData, updateData, deleteFavorite, addUserData, fetchJoin, addFavorite} from '../actions/cafe-db';
 import {Link, browserHistory} from 'react-router';
 import {Accordion, AccordionItem} from 'react-sanfona';
 
 class FavoriteList extends Component {
   constructor (props) {
     super(props);
+    this.state = {};
     this.renderCafe = this.renderCafe.bind(this);
-    this.AUTHO_ID = 'tLn1lajyn8kZGO75cXM3vuRQlyRzrMbo';
-    this.AUTHO_DOMAIN = 'crowded.auth0.com';
+  }
+  componentWillMount() {
+    this.setState({favoriteList: this.fetchJoinData(this.props.profile.email)});
   }
 
-  fetchCafeData(userEmail) {
-    this.props.fetchData(userId);
+  fetchJoinData(userEmail) {
+    this.props.fetchJoin(userEmail);
   }
 
   updateCafeData(userEmail, columnHeader, newValue) {
@@ -61,7 +63,7 @@ class FavoriteList extends Component {
  }
 
   render() {
-    console.log('this is a cafe', this.props.favorite.favoriteList);
+    console.log('this is an added favorite', this.props.addFavorite);
     return (
       <div>
         <div className="div-holder-no-height">
@@ -85,13 +87,14 @@ class FavoriteList extends Component {
 function mapStateToProps(state) {
   return ({
     favorite: state.favorite.favoriteList,
+    addFavorite: state.favorite.addFavorite,
     pref: state.favorite.savedPrefList,
     profile: state.login.profile
   })
 }
 
 function mapDispachToProps(dispatch) {
-  return bindActionCreators({fetchData, updateData, deleteFavorite, addUserData}, dispatch);
+  return bindActionCreators({fetchData, updateData, deleteFavorite, addUserData, addFavorite, fetchJoin}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispachToProps)(FavoriteList);
