@@ -88,12 +88,21 @@
 .mdl-data-table {
   margin: auto;
 }
+.pref-span {
+  height: 50px;
+  width: 50px;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 10pt;
+  padding-right: 5px;
+  background: #737fd0;
+}
 .cafe-header {
   margin: auto;
   text-transform: uppercase;
   color: #3E4EB8;
   text-align: center;
-  font-size: 16pt;
+   
 }
 
 .button-holder {

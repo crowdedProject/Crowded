@@ -24,8 +24,6 @@ class CafeList extends Component {
   }
   
   renderCafe(cafeData) {
-    console.log('testing data', cafeData);
-    console.log('preference props', this.props.pref);
     let searchPref = this.props.pref;
 
     let referenceObj = {

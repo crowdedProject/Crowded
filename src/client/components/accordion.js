@@ -21,25 +21,15 @@ const AccordionData = ({cafeData, searchPref, referenceObj}) => {
     // let ambiance = null;
     // let bathroomQuality = null;
 
-
-
-
-  console.log('rating: ', cafeData);
-  console.log('searchPref: ', searchPref)
   let spanArray = [];
   for (let pref in searchPref) {
     if (searchPref[pref] === true) {
-      console.log('REF: ', referenceObj);
-      console.log('searchPref: ', pref);
-      spanArray.push(<span>{referenceObj[pref]}{preferenceData[pref]}</span>);
+      spanArray.push(<span className="pref-span">{referenceObj[pref]}{preferenceData[pref]}</span>);
     }
   }
   
-  
-
-
   return (
-    <div>
+    <div className="div-holder-no-height">
       {spanArray}
     </div>
   );
