@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import _ from 'lodash';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {fetchData, updateData, deleteFavorite} from '../actions/cafe-db';
+import {fetchData, updateData, deleteFavorite, addUserData} from '../actions/cafe-db';
 import {Link, browserHistory} from 'react-router';
 import {Accordion, AccordionItem} from 'react-sanfona';
 
@@ -14,37 +14,16 @@ class FavoriteList extends Component {
     this.AUTHO_DOMAIN = 'crowded.auth0.com';
   }
 
-  // componentWillMount() {
-  //   this.setState({
-  //     userDbKey: 'testToken',
-  //     savedPrefList: {
-  //       proximity: true,
-  //       neighborhood: false,
-  //       coffeeQuality: false,
-  //       ambiance: false,
-  //       rating: false,
-  //       seats: false,
-  //       outlets: false,
-  //       bathroomQuality: false,
-  //       line: false,
-  //       noise: false,
-  //       price: false
-  //     },
-  //     favoriteList: 
-  //       [{name: 'test', rating: 5}, {name: 'test2',   rating: 1}]
-  //   });
-  // }
-
-  fetchCafeData(userId) {
+  fetchCafeData(userEmail) {
     this.props.fetchData(userId);
   }
 
-  updateCafeData(cafeId, columnHeader, newValue) {
+  updateCafeData(userEmail, columnHeader, newValue) {
     this.props.updateData(cafeId, columnHeader, newValue);
   }
 
-  removeFromList(userId, cafeId) {
-    this.props.deleteFavorite(userId, cafeId);
+  removeFromList(userEmail, cafeId) {
+    this.props.deleteFavorite(userEmail, cafeId);
   }
   
   renderCafe(cafeData) {
@@ -106,12 +85,13 @@ class FavoriteList extends Component {
 function mapStateToProps(state) {
   return ({
     favorite: state.favorite.favoriteList,
-    pref: state.favorite.savedPrefList
+    pref: state.favorite.savedPrefList,
+    profile: state.login.profile
   })
 }
 
 function mapDispachToProps(dispatch) {
-  return bindActionCreators({fetchData, updateData, deleteFavorite}, dispatch);
+  return bindActionCreators({fetchData, updateData, deleteFavorite, addUserData}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispachToProps)(FavoriteList);

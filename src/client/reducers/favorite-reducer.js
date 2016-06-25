@@ -1,7 +1,7 @@
 import {FETCH_DATA, UPDATE_DATA, DELETE_FAVORITE} from '../actions/cafe-db';
 
 var initState = {
-  userDbKey: '',
+  userEmail: '',
   savedPrefList: {
     proximity: true,
     neighborhood: false,
