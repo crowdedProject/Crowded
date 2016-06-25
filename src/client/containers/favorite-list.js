@@ -13,17 +13,17 @@ class FavoriteList extends Component {
     this.AUTHO_ID = 'tLn1lajyn8kZGO75cXM3vuRQlyRzrMbo';
     this.AUTHO_DOMAIN = 'crowded.auth0.com';
   }
-  
-  fetchCafeData(userId) {
+
+  fetchCafeData(userEmail) {
     this.props.fetchData(userId);
   }
 
-  updateCafeData(cafeId, columnHeader, newValue) {
+  updateCafeData(userEmail, columnHeader, newValue) {
     this.props.updateData(cafeId, columnHeader, newValue);
   }
 
-  removeFromList(userId, cafeId) {
-    this.props.deleteFavorite(userId, cafeId);
+  removeFromList(userEmail, cafeId) {
+    this.props.deleteFavorite(userEmail, cafeId);
   }
   
   renderCafe(cafeData) {
@@ -86,7 +86,7 @@ function mapStateToProps(state) {
   return ({
     favorite: state.favorite.favoriteList,
     pref: state.favorite.savedPrefList,
-    login: state.login.idToken
+    profile: state.login.profile
   })
 }
 
