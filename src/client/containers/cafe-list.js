@@ -41,16 +41,16 @@ class CafeList extends Component {
    };
 
     return (
-        <AccordionItem title={`${cafeData[0].name}           ${cafeData[0].curr_seat}`} key={cafeData[0].place_id}>
+        <AccordionItem title={cafeData[0].name} key={cafeData[0].place_id}>
           <div>
-            <div>Checkin to Update data</div>
-            <div>Add cafe to favorites</div>
             <div className="expand-holder">
               <AccordionData 
                 cafeData={cafeData} 
                 searchPref={searchPref}
                 referenceObj={referenceObj} />
             </div>
+            <button>Check-In & Update data</button>
+            <button>Add cafe to favorites</button>
           </div>
         </AccordionItem>
     );

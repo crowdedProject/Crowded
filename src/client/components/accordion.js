@@ -8,7 +8,7 @@ const AccordionData = ({cafeData, searchPref, referenceObj}) => {
       ambiance: null,
       rating: cafeData[0].rating,
       //How do we want to display seats?
-      seats: cafeData[0].total_seat,
+      seats: cafeData[0].curr_seat,
       outlets: cafeData[0].outlet,
       bathroomQuality: null,
       line: cafeData[0].line_length,
@@ -23,7 +23,7 @@ const AccordionData = ({cafeData, searchPref, referenceObj}) => {
 
   let spanArray = [];
   for (let pref in searchPref) {
-    if (searchPref[pref] === true) {
+    if (searchPref[pref] === true && pref !== 'proximity') {
       spanArray.push(
         <div className="mdl-cell mdl-cell--1-col unclicked" key={pref}>
           <div>{referenceObj[pref]}</div>
