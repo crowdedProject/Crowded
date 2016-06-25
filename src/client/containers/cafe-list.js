@@ -57,7 +57,6 @@ class CafeList extends Component {
           <div>
             <div className="expand-holder">
               <AccordionData 
-                
                 cafeData={cafeData} 
                 searchPref={searchPref}
                 referenceObj={referenceObj} />
