@@ -4,6 +4,7 @@ dist
 src/.DS_Store
 src/client/.DS_Store
 src/client/components/.DS_Store
+src/npm-debug.log
 
 /server/config/db-config.js
 

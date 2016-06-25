@@ -7,13 +7,18 @@ import {Link, browserHistory} from 'react-router';
 import {Accordion, AccordionItem} from 'react-sanfona';
 import {CafeField} from '../components/cafe-field';
 import AccordionData from '../components/accordion';
-
+import GoogleMap from '../components/googleCafeMap';
 class CafeList extends Component {
   constructor (props) {
     super(props);
     this.renderCafe = this.renderCafe.bind(this);
     // this.props.fetchData = this.props.fetchData.bind(this);
   }
+
+  // componentWillMount() {
+  //   console.log("this is prop", this.props);
+  //   console.log("this is state", this.state);
+  // }
 
   fetchCafeData(cafeId) {
     this.props.fetchData(cafeId);
@@ -39,7 +44,26 @@ class CafeList extends Component {
       noise: 'Noise',
       price: 'Price'
    };
+    // for (let i=0; i<searchPref.length; i++) {
+    //   if (searchPref[i] === true) {
+    //     //create 
+    //     //<div>
+    //       //<p> referenceObj[searchPref[i]]</p?
+    //       //cafeData[0][searchPref[i]]
+    //     //</div>
+    //     //push to array?
+    // //take array and concat and insert below
+    // //< CafeField />
 
+    //   }
+    // }
+    let cafeId = cafeData[0].place_id;
+    let name = cafeData[0].name;
+    let rating = cafeData[0].rating;
+    let price = cafeData[0].price_level;
+    let seat = cafeData[0].curr_seat;
+    let lon = Number(cafeData[0].coordLng);
+    let lat = Number(cafeData[0].coordLat);
     return (
         <AccordionItem title={cafeData[0].name} key={cafeData[0].place_id}>
           <div>
@@ -52,7 +76,12 @@ class CafeList extends Component {
             </div>
             <button>Check-In & Update Data</button>
             <button>Add cafe to favorites</button>
+            <p>rating</p>
+            {rating}
           </div>
+          <div className="map-div">
+            <GoogleMap lon={lon} lat={lat} title={name}/>
+          </div> 
         </AccordionItem>
     );
  }
