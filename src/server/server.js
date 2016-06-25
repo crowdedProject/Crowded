@@ -121,6 +121,25 @@ app.post('/deleteFavorite', function(req, res) {
 	.catch((err) => console.error(err))
 });
 
+app.post('/addUser', function(req, res) {
+	console.log('add user endpoint', req.body.email);
+	let email = req.body.email;
+	let first_name = req.body.given_name;
+	let last_name = req.body.family_name;
+
+	return pgDatabase.User.findOrCreate({
+		where: {email},
+		defaults: {
+			email,
+			first_name,
+			last_name
+		}
+	})
+	.then((row) => res.send(req.body))
+	.catch((err) => console.error(err))
+});
+
+
 app.get('*', function (request, response){
   response.sendFile(path.resolve(__dirname, '../../dist/index.html'))
 })
