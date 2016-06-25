@@ -7,7 +7,6 @@ const AccordionData = ({cafeData, searchPref, referenceObj}) => {
       coffeeQuality: cafeData[0].coffee_quality,
       ambiance: null,
       rating: cafeData[0].rating,
-      //How do we want to display seats?
       seats: cafeData[0].curr_seat,
       outlets: cafeData[0].outlet,
       bathroomQuality: null,
