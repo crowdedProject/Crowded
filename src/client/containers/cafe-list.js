@@ -27,14 +27,14 @@ class CafeList extends Component {
     let searchPref = this.props.pref;
 
     let referenceObj = {
-      proximity: 'Proximity',
+      proximity: 'Prox.',
       neighborhood: 'Neighborhood',
-      coffeeQuality: 'Coffee Quality',
+      coffeeQuality: 'Coffee',
       ambiance: 'Ambiance',
       rating: 'Rating',
       seats: 'Seats',
       outlets: 'Outlets',
-      bathroomQuality: 'Bathroom Quality',
+      bathroomQuality: 'Bathrooms',
       line: 'Line',
       noise: 'Noise',
       price: 'Price'
@@ -43,19 +43,14 @@ class CafeList extends Component {
     return (
         <AccordionItem title={`${cafeData[0].name}           ${cafeData[0].curr_seat}`} key={cafeData[0].place_id}>
           <div>
-            <div>
-              <p>rating {cafeData[0].rating}</p>
-              //arrayOfPrerenceDivsCreatedAbove
-            </div>
+            <div>Checkin to Update data</div>
+            <div>Add cafe to favorites</div>
             <div>
               <AccordionData 
                 cafeData={cafeData} 
                 searchPref={searchPref}
                 referenceObj={referenceObj} />
             </div>
-            <div>Checkin to Update data</div>
-            <div>Add cafe to favorites</div>
-
           </div>
         </AccordionItem>
     );
@@ -64,7 +59,7 @@ class CafeList extends Component {
   render() {
     return (
       <div>
-        <div className="div-holder-no-height">
+        <div className="div-holder">
           <div className="button-holder">
             <button type="submit " className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" id="button-image" src="src/client/assets/mdl-icons/undo.svg" onClick={() => browserHistory.push('/favorite')}>Favorites</button>
           </div>

@@ -15,7 +15,7 @@ const AccordionData = ({cafeData, searchPref, referenceObj}) => {
       noise: cafeData[0].noise,
       price: cafeData[0].price    
     };
-    // let placeId = cafeData[0].place_id;
+    let placeId = cafeData[0].place_id;
     // let name = cafeData[0].name;
     // let totalSeats = cafeData[0].total_seat;
     // let ambiance = null;
@@ -24,12 +24,16 @@ const AccordionData = ({cafeData, searchPref, referenceObj}) => {
   let spanArray = [];
   for (let pref in searchPref) {
     if (searchPref[pref] === true) {
-      spanArray.push(<span className="pref-span">{referenceObj[pref]}{preferenceData[pref]}</span>);
+      spanArray.push(
+        <div className="mdl-cell mdl-cell--1-col unclicked" key={pref}>
+          <div>{referenceObj[pref]}</div>
+          <div id="pref-number">{preferenceData[pref]}</div>
+        </div>);
     }
   }
   
   return (
-    <div className="div-holder-no-height">
+    <div className="mdl-grid small">
       {spanArray}
     </div>
   );
