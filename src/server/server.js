@@ -125,7 +125,28 @@ app.post('/updateCafeData', function(req, res) {
 	.catch((err) => console.error(err))
 });
 
-//update so that it deletes!!
+app.post('/addFavorite', function(req, res) {
+	let email = req.body.email;
+	let cafeId = req.body.cafeId;
+	
+	return pgDatabase.User.find({
+		where: {email}
+	})
+	.then((user) => {
+		user.addCafe(cafeId)
+		res.send(cafe);
+	})
+	// 	pg.Database.Cafe.find({
+	// 		where: {cafeId}
+	// 	})
+	// })
+	// .then((cafe) => {
+	// 	user.setCafe(cafe);
+	// 	res.send(cafe);
+	// })
+	.catch((err) => console.error(err))
+});
+
 app.post('/deleteFavorite', function(req, res) {
 	let user_id = req.body.userId;
 	let place_id = req.body.cafeId;
