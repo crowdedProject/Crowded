@@ -39,7 +39,6 @@ class Auth0UserLogin extends Component{
     this.lock.show({
       icon: 'http://icons.iconarchive.com/icons/tatice/cristal-intense/48/Java-icon.png',
     });
-    browserHistory.push('/login');
   }
   
   addUser(profile) {
@@ -113,10 +112,9 @@ class Auth0UserLogin extends Component{
          );
        }
     } else {
+      this.showLock();
       return (
-        <div className="login-box">
-          <a onClick={this.showLock}>Sign In</a>
-        </div>
+        <div></div>
       );
     }
   } 
