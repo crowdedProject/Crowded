@@ -19,12 +19,20 @@ class CafeList extends Component {
 		this.getCoords = this.getCoords.bind(this);
   }
 
+  signInAlert() {
+    console.log('please signIn');
+  }
+
   fetchCafeData(cafeId) {
     this.props.fetchData(cafeId);
   }
 
   addToFavorite(userEmail, cafeId) {
+    if(!cafeId) {
+      this.signInAlert();
+    } else {
     this.props.addFavorite(userEmail, cafeId);
+    }
   }
 
   updateCafeData(cafeId, columnHeader, newValue) {
@@ -32,7 +40,12 @@ class CafeList extends Component {
   }
   
   renderCafe(cafeData) {
+<<<<<<< e46a50cb71d4139f60f1dca8f6d2c28ad1753553
     console.log('rendercafe called');
+=======
+    console.log(this.props);
+    console.log(cafeData[0]);
+>>>>>>> [feat] update add to favorites calls
     let searchPref = this.props.pref;
 
     let referenceObj = {
@@ -58,6 +71,7 @@ class CafeList extends Component {
     let lat = Number(cafeData[0].coordLat);
 
     return (
+      //onclick={this.addToFavorite(this.props.email, event.target.value)} value={cafeData[0].cafeId}
         <AccordionItem title={cafeData[0].name} key={cafeData[0].place_id}>
           <div>
             <div className="expand-holder">
@@ -67,8 +81,14 @@ class CafeList extends Component {
                 referenceObj={referenceObj} />
             </div>
             <button>Check-In & Update Data</button>
+<<<<<<< e46a50cb71d4139f60f1dca8f6d2c28ad1753553
             <button onclick={this.addToFavorite(this.props.email, event.target.value)} value={cafeData[0].cafeId}>Add to favorites</button>
             <button>Add cafe to favorites</button>
+=======
+            <button>Add to favorites</button>
+            <p>rating</p>
+            {rating}
+>>>>>>> [feat] update add to favorites calls
           </div>
           <div className="map-div">
             <GoogleMap lon={lon} lat={lat} title={name}/>
