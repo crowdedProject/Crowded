@@ -2,6 +2,7 @@ import {FETCH_CAFELIST} from '../actions/cafe-api';
 import {FETCH_DATA, UPDATE_DATA} from '../actions/cafe-db';
 import {USER_PREFS} from '../actions/index';
 import {NEIGHBORHOOD_PREFS} from '../actions/index';
+import {FETCH_COORD} from '../actions/index';
 
 var initState = {
   prefList: 

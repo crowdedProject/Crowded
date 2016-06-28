@@ -8,11 +8,15 @@ import {Accordion, AccordionItem} from 'react-sanfona';
 import {CafeField} from '../components/cafe-field';
 import AccordionData from '../components/accordion';
 import GoogleMap from '../components/googleCafeMap';
+import EventListener from 'react-event-listener';
+import {fetchCafeListByGeoloc} from '../actions/cafe-api';
+import {fetchCoordinates} from '../actions/index';
 class CafeList extends Component {
   constructor (props) {
     super(props);
     this.renderCafe = this.renderCafe.bind(this);
-    // this.props.fetchData = this.props.fetchData.bind(this);
+    this.handleRefresh = this.handleRefresh.bind(this);
+		this.getCoords = this.getCoords.bind(this);
   }
 
   fetchCafeData(cafeId) {
@@ -28,6 +32,7 @@ class CafeList extends Component {
   }
   
   renderCafe(cafeData) {
+    console.log('rendercafe called');
     let searchPref = this.props.pref;
 
     let referenceObj = {
@@ -63,8 +68,7 @@ class CafeList extends Component {
             </div>
             <button>Check-In & Update Data</button>
             <button onclick={this.addToFavorite(this.props.email, event.target.value)} value={cafeData[0].cafeId}>Add to favorites</button>
-            <p>rating</p>
-            {rating}
+            <button>Add cafe to favorites</button>
           </div>
           <div className="map-div">
             <GoogleMap lon={lon} lat={lat} title={name}/>
@@ -73,7 +77,30 @@ class CafeList extends Component {
     );
  }
 
+  getCoords() {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(position => {
+        this.props.fetchCoordinates(position);
+      });
+    } else {
+      console.log("Sorry your browser has not yet supporting Geo Location");
+    }
+  }
+
+  componentDidMount() {
+    this.getCoords();
+  }
+
+  handleRefresh() {
+    if(this.props.term === false) {
+      setTimeout(this.handleRefresh, 200);
+		} else {
+      this.props.fetchCafeListByGeoloc(this.props.term);
+    } 
+  };
+
   render() {
+    console.log('re rendered');
     return (
       <div>
         <div className="div-holder">
@@ -89,6 +116,7 @@ class CafeList extends Component {
             {this.props.cafe.cafeList.map(this.renderCafe)}
           </Accordion>
         </div>
+          <EventListener target={window} onload={this.handleRefresh} />
       </div>
     )
   }
@@ -96,6 +124,7 @@ class CafeList extends Component {
 
 function mapStateToProps(state) {
   return ({
+		term: state.pref.term,
     cafe: state.cafe,
     pref: state.pref.pref,
     email: state.login.profile.email
@@ -103,7 +132,11 @@ function mapStateToProps(state) {
 }
 
 function mapDispachToProps(dispatch) {
+<<<<<<< 447dc1ad811996042f4aedcd0dd038943c43a520
   return bindActionCreators({fetchData, updateData, addFavorite}, dispatch);
+=======
+  return bindActionCreators({fetchCafeListByGeoloc, fetchData, updateData, fetchCoordinates}, dispatch);
+>>>>>>> [fix] fix content on browser refresh
 }
 
 export default connect(mapStateToProps, mapDispachToProps)(CafeList);

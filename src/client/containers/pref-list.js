@@ -47,6 +47,7 @@ class PrefList extends Component {
        if(this.props.term === false) {
          setTimeout(this.onPrefSubmit, 200);
        } else {
+         console.log("this is term", this.props.term);
          this.props.fetchCafeListByGeoloc(this.props.term);
          browserHistory.push('/cafes')
        }    

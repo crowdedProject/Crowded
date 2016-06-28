@@ -24,7 +24,7 @@ export function setNeighborhood(neighborhood) {
 };
 
 export function fetchCoordinates(position) {
-  console.log('even fired', position)
+  console.log('event fired', position)
   return {
     type: FETCH_COORD,
     payload: position

@@ -20,9 +20,10 @@ class Auth0UserLogin extends Component{
   componentWillMount() {
     this.lock = new Auth0Lock(this.AUTHO_ID, this.AUTHO_DOMAIN);
     this.setState({idToken: this.getIdToken()});
-  }
+    }
   
   componentDidMount() {
+    console.log('token state be4 did mount', this.state.idToken)
 		this.lock.getProfile(this.state.idToken, function (err, profile) {
 			if (err) {
 				console.log("Error loading the Profile", err);
