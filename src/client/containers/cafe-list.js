@@ -132,11 +132,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispachToProps(dispatch) {
-<<<<<<< 447dc1ad811996042f4aedcd0dd038943c43a520
-  return bindActionCreators({fetchData, updateData, addFavorite}, dispatch);
-=======
   return bindActionCreators({fetchCafeListByGeoloc, fetchData, updateData, fetchCoordinates}, dispatch);
->>>>>>> [fix] fix content on browser refresh
 }
 
 export default connect(mapStateToProps, mapDispachToProps)(CafeList);
