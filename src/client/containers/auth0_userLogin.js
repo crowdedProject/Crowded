@@ -20,10 +20,9 @@ class Auth0UserLogin extends Component{
   componentWillMount() {
     this.lock = new Auth0Lock(this.AUTHO_ID, this.AUTHO_DOMAIN);
     this.setState({idToken: this.getIdToken()});
-    }
+  }
   
   componentDidMount() {
-    console.log('props id token', this.state.idToken);
 		this.lock.getProfile(this.state.idToken, function (err, profile) {
 			if (err) {
 				console.log("Error loading the Profile", err);
@@ -32,6 +31,7 @@ class Auth0UserLogin extends Component{
 			this.setState({profile});
       this.addUser(this.state.profile);
 		}.bind(this));
+    console.log('token state after did mount', this.state.idToken)
   }
   
   showLock() {
@@ -78,10 +78,10 @@ class Auth0UserLogin extends Component{
 					   <h2>Welcome back, {this.state.profile.given_name}!</h2>
 						 <img className="avatar" src={this.state.profile.picture} />
                <div>
-               <a href='/'>Click Here to Continue</a>
+                 <a href='/'>Click Here to Continue</a>
                </div>
                <div>
-               <a href='/favorite'>Go to your favorite list</a>
+                 <a href='/favorite'>Go to your favorite list</a>
                </div>
 						 <div>
 						   <a onClick={this.socialLogOut}>Log in as different user on your favorite social network</a>
@@ -99,7 +99,6 @@ class Auth0UserLogin extends Component{
                <a onClick={this.logOut}>Log Out</a>
 						 </div>
 					 </div>
-        
          );
        }
     } else {
