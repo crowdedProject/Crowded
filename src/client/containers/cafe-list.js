@@ -8,6 +8,7 @@ import {Link, browserHistory} from 'react-router';
 import {Accordion, AccordionItem} from 'react-sanfona';
 import {CafeField} from '../components/cafe-field';
 import AccordionData from '../components/accordion';
+import OrderMenu from '../components/order-menu';
 import GoogleMap from '../components/googleCafeMap';
 import EventListener from 'react-event-listener';
 import {fetchCafeListByGeoloc} from '../actions/cafe-api';
@@ -131,6 +132,9 @@ class CafeList extends Component {
           </div>
           <div className="small-print-button">
             <button type="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" onClick={() => browserHistory.push('/')}>Reset Preferences</button>
+          </div>
+          <div className="button-holder">
+            <OrderMenu />
           </div>
         </div>
         <div className='cafe-list-holder'>
