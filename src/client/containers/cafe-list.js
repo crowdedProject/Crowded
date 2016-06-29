@@ -13,6 +13,7 @@ import GoogleMap from '../components/googleCafeMap';
 import EventListener from 'react-event-listener';
 import {fetchCafeListByGeoloc} from '../actions/cafe-api';
 import {fetchCoordinates} from '../actions/index';
+
 class CafeList extends Component {
   constructor (props) {
     super(props);
@@ -92,6 +93,8 @@ class CafeList extends Component {
               }
             }>Add to favorites</button>
             <button onClick={() => {this.onUpdate(cafeData[0])}}>Check-In & Update Data</button>
+            <button>Check-In & Update Data</button>
+            <button>Add cafe to favorites</button>
           </div>
           <div className="map-div">
             <GoogleMap lon={lon} lat={lat} title={name}/>
@@ -134,7 +137,8 @@ class CafeList extends Component {
             <button type="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" onClick={() => browserHistory.push('/')}>Reset Preferences</button>
           </div>
           <div className="button-holder">
-            <OrderMenu />
+            <OrderMenu 
+              prefObj={this.props.pref}/>
           </div>
         </div>
         <div className='cafe-list-holder'>

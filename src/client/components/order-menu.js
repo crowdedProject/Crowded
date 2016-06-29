@@ -3,12 +3,26 @@ import Dropdown, {DropdownTrigger, DropdownContent} from 'react-simple-dropdown'
 
 class OrderMenu extends Component {
   constructor (props) {
+    console.log('ORDERMENU PROPS: ', props);
     super(props);
+
+
   }
 
   handleLinkClick() {
     this.refs.dropdown.hide();
   }
+  
+  populateMenu(props) {
+    let liArray = [];
+    for (let item in props.prefObj) {
+      if (props.prefObj[item] === true && item !== 'proximity') {
+        liArray.push(<li key={item}>{item}</li>);
+      }
+    }
+    return liArray;
+  }
+
 
   render() {
 
@@ -19,10 +33,7 @@ class OrderMenu extends Component {
         </DropdownTrigger>
         <DropdownContent>
           <ul>
-            <li>Some Action</li>
-            <li>Another Action</li>
-            <li>Disabled Action</li>
-            <li>Yet Another Action</li>
+            {this.populateMenu(this.props)}
           </ul>
         </DropdownContent>
       </Dropdown>
