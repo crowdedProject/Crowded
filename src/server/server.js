@@ -69,7 +69,6 @@ app.post('/cafeDatabase', function(req, res) {
 	}
 	
 	Promise.all(promiseArray).then((array) => {
-		console.log('this is resolve array', array);
 		res.send(array);
 	})
 });
@@ -126,18 +125,22 @@ app.post('/updateCafeData', function(req, res) {
 });
 
 app.post('/addFavorite', function(req, res) {
-	let email = req.body.userEmail;
-	let cafeId = req.body.cafeId;
-	console.log('this is req', req.body);
+	// let email = req.body.userEmail;
+	let email = 'behrens.adam@gmail.com';
+	let place_id = req.body.cafeId;
 	return pgDatabase.pg.transaction(function(t) {
 		return pgDatabase.User.find({
 		where: {email}
 		}, {transaction: t})
 		.then((user) => {
 			console.log('this is a user', user);
-			return user.addCafe({
-				cafeId
-			}, {transaction: t});
+			return pgDatabase.Cafe.find({
+				where: {place_id}
+			}, {transaction: t})
+			.then((cafe) => {
+				console.log('this is a cafe', cafe);
+				return user.setCafe([cafe]);
+			})
 		})
 	})
 	.then((cafe) => {

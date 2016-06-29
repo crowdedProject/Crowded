@@ -33,12 +33,13 @@ class CafeList extends Component {
   }
 
   addToFavorite(cafeId) {
-    let userEmail = this.props.profile.email;
-    if(!userEmail) {
-      this.signInAlert();
-    } else {
+    let userEmail = 'behrens.adam@gmail.com';
+    // let userEmail = this.props.profile.email;
+    // if(!userEmail) {
+    //   this.signInAlert();
+    // } else {
     this.props.addFavorite(userEmail, cafeId);
-    }
+    // }
   }
 
   updateCafeData(cafeId, columnHeader, newValue) {
@@ -51,9 +52,6 @@ class CafeList extends Component {
   }
   
   renderCafe(cafeData) {
-    // console.log('rendercafe called');
-    // console.log(this.props);
-    // console.log(cafeData[0]);
     let searchPref = this.props.pref;
 
     let referenceObj = {
@@ -155,7 +153,11 @@ function mapStateToProps(state) {
 }
 
 function mapDispachToProps(dispatch) {
+<<<<<<< 4f2b46c9af8389524d8e0bb068ca588d2640eea1
   return bindActionCreators({fetchCafeListByGeoloc, fetchData, updateData, fetchCoordinates, pullCafeForForm}, dispatch);
+=======
+  return bindActionCreators({fetchCafeListByGeoloc, fetchData, updateData, fetchCoordinates, addFavorite}, dispatch);
+>>>>>>> [fix] reduce login dependencies
 }
 
 export default connect(mapStateToProps, mapDispachToProps)(CafeList);
