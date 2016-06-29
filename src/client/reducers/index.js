@@ -12,7 +12,8 @@ const rootReducer = combineReducers({
   pref: PrefReducer,
   cafe: CafeReducer,
   favorite: FavoriteReducer,
-  login: LoginReducer
+  login: LoginReducer,
+  form: formReducer
 });
 
 const StoreHolder = createStore(rootReducer, {}, applyMiddleware(logger));

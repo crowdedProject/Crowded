@@ -3,6 +3,7 @@ import {FETCH_DATA, UPDATE_DATA} from '../actions/cafe-db';
 import {USER_PREFS} from '../actions/index';
 import {NEIGHBORHOOD_PREFS} from '../actions/index';
 import {FETCH_COORD} from '../actions/index';
+import {PULL_CAFE} from '../actions/index';
 
 var initState = {
   prefList: 
@@ -32,6 +33,25 @@ var initState = {
     twinPeaks: false
   },
   cafeList: [],
+  cafeUpdated: {
+    address: "4 Embarcadero Center, San Francisco",
+    cafeId: 1,
+    coffee_quality: null,
+    coordLat: "37.7948337",
+    coordLng: "-122.3963465",
+    createdAt: "2016-06-28T23:52:47.866Z",
+    curr_seat: 3,
+    line_length: null,
+    name: "The Coffee Bean & Tea Leaf",
+    neighborhood: null,
+    noise: null,
+    outlet: null,
+    place_id: "ChIJERH3OmGAhYAR3HDZGgxQPEA",
+    price: "1",
+    rating: 4,
+    total_seat: null,
+    updatedAt: "2016-06-28T23:52:47.866Z"
+  }
 };
 
 export default function(state=initState, action) {
@@ -43,9 +63,12 @@ export default function(state=initState, action) {
     case FETCH_DATA:
       console.log('this is payload', action.payload.data)
       return {...state, dbCafeList: action.payload.data};
-    // case UPDATE_DATA:
-    //   action.payload.data)
-    //   return {...state, cafeDbList: action.payload.data};
+    case PULL_CAFE:
+      console.log('state we want', {...state, cafeUpdated: action.payload.data});
+      return {...state, cafeUpdated: action.payload.data};
+  //   case UPDATE_DATA:
+  //     action.payload.data)
+  //     return {...state, cafeDbList: action.payload.data};
   }
   return state;
 }
