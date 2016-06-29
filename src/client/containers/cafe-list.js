@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import _ from 'lodash';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {fetchData, updateData} from '../actions/cafe-db';
+import {fetchData, updateData, addFavorite} from '../actions/cafe-db';
 import {pullCafeForForm} from '../actions/index';
 import {Link, browserHistory} from 'react-router';
 import {Accordion, AccordionItem} from 'react-sanfona';
@@ -153,11 +153,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispachToProps(dispatch) {
-<<<<<<< 4f2b46c9af8389524d8e0bb068ca588d2640eea1
-  return bindActionCreators({fetchCafeListByGeoloc, fetchData, updateData, fetchCoordinates, pullCafeForForm}, dispatch);
-=======
-  return bindActionCreators({fetchCafeListByGeoloc, fetchData, updateData, fetchCoordinates, addFavorite}, dispatch);
->>>>>>> [fix] reduce login dependencies
+  return bindActionCreators({fetchCafeListByGeoloc, fetchData, updateData, fetchCoordinates, pullCafeForForm, addFavorite}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispachToProps)(CafeList);
