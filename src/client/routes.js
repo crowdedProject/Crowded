@@ -14,5 +14,6 @@ export default (
     <Route path="/login" component={Auth0UserLogin} />
     <Route path="/cafes" component={CafeList} />
     <Route path="/favorite" component={FavoriteList} />
+    <Route path="/loggedIn" component={PrefList} />
   </Route>
 );

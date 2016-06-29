@@ -14,7 +14,8 @@ class FavoriteList extends Component {
   }
   componentWillMount() {
     this.setState({favoriteList: this.fetchJoinData(this.props.profile.email)});
-  }
+    console.log(this.props.profile);
+}
 
   fetchJoinData(userEmail) {
     this.props.fetchJoin(userEmail);

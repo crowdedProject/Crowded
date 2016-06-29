@@ -2,6 +2,7 @@ import {FETCH_CAFELIST} from '../actions/index';
 import {USER_PREFS} from '../actions/index';
 import {NEIGBHORHOOD_PREFS} from '../actions/index';
 import {FETCH_COORD} from '../actions/index';
+import {ADD_USER} from '../actions/index';
 
 var initState = {
   pref: {
@@ -17,7 +18,8 @@ var initState = {
     noise: false,
     price: false
   },
-  term: false
+  term: false,
+  profile: {}
 }
 
 
