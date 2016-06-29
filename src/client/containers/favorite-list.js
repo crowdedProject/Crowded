@@ -94,9 +94,9 @@ function mapStateToProps(state) {
   })
 }
 
-function mapDispachToProps(dispatch) {
+function mapDispatchToProps(dispatch) {
   return bindActionCreators({fetchData, updateData, deleteFavorite, addUserData, addFavorite, fetchJoin}, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispachToProps)(FavoriteList);
+export default connect(mapStateToProps, mapDispatchToProps)(FavoriteList);
 

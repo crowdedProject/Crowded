@@ -12,7 +12,6 @@ class PrefList extends Component {
     this.onPrefClick = this.onPrefClick.bind(this);
     this.onPrefSubmit = this.onPrefSubmit.bind(this);
     this.onNeighborhoodChange = this.onNeighborhoodChange.bind(this);
-    this.onLogInSubmit = this.onLogInSubmit.bind(this);
     this.getCoords = this.getCoords.bind(this);
   }
 
@@ -57,20 +56,13 @@ class PrefList extends Component {
     browserHistory.push('/neighborhood')
   }
   
-  onLogInSubmit() {
-    browserHistory.push('/login')
-  }
   //hoverable and waves effect
   render() { 
     let cardClass = 'mdl-cell mdl-cell--4-col unclicked';
     return (
       <div>
         <div className="div-holder">
-          <div className="small-print-button">
-            <button type="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" onClick={this.onLogInSubmit}>My Profile</button>
-          </div>
-          <div className="small-print">Location set closest to you
-          </div>
+          <div className="small-print">Location set closest to you</div>
           <div className="small-print-button">
             <button type="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" onClick={this.onNeighborhoodChange}>Choose Neighborhood</button>
           </div>

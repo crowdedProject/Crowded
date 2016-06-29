@@ -18,8 +18,6 @@ class Auth0UserLogin extends Component{
     this.getIdToken = this.getIdToken.bind(this);
   }
 
-  
-
   componentWillMount() {
     this.lock = new Auth0Lock(this.AUTHO_ID, this.AUTHO_DOMAIN);
     this.setState({idToken: this.getIdToken()});
@@ -115,9 +113,10 @@ class Auth0UserLogin extends Component{
          );
        }
     } else {
-      this.showLock();
       return (
-        <div></div>
+        <div className="login-box">
+          <a onClick={this.showLock}>Sign In</a>
+        </div>
       );
     }
   } 
@@ -131,8 +130,8 @@ function mapStateToProps(state) {
   })
 };
 
-function mapDispachToProps(dispatch) {
+function mapDispatchToProps(dispatch) {
   return bindActionCreators({addUserData}, dispatch);
 };
 
-export default connect(mapStateToProps, mapDispachToProps)(Auth0UserLogin);
+export default connect(mapStateToProps, mapDispatchToProps)(Auth0UserLogin);

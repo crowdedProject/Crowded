@@ -12,29 +12,28 @@ export function fetchData(cafeId) {
   return {
     type: FETCH_DATA,
     payload: request
-  }
-}
+  };
+};
 
-export function updateData(cafeId, field, value) {
-  let updateReq = {
-    cafeId,
-    field,
-    value
-  }
-  const request = axios.post('/updateCafeData', updateReq);
+export function updateData(props) {
+  // let updateReq = {
+  //   cafeId,
+  //   updateFields //this is an object that is props
+  // }
+  const request = axios.post('/updateCafeData', props);
   return {
     type: UPDATE_DATA,
     payload: request
-  }
-}
+  };
+};
 
 export function fetchJoin(id) {
   const request = axios.post('/fetchJoin', {id});
   return {
     type: FETCH_JOIN,
     payload: request
-  }
-}
+  };
+};
 
 export function addFavorite(userEmail, cafeId) {
   let updateReq = {
@@ -45,8 +44,8 @@ export function addFavorite(userEmail, cafeId) {
   return {
     type: ADD_FAVORITE,
     payload: request
-  }
-}
+  };
+};
 
 export function deleteFavorite(userId, cafeId) {
   let deleteReq = {
@@ -57,13 +56,13 @@ export function deleteFavorite(userId, cafeId) {
   return {
     type: DELETE_FAVORITE,
     payload: request
-  }
-}
+  };
+};
 
 export function addUserData(profile) {
   const request = axios.post('/addUser', profile);
   return {
     type: ADD_USER,
     payload: request
-  }
-}
+  };
+};
