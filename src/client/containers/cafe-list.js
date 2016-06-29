@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import _ from 'lodash';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {fetchData, updateData, addFavorite} from '../actions/cafe-db';
+import {fetchData, updateData} from '../actions/cafe-db';
+import {pullCafeForForm} from '../actions/index';
 import {Link, browserHistory} from 'react-router';
 import {Accordion, AccordionItem} from 'react-sanfona';
 import {CafeField} from '../components/cafe-field';
@@ -20,8 +21,7 @@ class CafeList extends Component {
     this.addToFavorite = this.addToFavorite.bind(this);
     this.fetchCafeData = this.fetchCafeData.bind(this);
     this.updateCafeData = this.updateCafeData.bind(this);
-    // this.props.addFavorite = this.props.addFavorite.bind(this);
-    // this.props.fetchData = this.props.fetchData.bind(this);
+    this.onUpdate = this.onUpdate.bind(this);
   }
 
   signInAlert() {
@@ -43,6 +43,11 @@ class CafeList extends Component {
 
   updateCafeData(cafeId, columnHeader, newValue) {
     this.props.updateData(cafeId, columnHeader, newValue);
+  }
+
+  onUpdate(cafeInfo) {
+    pullCafeForForm(cafeInfo);
+    browserHistory.push('/updatepref');
   }
   
   renderCafe(cafeData) {
@@ -74,7 +79,6 @@ class CafeList extends Component {
     let lat = Number(cafeData[0].coordLat);
 
     return (
-      //onclick={this.addToFavorite(this.props.email, event.target.value)} value={cafeData[0].cafeId}
         <AccordionItem title={cafeData[0].name} key={cafeData[0].place_id}>
           <div>
             <div className="expand-holder">
@@ -83,11 +87,11 @@ class CafeList extends Component {
                 searchPref={searchPref}
                 referenceObj={referenceObj} />
             </div>
-            <button>Check-In & Update Data</button>
             <button onClick={() => {
               this.addToFavorite(cafeData[0].place_id)
               }
             }>Add to favorites</button>
+            <button onClick={() => {this.onUpdate(cafeData[0])}}>Check-In & Update Data</button>
           </div>
           <div className="map-div">
             <GoogleMap lon={lon} lat={lat} title={name}/>
@@ -151,8 +155,10 @@ function mapStateToProps(state) {
 }
 
 function mapDispachToProps(dispatch) {
-  return bindActionCreators({fetchCafeListByGeoloc, fetchData, updateData, fetchCoordinates}, dispatch);
+  return bindActionCreators({fetchCafeListByGeoloc, fetchData, updateData, fetchCoordinates, pullCafeForForm}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispachToProps)(CafeList);
+
+
 

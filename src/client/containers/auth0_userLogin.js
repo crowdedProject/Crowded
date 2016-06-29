@@ -3,9 +3,10 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {addUserData} from '../actions/cafe-db';
 import {Link, browserHistory} from 'react-router';
+import jwtDecode from 'jwt-decode';
 
 class Auth0UserLogin extends Component{
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {};
     this.showLock = this.showLock.bind(this);
@@ -16,6 +17,8 @@ class Auth0UserLogin extends Component{
     this.addUser = this.addUser.bind(this);
     this.getIdToken = this.getIdToken.bind(this);
   }
+
+  
 
   componentWillMount() {
     this.lock = new Auth0Lock(this.AUTHO_ID, this.AUTHO_DOMAIN);
@@ -38,6 +41,7 @@ class Auth0UserLogin extends Component{
     this.lock.show({
       icon: 'http://icons.iconarchive.com/icons/tatice/cristal-intense/48/Java-icon.png',
     });
+    browserHistory.push('/login');
   }
   
   addUser(profile) {
@@ -47,6 +51,14 @@ class Auth0UserLogin extends Component{
   getIdToken() {
     var idToken = localStorage.getItem('userToken');
     var authHash = this.lock.parseHash(window.location.hash);
+
+    // if(idToken){
+    //    const payload = jwtDecode(idToken);
+    //    if( payload.exp < Date.now() / 1000 ){ 
+    //       return null;
+    //    }
+    // }
+
     if (!idToken && authHash) {
       if (authHash.id_token) {
         idToken = authHash.id_token
