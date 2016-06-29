@@ -6,7 +6,6 @@ export const UPDATE_DATA = 'UPDATE_DATA';
 export const DELETE_FAVORITE = 'DELETE_FAVORITE';
 export const ADD_FAVORITE = 'ADD_FAVORITE';
 export const ADD_USER = 'ADD_USER';
-export const UPDATE_DATABASE = 'UPDATE_DATABASE';
 
 export function fetchData(cafeId) {
   const request = axios.post('/fetchCafeData', {cafeId});
@@ -16,13 +15,12 @@ export function fetchData(cafeId) {
   };
 };
 
-export function updateData(cafeId, field, value) {
-  let updateReq = {
-    cafeId,
-    field,
-    value
-  }
-  const request = axios.post('/updateCafeData', updateReq);
+export function updateData(props) {
+  // let updateReq = {
+  //   cafeId,
+  //   updateFields //this is an object that is props
+  // }
+  const request = axios.post('/updateCafeData', props);
   return {
     type: UPDATE_DATA,
     payload: request
@@ -65,15 +63,6 @@ export function addUserData(profile) {
   const request = axios.post('/addUser', profile);
   return {
     type: ADD_USER,
-    payload: request
-  };
-};
-
-export function postUpdateToDatabase(props) {
-  //database call here
-
-  return {
-    type: UPDATE_DATABASE,
     payload: request
   };
 };

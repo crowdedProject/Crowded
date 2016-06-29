@@ -100,9 +100,16 @@ app.post('/fetchJoin', function(req, res) {
 
 app.post('/updateCafeData', function(req, res) {
 	let place_id = req.body.cafeId;
-	let field = req.body.field;
-	let value = req.body.value;
-	let foreign_key;
+	let coffee_quality = req.body.coffeeQuality;
+	let ambiance = req.body.ambiance;
+	let rating = req.body.rating;
+	let curr_seat = req.body.seats;
+	let outlet = req.body.outlets;
+	// let field = req.body.bathroomQuality;
+	// let field = req.body.crowded
+	// let field = req.body.noise;
+	// let field = req.body.price;
+	// let foreign_key;
 	
 	return pgDatabase.Cafe.findOne({
 		where: {place_id}

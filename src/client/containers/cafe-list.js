@@ -152,11 +152,11 @@ function mapStateToProps(state) {
   })
 }
 
-function mapDispachToProps(dispatch) {
+function mapDispatchToProps(dispatch) {
   return bindActionCreators({fetchCafeListByGeoloc, fetchData, updateData, fetchCoordinates, pullCafeForForm, addFavorite}, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispachToProps)(CafeList);
+export default connect(mapStateToProps, mapDispatchToProps)(CafeList);
 
 
 
