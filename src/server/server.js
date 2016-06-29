@@ -126,14 +126,21 @@ app.post('/updateCafeData', function(req, res) {
 });
 
 app.post('/addFavorite', function(req, res) {
-	let email = req.body.email;
+	let email = req.body.userEmail;
 	let cafeId = req.body.cafeId;
-	
-	return pgDatabase.User.find({
+	console.log('this is req', req.body);
+	return pgDatabase.pg.transaction(function(t) {
+		return pgDatabase.User.find({
 		where: {email}
+		}, {transaction: t})
+		.then((user) => {
+			console.log('this is a user', user);
+			return user.addCafe({
+				cafeId
+			}, {transaction: t});
+		})
 	})
-	.then((user) => {
-		user.addCafe(cafeId)
+	.then((cafe) => {
 		res.send(cafe);
 	})
 	// 	pg.Database.Cafe.find({
@@ -146,6 +153,23 @@ app.post('/addFavorite', function(req, res) {
 	// })
 	.catch((err) => console.error(err))
 });
+
+// pgDatabase.pg.transaction(function (t) {
+// 			return pgDatabase.Cafe.findOrCreate({
+// 				where: {
+// 					place_id
+// 				},
+// 				defaults: {
+// 					name,
+// 					price,
+// 					rating,
+// 					place_id,
+// 					address,
+// 					coordLat,
+// 					coordLng
+// 				}, 
+// 				transaction: t
+// 			});
 
 app.post('/deleteFavorite', function(req, res) {
 	let user_id = req.body.userId;
