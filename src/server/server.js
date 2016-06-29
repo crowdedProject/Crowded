@@ -135,46 +135,48 @@ app.post('/addFavorite', function(req, res) {
 	// let email = req.body.userEmail;
 	let email = 'ian.c.stinson@gmail.com';
 	let place_id = req.body.cafeId;
-// return pgDatabase.pg.transaction(function(t) {
-// 	return pgDatabase.User.find({ 
-// 		where: {email} 
-// 	}, {transaction: t})
-// })
-// 	.then((user) => {
-// 		console.log('this gets to user', user);
-//   	return pgDatabase.pg.transaction(function(t) {
-// 			return pgDatabase.Cafe.find({
-// 			where: {place_id}
-// 		}, {transaction: t})
-// 		})
-// 		.then((cafe) => {
-// 		console.log('this gets to cafe', cafe);
-//     	user.setCafes([cafe]);
-//   });      
-// });
-	return pgDatabase.pg.transaction(function(t) {
-		return pgDatabase.User.find({
-		where: {email}
-		}, {transaction: t})
-		.then((user) => {
-			let localUser = user;
-			console.log('this is a user', user);
+return pgDatabase.pg.transaction(function(t) {
+	return pgDatabase.User.find({ 
+		where: {email} 
+	}, {transaction: t})
+})
+	.then((user) => {
+		console.log('this gets to user', user);
+  	return pgDatabase.pg.transaction(function(t) {
 			return pgDatabase.Cafe.find({
-				where: {place_id}
-			}, {transaction: t})
-			.then((cafe) => {
-				console.log('this is a cafe', cafe);
-				return localUser.setCafe(
-					[cafe], {transaction: t}
-					);
-			})
+			where: {place_id}
+		}, {transaction: t})
 		})
-	})
-	.then((cafe) => {
-		res.send(cafe);
-	})
-	.catch((err) => console.error(err))
+		.then((cafe) => {
+		console.log('this gets to cafe', cafe);
+    	user.setCafes([cafe]);
+  });      
 });
+})
+// 	return pgDatabase.pg.transaction(function(t) {
+// 		return pgDatabase.User.find({
+// 		where: {email}
+// 		}, {transaction: t})
+// 		.then((user) => {
+// 			let localUser = user;
+// 			console.log('this is a user', localUser);
+// 			return pgDatabase.Cafe.find({
+// 				where: {place_id}
+// 			}, {transaction: t})
+// 			.then((cafe) => {
+// 				// console.log('this is a cafe', cafe);
+// 				// console.log('this is a user', user);
+// 				return localUser.setCafe(
+// 					[cafe], {transaction: t}
+// 					);
+// 			})
+// 		})
+// 	})
+// 	.then((cafe) => {
+// 		res.send(cafe);
+// 	})
+// 	.catch((err) => console.error(err))
+// });
 
 // pgDatabase.pg.transaction(function (t) {
 // 			return pgDatabase.Cafe.findOrCreate({
