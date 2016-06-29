@@ -9,7 +9,6 @@ export const SUBMIT_PREFS = 'SUBMIT_PREFS';
 export const NEIGHBORHOOD_PREFS = 'NEIGBHORHOOD_PREFS';
 export const FETCH_COORD = 'FETCH_COORD';
 export const PULL_CAFE = 'PULL_CAFE';
-export const UPDATE_DATABASE = 'UPDATE_DATABASE';
 
 export function setPreferences(pref) {
   return {
@@ -49,11 +48,4 @@ export function pullCafeForForm(cafeInfo) {
   }
 };
 
-export function postUpdateToDatabase(props) {
-  //database call here
 
-  return {
-    type: UPDATE_DATABASE,
-    payload: request
-  };
-};
