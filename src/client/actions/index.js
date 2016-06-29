@@ -42,7 +42,7 @@ export function submitPrefList(preferences) {
   }
 };
 
-  export function pullCafeForForm(cafeInfo) {  
+export function pullCafeForForm(cafeInfo) {  
   return {
     type: PULL_CAFE,
     payload: cafeInfo

@@ -46,14 +46,14 @@ class CafeList extends Component {
   }
 
   onUpdate(cafeInfo) {
-    pullCafeForForm(cafeInfo);
+    this.props.pullCafeForForm(cafeInfo);
     browserHistory.push('/updatepref');
   }
   
   renderCafe(cafeData) {
-    console.log('rendercafe called');
-    console.log(this.props);
-    console.log(cafeData[0]);
+    // console.log('rendercafe called');
+    // console.log(this.props);
+    // console.log(cafeData[0]);
     let searchPref = this.props.pref;
 
     let referenceObj = {
