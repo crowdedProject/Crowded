@@ -78,18 +78,11 @@ class Auth0UserLogin extends Component{
 					   <h2>Welcome back, {this.state.profile.given_name}!</h2>
 						 <img className="avatar" src={this.state.profile.picture} />
                <div>
-<<<<<<< ed840ae1485f68f1d9468865ea613d15ae4e2f65
-                 <a href='/'>Click Here to Continue</a>
-               </div>
-               <div>
-                 <a href='/favorite'>Go to your favorite list</a>
-=======
                <Link to='/loggedIn'>Click Here to Continue</
                Link>
                </div>
                <div>
                <Link to='/favorite'>Go to your favorite list</Link>
->>>>>>> [feat] update redux and favorites calls
                </div>
 						 <div>
 						   <a onClick={this.socialLogOut}>Log in as different user on your favorite social network</a>
