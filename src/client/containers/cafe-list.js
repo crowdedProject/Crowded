@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import _ from 'lodash';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {fetchData, updateData} from '../actions/cafe-db';
+import {fetchData, updateData, addFavorite} from '../actions/cafe-db';
 import {pullCafeForForm} from '../actions/index';
 import {Link, browserHistory} from 'react-router';
 import {Accordion, AccordionItem} from 'react-sanfona';
@@ -33,12 +33,13 @@ class CafeList extends Component {
   }
 
   addToFavorite(cafeId) {
-    let userEmail = this.props.profile.email;
-    if(!userEmail) {
-      this.signInAlert();
-    } else {
+    let userEmail = 'behrens.adam@gmail.com';
+    // let userEmail = this.props.profile.email;
+    // if(!userEmail) {
+    //   this.signInAlert();
+    // } else {
     this.props.addFavorite(userEmail, cafeId);
-    }
+    // }
   }
 
   updateCafeData(cafeId, columnHeader, newValue) {
@@ -51,9 +52,6 @@ class CafeList extends Component {
   }
   
   renderCafe(cafeData) {
-    // console.log('rendercafe called');
-    // console.log(this.props);
-    // console.log(cafeData[0]);
     let searchPref = this.props.pref;
 
     let referenceObj = {
@@ -155,7 +153,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispachToProps(dispatch) {
-  return bindActionCreators({fetchCafeListByGeoloc, fetchData, updateData, fetchCoordinates, pullCafeForForm}, dispatch);
+  return bindActionCreators({fetchCafeListByGeoloc, fetchData, updateData, fetchCoordinates, pullCafeForForm, addFavorite}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispachToProps)(CafeList);
