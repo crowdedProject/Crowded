@@ -4,21 +4,17 @@ const AccordionData = ({cafeData, searchPref, referenceObj}) => {
     let preferenceData = {
       proximity: null,
       neighborhood: null,
-      coffeeQuality: cafeData[0].coffee_quality,
-      ambiance: null,
-      rating: cafeData[0].rating,
-      seats: cafeData[0].curr_seat,
-      outlets: cafeData[0].outlet,
-      bathroomQuality: null,
-      line: cafeData[0].line_length,
-      noise: cafeData[0].noise,
-      price: cafeData[0].price    
+      coffeeQuality: cafeData[0].coffee_quality || 'N/A',
+      ambiance: null || 'N/A',
+      rating: cafeData[0].rating || 'N/A',
+      seats: cafeData[0].curr_seat || 'N/A',
+      outlets: cafeData[0].outlet || 'N/A',
+      bathroomQuality: null || 'N/A',
+      line: cafeData[0].line_length || 'N/A',
+      noise: cafeData[0].noise || 'N/A',
+      price: cafeData[0].price  || 'N/A'   
     };
     let placeId = cafeData[0].place_id;
-    // let name = cafeData[0].name;
-    // let totalSeats = cafeData[0].total_seat;
-    // let ambiance = null;
-    // let bathroomQuality = null;
 
   let spanArray = [];
   for (let pref in searchPref) {

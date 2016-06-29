@@ -15,8 +15,16 @@ class CafeList extends Component {
   constructor (props) {
     super(props);
     this.renderCafe = this.renderCafe.bind(this);
+<<<<<<< ed840ae1485f68f1d9468865ea613d15ae4e2f65
     this.handleRefresh = this.handleRefresh.bind(this);
 		this.getCoords = this.getCoords.bind(this);
+=======
+    this.addToFavorite = this.addToFavorite.bind(this);
+    this.fetchCafeData = this.fetchCafeData.bind(this);
+    this.updateCafeData = this.updateCafeData.bind(this);
+    // this.props.addFavorite = this.props.addFavorite.bind(this);
+    // this.props.fetchData = this.props.fetchData.bind(this);
+>>>>>>> [feat] update redux and favorites calls
   }
 
   signInAlert() {
@@ -27,8 +35,9 @@ class CafeList extends Component {
     this.props.fetchData(cafeId);
   }
 
-  addToFavorite(userEmail, cafeId) {
-    if(!cafeId) {
+  addToFavorite(cafeId) {
+    let userEmail = this.props.profile.email;
+    if(!userEmail) {
       this.signInAlert();
     } else {
     this.props.addFavorite(userEmail, cafeId);
@@ -81,14 +90,10 @@ class CafeList extends Component {
                 referenceObj={referenceObj} />
             </div>
             <button>Check-In & Update Data</button>
-<<<<<<< e46a50cb71d4139f60f1dca8f6d2c28ad1753553
-            <button onclick={this.addToFavorite(this.props.email, event.target.value)} value={cafeData[0].cafeId}>Add to favorites</button>
-            <button>Add cafe to favorites</button>
-=======
-            <button>Add to favorites</button>
-            <p>rating</p>
-            {rating}
->>>>>>> [feat] update add to favorites calls
+            <button onClick={() => {
+              this.addToFavorite(cafeData[0].place_id)
+              }
+            }>Add to favorites</button>
           </div>
           <div className="map-div">
             <GoogleMap lon={lon} lat={lat} title={name}/>
@@ -147,7 +152,7 @@ function mapStateToProps(state) {
 		term: state.pref.term,
     cafe: state.cafe,
     pref: state.pref.pref,
-    email: state.login.profile.email
+    profile: state.login.profile
   })
 }
 
