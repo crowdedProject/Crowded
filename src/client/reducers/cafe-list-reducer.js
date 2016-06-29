@@ -33,39 +33,40 @@ var initState = {
     twinPeaks: false
   },
   cafeList: [],
-  cafeUpdated: {
-    address: "4 Embarcadero Center, San Francisco",
-    cafeId: 1,
-    coffee_quality: null,
-    coordLat: "37.7948337",
-    coordLng: "-122.3963465",
-    createdAt: "2016-06-28T23:52:47.866Z",
-    curr_seat: 3,
-    line_length: null,
-    name: "The Coffee Bean & Tea Leaf",
-    neighborhood: null,
-    noise: null,
-    outlet: null,
-    place_id: "ChIJERH3OmGAhYAR3HDZGgxQPEA",
-    price: "1",
-    rating: 4,
-    total_seat: null,
-    updatedAt: "2016-06-28T23:52:47.866Z"
-  }
+  // cafeUpdated: {
+  //   address: "4 Embarcadero Center, San Francisco",
+  //   cafeId: 1,
+  //   coffee_quality: null,
+  //   coordLat: "37.7948337",
+  //   coordLng: "-122.3963465",
+  //   createdAt: "2016-06-28T23:52:47.866Z",
+  //   curr_seat: 3,
+  //   line_length: null,
+  //   name: "The Coffee Bean & Tea Leaf",
+  //   neighborhood: null,
+  //   noise: null,
+  //   outlet: null,
+  //   place_id: "ChIJERH3OmGAhYAR3HDZGgxQPEA",
+  //   price: "1",
+  //   rating: 4,
+  //   total_seat: null,
+  //   updatedAt: "2016-06-28T23:52:47.866Z"
+  // }
+  cafeUpdated: {}
 };
 
 export default function(state=initState, action) {
   switch (action.type) {
     case FETCH_CAFELIST:
-      console.log(action.payload);
+      console.log('this is CAFELIST', action.payload);
       return {...state, cafeList: action.payload.data};
       // return [action.payload.data, ...state];
     case FETCH_DATA:
-      console.log('this is payload', action.payload.data)
+      console.log('this is DATA', action.payload.data)
       return {...state, dbCafeList: action.payload.data};
     case PULL_CAFE:
-      console.log('state we want', {...state, cafeUpdated: action.payload.data});
-      return {...state, cafeUpdated: action.payload.data};
+      console.log('this is PULL', action.payload);
+      return {...state, cafeUpdated: action.payload};
   //   case UPDATE_DATA:
   //     action.payload.data)
   //     return {...state, cafeDbList: action.payload.data};
