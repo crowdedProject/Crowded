@@ -78,10 +78,11 @@ class Auth0UserLogin extends Component{
 					   <h2>Welcome back, {this.state.profile.given_name}!</h2>
 						 <img className="avatar" src={this.state.profile.picture} />
                <div>
-                 <a href='/'>Click Here to Continue</a>
+               <Link to='/loggedIn'>Click Here to Continue</
+               Link>
                </div>
                <div>
-                 <a href='/favorite'>Go to your favorite list</a>
+               <Link to='/favorite'>Go to your favorite list</Link>
                </div>
 						 <div>
 						   <a onClick={this.socialLogOut}>Log in as different user on your favorite social network</a>
