@@ -79,7 +79,6 @@ class CafeList extends Component {
     let lat = Number(cafeData[0].coordLat);
 
     return (
-      //onclick={this.addToFavorite(this.props.email, event.target.value)} value={cafeData[0].cafeId}
         <AccordionItem title={cafeData[0].name} key={cafeData[0].place_id}>
           <div>
             <div className="expand-holder">
