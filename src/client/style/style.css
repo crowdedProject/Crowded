@@ -3,6 +3,11 @@
   width: 650px;
   height: 650px;
 }
+.mdl-grid.small {
+  margin: auto;
+  width: 650px;
+  height: 90px;
+}
 .mdl-cell.mdl-cell--4-col.unclicked {
   width: 200px;
   height: 200px;
@@ -10,6 +15,7 @@
   padding: 85px 0;
   color: white;
   text-transform: uppercase;
+  box-shadow: 2px 2px 2px #888888;
   font-size: 20pt;
   background: #3E4EB8;
 }
@@ -20,8 +26,19 @@
   padding: 85px 0;
   color: white;
   text-transform: uppercase;
+  box-shadow: 2px 2px 2px #888888;
   font-size: 20pt;
   background: #737fd0;
+}
+.mdl-cell.mdl-cell--1-col.unclicked {
+  width: 65px;
+  height: 65px;
+  text-align: center;
+  padding: 5px 0;
+  color: white;
+  text-transform: lowercase;
+  box-shadow: 2px 2px 2px #888888;
+  background: #3E4EB8;
 }
 .small-print {
   text-align: right;
@@ -38,18 +55,32 @@
   height: 30px;
   
 }
-.mdl-button--raised.main {
+/*.mdl-button--raised.main {
   text-transform: uppercase;
   font-size: 16pt;
   padding: auto;
   width: 200px;
   height: 32px;
   background: #AED073;
-}
+}*/
+
+/*.mdl-button {
+
+}*/
 .div-holder {
   margin: auto;
   width: 650px;
-  height: 90px;
+  height: 120px;
+}
+.div-holder-span {
+  margin: auto;
+  width: 650px;
+  height: 400px;
+}
+.main-holder {
+  margin: auto;
+  width: 650px;
+  height: 650px;
 }
 .demo-card-event.mdl-card {
   width: 256px;
@@ -64,80 +95,127 @@
 .cafe-list-holder {
   margin: auto;
   width: 650px;
-  }
-div-holder-two {
+}
+
+.div-holder-two {
   margin: auto;
   text-align: center;
   width: 650px;
   height: 100px;  
 }
+.div-holder-no-height {
+  margin: auto;
+  width: 650px;
+}
 .mdl-data-table {
   margin: auto;
+}
+.expand-holder {
+  text-align: right;
+}
+.pref-span {
+  height: 70px;
+  width: 70px;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 10pt;
+  padding-right: 5px;
+  padding-top: 5px;
+  background: #737fd0;
+}
+#pref-number {
+  font-size: 20pt;
+  color: white;
+  text-align: center;
+  padding: 3px;
 }
 .cafe-header {
   margin: auto;
   text-transform: uppercase;
   color: #3E4EB8;
   text-align: center;
-  font-size: 16pt;
+}
+.button-holder {
+  padding-bottom: 5px;
+  text-align: right;
+}
+#buttonImage {
+  height: 20px;
+  width: 20px
 }
 
+/*$primary-color: #03a9f4;
+$gray: #ccc;
 
-.mdl-cell > .dl-cell--4-col__actions {
-  background: #737fd0;
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
 }
-.mdl-cell-event > .dl-cell--4-col__title {
-  align-items: flex-start;
-}
-.mdl-cell-event > .dl-cell--4-col__title > h4 {
-  margin-top: 0;
-}
-.mdl-cell-event > .mdl-cell--4-col__actions {
-  display: flex;
-  box-sizing:border-box;
-  align-items: center;
-}
-.mdl-cell-event > .dl-cell--4-col__actions > .material-icons {
-  padding-right: 10px;
-}
-.mdl-cell-event > .dl-cell--4-col__title,
-.mdl-cell-event > .dl-cell--4-col__actions,
-.mdl-cell-event > .dl-cell--4-col__actions > .mdl-button {
-  color: #fff;
+*/
+
+.map-div {
+  width: 300px;
+  height: 300px;
 }
 
 .react-sanfona {
-  &-title {
-    background-color: #fafafa;
-    border-top: 1px solid $gray;
-    color: #333;
-    padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 30px;
+}
+
+.react-sanfona-item-title {
+    background-color: #03a9f4;
+    border-bottom: 1px solid #ccc;
+    color: white;
+    padding: 5px;
     text-transform: uppercase;
+    box-shadow: 2px 2px 2px #888888;
     transition: background-color .3s;
-  }
+    font-size: 20pt;
+}
+.react-sanfona-item:first-child-title {
+  border-top: none;
+}
 
-  &:first-child &-title {
-    border-top: none;
-  }
+.react-sanfona-item-expanded-title {
+  background-color: #03a9f4;
+  color: #fff;
+}
 
-  &-expanded &-title {
-    background-color: $primary-color;
-    color: #fff;
-  }
+.react-sanfona-item-body-wrapper {
+  color: #666;
+  padding: 20px;
+  position: relative;
+}
+.react-sanfona-item-body-wrapper:hover .tooltip {
+  opacity: 1;
+}
 
-  &-body-wrapper {
-    color: #666;
-    padding: 20px;
-    position: relative;
+.react-sanfona-item-body-wrapper-img {
+  display: block;
+  max-width: 100%;
+}
+.tooltip {
+  background-color: #000;
+  bottom: -10px;
+  border-radius: 3px;
+  color: #fff;
+  left: 10px;
+  opacity: 0;
+  padding: 10px;
+  position: absolute;
+  transition: opacity .3s;
+}
 
-    &:hover .tooltip {
-      opacity: 1;
-    }
-  }
+/* style for user profile page*/
+.avatar {
+  width: 75px;
+  height: 75px;
+}
 
-  img {
-    display: block;
-    max-width: 100%;
-  }
-
+/* style for header Component */
+.headerBtn {
+  float: left;
 }

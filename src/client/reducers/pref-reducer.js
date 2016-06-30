@@ -2,6 +2,7 @@ import {FETCH_CAFELIST} from '../actions/index';
 import {USER_PREFS} from '../actions/index';
 import {NEIGBHORHOOD_PREFS} from '../actions/index';
 import {FETCH_COORD} from '../actions/index';
+import {ADD_USER} from '../actions/index';
 
 var initState = {
   pref: {
@@ -17,7 +18,8 @@ var initState = {
     noise: false,
     price: false
   },
-  term: false
+  term: false,
+  profile: {}
 }
 
 
@@ -110,21 +112,3 @@ export default function(state=initState, action) {
   }
   return state;
 }
-
-  // debugger;
-  //update yelp state status to whatever comes back from the yelp action
-  
-  //alternative way to write the swtich statements:
-//   var type = {};
-//   type[USER_PREFS]= {"neighborhood":function(){
-      
-//   }
-// }
-//   type[Y]= function(){
-//     //...
-//   }
-  
-//   var outer = type[action.type];
-//   var inner = outer ? outer[action.payload] : null;
-//   inner()
-

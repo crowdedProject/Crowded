@@ -26,7 +26,7 @@ module.exports = (db, DataTypes) => {
       allowNull: true
     },
     coffee_quality: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: true
     },
     line_length: {
@@ -41,12 +41,20 @@ module.exports = (db, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true
     },
+    coordLat: {
+      type: DataTypes.DECIMAL,
+      allowNull: true
+    },
+    coordLng: {
+      type: DataTypes.DECIMAL,
+      allowNull: true
+    },
     neighborhood: {
       type: DataTypes.STRING,
       allowNull: true
     },
     price: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: true
     },
     rating: {
@@ -55,6 +63,14 @@ module.exports = (db, DataTypes) => {
     },
     place_id: {
       type: DataTypes.STRING,
+      allowNull: true
+    },
+    ambiance: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
+    bathroomQuality: {
+      type: DataTypes.INTEGER,
       allowNull: true
     },
     foreign_key: {

@@ -1,26 +1,23 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {addUserData} from '../actions/cafe-db';
 import {Link, browserHistory} from 'react-router';
+import jwtDecode from 'jwt-decode';
 
 class Auth0UserLogin extends Component{
-  constructor(props){
+  constructor(props) {
     super(props);
-    // this.state = {};
-    // this.logOut = this.logOut.bind(this);
-    // this.logState = this.logState.bind(this);
+    this.state = {};
     this.showLock = this.showLock.bind(this);
     this.AUTHO_ID = 'tLn1lajyn8kZGO75cXM3vuRQlyRzrMbo';
     this.AUTHO_DOMAIN = 'crowded.auth0.com';
 		this.socialLogOut = this.socialLogOut.bind(this);
 		this.selfLogOut = this.selfLogOut.bind(this);
+    this.addUser = this.addUser.bind(this);
+    this.getIdToken = this.getIdToken.bind(this);
   }
-  
-  // getInitialState() {
-  //   return {
-  //     profile: null
-  //   }
-  // }
- 
+
   componentWillMount() {
     this.lock = new Auth0Lock(this.AUTHO_ID, this.AUTHO_DOMAIN);
     this.setState({idToken: this.getIdToken()});
@@ -32,20 +29,33 @@ class Auth0UserLogin extends Component{
 				console.log("Error loading the Profile", err);
 				return;
 			}
-			this.setState({profile: profile});
+			this.setState({profile});
+      this.addUser(this.state.profile);
 		}.bind(this));
+    console.log('token state after did mount', this.state.idToken)
   }
   
   showLock() {
     this.lock.show({
-      icon: 'http://icons.iconarchive.com/icons/tatice/cristal-intense/48/Java-icon.png'
+      icon: 'http://icons.iconarchive.com/icons/tatice/cristal-intense/48/Java-icon.png',
     });
-    browserHistory.push('/login');
   }
   
+  addUser(profile) {
+    this.props.addUserData(profile);
+  }
+
   getIdToken() {
     var idToken = localStorage.getItem('userToken');
     var authHash = this.lock.parseHash(window.location.hash);
+
+    // if(idToken){
+    //    const payload = jwtDecode(idToken);
+    //    if( payload.exp < Date.now() / 1000 ){ 
+    //       return null;
+    //    }
+    // }
+
     if (!idToken && authHash) {
       if (authHash.id_token) {
         idToken = authHash.id_token
@@ -58,7 +68,6 @@ class Auth0UserLogin extends Component{
     }
     return idToken;
   }
-
 
   socialLogOut() {
     localStorage.removeItem('userToken');
@@ -75,14 +84,14 @@ class Auth0UserLogin extends Component{
        if (this.state.profile) {
          return (
 					 <div>
-					   <h2>Welcome Back,</h2>
-						 <h2>{this.state.profile.nickname}</h2>
+					   <h2>Welcome back, {this.state.profile.given_name}!</h2>
 						 <img className="avatar" src={this.state.profile.picture} />
                <div>
-               <a href='/'>Click Here to Continue</a>
+               <Link to='/loggedIn'>Click Here to Continue</
+               Link>
                </div>
                <div>
-               <a href='/favorite'>Go to your favorite list</a>
+               <Link to='/favorite'>Go to your favorite list</Link>
                </div>
 						 <div>
 						   <a onClick={this.socialLogOut}>Log in as different user on your favorite social network</a>
@@ -100,21 +109,27 @@ class Auth0UserLogin extends Component{
                <a onClick={this.logOut}>Log Out</a>
 						 </div>
 					 </div>
-        
          );
        }
     } else {
+      this.showLock();
       return (
-        <div className="login-box">
-          <a onClick={this.showLock}>Sign In</a>
-        </div>
+        <div></div>
       );
     }
   } 
 };
 
-function mapStateToProps({login}) {
-  return {login};
-}
+function mapStateToProps(state) {
+  return ({
+    login: state.login,
+    idToken: state.login.idToken,
+    profile: state.login.profile
+  })
+};
 
-export default connect(mapStateToProps)(Auth0UserLogin);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({addUserData}, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Auth0UserLogin);

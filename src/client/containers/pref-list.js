@@ -12,7 +12,6 @@ class PrefList extends Component {
     this.onPrefClick = this.onPrefClick.bind(this);
     this.onPrefSubmit = this.onPrefSubmit.bind(this);
     this.onNeighborhoodChange = this.onNeighborhoodChange.bind(this);
-    this.onLogInSubmit = this.onLogInSubmit.bind(this);
     this.getCoords = this.getCoords.bind(this);
   }
 
@@ -47,6 +46,7 @@ class PrefList extends Component {
        if(this.props.term === false) {
          setTimeout(this.onPrefSubmit, 200);
        } else {
+         console.log("this is term", this.props.term);
          this.props.fetchCafeListByGeoloc(this.props.term);
          browserHistory.push('/cafes')
        }    
@@ -56,24 +56,18 @@ class PrefList extends Component {
     browserHistory.push('/neighborhood')
   }
   
-  onLogInSubmit() {
-    browserHistory.push('/login')
-  }
   //hoverable and waves effect
   render() { 
     let cardClass = 'mdl-cell mdl-cell--4-col unclicked';
     return (
       <div>
         <div className="div-holder">
-          <div className="small-print">Location set to nearest to you</div>
-            <div className="small-print-button">
-              <button type="submit" className="mdl-button--raised small-print" onClick={this.onNeighborhoodChange}>Choose Neigbhorhood</button>
-            </div>
-            <div className="small-print-button">
-              <button type="submit" className="mdl-button--raised small-print" onClick={this.onLogInSubmit}>Log In</button>
-            </div>
+          <div className="small-print">Location set closest to you</div>
+          <div className="small-print-button">
+            <button type="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" onClick={this.onNeighborhoodChange}>Choose Neighborhood</button>
+          </div>
           <div className="search-button">
-            <button type="submit" className="mdl-button--raised main" onClick={this.onPrefSubmit}>Find Cafes</button>
+            <button type="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onClick={this.onPrefSubmit}>Find Cafes</button>
           </div>
         </div>
         <div className="mdl-grid">
