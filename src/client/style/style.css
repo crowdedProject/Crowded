@@ -1,3 +1,7 @@
+/*body {
+    background-image: url("http://www.artleo.com/images/201202/artleo.com_17821.jpg") !important;
+    background-size: 100%;
+}*/
 .mdl-grid {
   margin: auto;
   width: 650px;
@@ -47,6 +51,7 @@
 .small-print-button {
     text-align: right;
     font-style: normal;
+    padding-bottom: 5px;
 }
 .search-button {
   margin: auto;
@@ -71,6 +76,11 @@
   margin: auto;
   width: 650px;
   height: 120px;
+}
+.div-holder-medium {
+  margin: auto;
+  width: 650px;
+  height: 70px;
 }
 .div-holder-span {
   margin: auto;
@@ -102,6 +112,18 @@
   text-align: center;
   width: 650px;
   height: 100px;  
+}
+.div-holder-three {
+  margin: auto;
+  text-align: center;
+  width: 650px;
+  height: 180px;  
+}
+.header-component {
+  margin: auto;
+  text-align: center;
+  width: 650px;
+  height: 70px;  
 }
 .div-holder-no-height {
   margin: auto;
@@ -138,6 +160,10 @@
 .button-holder {
   padding-bottom: 5px;
   text-align: right;
+}
+.button-holder {
+  padding-bottom: 5px;
+  text-align: left;
 }
 #buttonImage {
   height: 20px;

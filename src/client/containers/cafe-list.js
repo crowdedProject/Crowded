@@ -126,10 +126,10 @@ class CafeList extends Component {
     return (
       <div>
         <div className="div-holder">
-          <div className="button-holder">
+          <div className="small-print-button">
             <button type="submit " className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" id="button-image" src="src/client/assets/mdl-icons/undo.svg" onClick={() => browserHistory.push('/favorite')}>Favorites</button>
           </div>
-          <div className="button-holder">
+          <div className="small-print-button">
             <button type="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" onClick={() => browserHistory.push('/')}>Reset Preferences</button>
           </div>
         </div>

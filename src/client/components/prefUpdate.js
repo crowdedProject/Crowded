@@ -10,6 +10,7 @@ class PrefUpdate extends Component {
   const {fields: {cafeId, coffeeQuality, ambiance, rating, seats, outlets, bathroomQuality, crowded, noise, price},  handleSubmit} = this.props;
   console.log('cafe Id!!', this.props.cafeId);
     return (
+      <div className="div-holder">
       <form onSubmit={handleSubmit(this.props.updateData)}>
         <h1>{this.props.cafeId.name}</h1>
           <div className="form-group">
@@ -64,6 +65,7 @@ class PrefUpdate extends Component {
 
         <button type="submit" className="btn btn-primary">Update</button>
       </form>
+      </div>
       
     );
   }

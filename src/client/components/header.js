@@ -18,13 +18,16 @@ export default class Header extends Component {
 
   render() {
     return(
-      <div className="headerComponent">
-        <div>
-          <button type="submit" className="headerBtn" onClick={this.onLogInSubmit}>My Profile</button>
+      <div className="div-holder-big">
+      <div className="header-component">
+        <h1>CrowdedCafe </h1>
+        <div className="button-holder">
+          <button type="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" onClick={this.onLogInSubmit}>My Profile</button>
         </div>
-        <div>
-          <button type="submit" className="headerBtn" onClick={this.onAboutSubmit}>About</button>
+        <div className="button-holder">
+          <button type="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" onClick={this.onAboutSubmit}>About</button>
         </div>
+      </div>
       </div>
     );
   }
