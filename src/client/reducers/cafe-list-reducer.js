@@ -33,25 +33,6 @@ var initState = {
     twinPeaks: false
   },
   cafeList: [],
-  // cafeUpdated: {
-  //   address: "4 Embarcadero Center, San Francisco",
-  //   cafeId: 1,
-  //   coffee_quality: null,
-  //   coordLat: "37.7948337",
-  //   coordLng: "-122.3963465",
-  //   createdAt: "2016-06-28T23:52:47.866Z",
-  //   curr_seat: 3,
-  //   line_length: null,
-  //   name: "The Coffee Bean & Tea Leaf",
-  //   neighborhood: null,
-  //   noise: null,
-  //   outlet: null,
-  //   place_id: "ChIJERH3OmGAhYAR3HDZGgxQPEA",
-  //   price: "1",
-  //   rating: 4,
-  //   total_seat: null,
-  //   updatedAt: "2016-06-28T23:52:47.866Z"
-  // }
   cafeUpdated: {}
 };
 
