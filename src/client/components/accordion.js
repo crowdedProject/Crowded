@@ -24,8 +24,6 @@ const AccordionData = ({cafeData, searchPref, referenceObj}) => {
           <div>{referenceObj[pref]}</div>
           <div id="pref-number">{preferenceData[pref]}</div>
         </div>);
-      console.log('referenceObj[pref]: ', referenceObj[pref] );
-      console.log('preferenceData[pref]: ', preferenceData[pref]);
     }
   }
   

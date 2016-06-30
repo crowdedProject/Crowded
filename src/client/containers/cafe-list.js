@@ -160,14 +160,14 @@ class CafeList extends Component {
         <div className='cafe-list-holder'>
           <Accordion>
             {this.props.cafe.cafeList.sort((a, b) => {
-              let order = this.props.orderCafeList || 'rating';
+              let order = this.props.order.orderedBy;
               return this.preferenceData(b)[order] - this.preferenceData(a)[order];
             }).map(this.renderCafe)}
           </Accordion>
         </div>
           <EventListener target={window} onload={this.handleRefresh} />
       </div>
-    )
+    );
   }
 }
 
@@ -176,7 +176,9 @@ function mapStateToProps(state) {
 		term: state.pref.term,
     cafe: state.cafe,
     pref: state.pref.pref,
-    profile: state.login.profile
+    profile: state.login.profile,
+    email: state.login.profile.email,
+    order: state.order
   })
 }
 
@@ -185,6 +187,9 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CafeList);
+  return bindActionCreators({fetchCafeListByGeoloc, fetchData, updateData, fetchCoordinates}, dispatch);
+}
 
+export default connect(mapStateToProps, mapDispatchToProps)(CafeList);
 
 

@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import Dropdown, {DropdownTrigger, DropdownContent} from 'react-simple-dropdown';
+import {orderCafeList} from '../actions/index';
 
 class OrderMenu extends Component {
   constructor (props) {
-    console.log('ORDERMENU PROPS: ', props);
     super(props);
 
   }
@@ -18,7 +20,8 @@ class OrderMenu extends Component {
       if (props.prefObj[item] === true && item !== 'proximity') {
         selectionArr.push(
           <div key={item}>
-            <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+            <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
+             onClick={()=>{this.props.orderCafeList(item)}}>
             {item}
             </button>
           </div>
@@ -46,4 +49,11 @@ class OrderMenu extends Component {
   }
 };
 
-export default OrderMenu;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({orderCafeList}, dispatch);
+}
+export default connect(null, mapDispatchToProps)(OrderMenu);
+
+
+
+
