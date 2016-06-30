@@ -3,7 +3,6 @@
 const axios = require('axios');
 const app = require('./config/server-config.js');
 const path = require('path');
-// const Yelp = require('../client/yelpApiCall/yelpSearch');
 const pgDatabase = require('./psql.js');
 
 let port = process.env.PORT || 8080;
@@ -110,6 +109,29 @@ app.post('/updateCafeData', function(req, res) {
 	let noise = req.body.noise;
 	let price = req.body.price;
 	let foreign_key;
+	// pgDatabase.Cafe.update(
+  // {
+  //     place_id,
+	// 		coffee_quality,
+	// 		ambiance,
+	// 		rating,
+	// 		curr_seat,
+	// 		outlet,
+	// 		bathroomQuality,
+	// 		line_length,
+	// 		noise,
+	// 		price
+  // },
+  // {
+  //   where: { place_id }
+  // })
+  // .success( () => { 
+	// 	return console.log('success');
+  // })
+  // .error((err) => {
+	// 	return console.error(err);
+  // });
+
 	
 	return pgDatabase.Cafe.findOne({
 		where: {place_id}
