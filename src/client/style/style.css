@@ -258,3 +258,18 @@ $gray: #ccc;
 .dropdown--active .dropdown__content {
     display: block;
 }
+
+/*style for about page*/
+.mdl-card__media {
+  background-color: #FBEDB8;
+  overflow: hidden;  
+}
+
+.teamHeader {
+  text-align: center;
+}
+
+#card_subhead {
+  text-align: center;
+  font-weight: bold;
+}
