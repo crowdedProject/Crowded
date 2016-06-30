@@ -7,18 +7,6 @@ const pgDatabase = require('./psql.js');
 
 let port = process.env.PORT || 8080;
 
-app.post('/signup', function(req, res) {
-	//placeholder
-});
-
-app.post('/login', function(req, res) {
-	//placeholder
-});
-
-app.post('/cafeResult/seat', function(req, res) {
-	//placeholder
-});
-
 app.post('/cafeResult', function(req, res) {
   const API_KEY = 'AIzaSyDkRyt36Yj2FYAiJklN810C_UWN8GF6gD0';
   const ROOT_URL = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?radius=2000&type=cafe&key=${API_KEY}
@@ -84,21 +72,25 @@ app.post('/fetchCafeData', function(req, res) {
 
 app.post('/fetchJoin', function(req, res) {
 	let email = req.body.email
-	// console.log('this is req.body', req.body);
+	let userId = req.body.u
 	return pgDatabase.User.findOne({
 		where: {email}
 	})
 	.then((rowData) => {
-		let user_id = rowData.user_id;
-		pgDatabase.UserCafe.findAll({
-			where: {user_id}
-		});
-	}).then((joinData) => res.send(joinData))
+		console.log('this is a user', rowData)
+		let userId = rowData.userId;
+		return pgDatabase.UserCafe.findAll({ where: {userId}, include: [pgDatabase.Cafe]});
+		// return pgDatabase.Cafe.findAll({ where: {userId}, include: [pgDatabase.User]});
+	})
+	.then((joinData) => {
+		console.log('this is the join data', joinData);
+		res.send(joinData);
+	})
 	.catch((err) => console.error(err))
 });
 
 app.post('/updateCafeData', function(req, res) {
-	let place_id = req.body.cafeId;
+	let cafeId = req.body.cafeId;
 	let coffee_quality = req.body.coffeeQuality;
 	let ambiance = req.body.ambiance;
 	let rating = req.body.rating;
@@ -108,40 +100,7 @@ app.post('/updateCafeData', function(req, res) {
 	let line_length = req.body.crowded
 	let noise = req.body.noise;
 	let price = req.body.price;
-	let foreign_key;
-	// pgDatabase.Cafe.update(
-  // {
-  //     place_id,
-	// 		coffee_quality,
-	// 		ambiance,
-	// 		rating,
-	// 		curr_seat,
-	// 		outlet,
-	// 		bathroomQuality,
-	// 		line_length,
-	// 		noise,
-	// 		price
-  // },
-  // {
-  //   where: { place_id }
-  // })
-  // .success( () => { 
-	// 	return console.log('success');
-  // })
-  // .error((err) => {
-	// 	return console.error(err);
-  // });
-
-	
-	return pgDatabase.Cafe.findOne({
-		where: {place_id}
-	})
-	.then((cafe) => {
-		foreign_key = cafe[foreign_key];
-		cafe.update({
-			field: value
-		}).then( () => { return pgDatabase.Update.create({ 
-			place_id,
+	pgDatabase.Cafe.update({
 			coffee_quality,
 			ambiance,
 			rating,
@@ -150,14 +109,15 @@ app.post('/updateCafeData', function(req, res) {
 			bathroomQuality,
 			line_length,
 			noise,
-			price,
-			foreign_key
-			})
-		.catch((err) => console.error(err))
-		})
-	})
-	.then(() => res.send(console.log("Database entry successfully updated!")))
-	.catch((err) => console.error(err))
+			price
+  },
+  {where: {cafeId}})
+  .then(() => { 
+		return console.log('cafe updated successfully');
+  })
+  .error((err) => {
+		return console.error(err);
+  });
 });
 
 app.post('/addFavorite', function(req, res) {
@@ -174,35 +134,17 @@ app.post('/addFavorite', function(req, res) {
 				where: {place_id}
 			}, {transaction: t})
 			.then((cafe) => {
-				console.log('this is a cafe', cafe);
-				console.log('this is a user', user);
+				// console.log('this is a cafe', cafe);
+				// console.log('this is a user', user);
 				return user.addCafe(cafe)
 			})
 		})
 	})
 	.then((cafe) => {
-		console.log('this is a res', place_id)
 		res.send(place_id);
 	})
 	.catch((err) => console.error(err))
 });
-
-// pgDatabase.pg.transaction(function (t) {
-// 			return pgDatabase.Cafe.findOrCreate({
-// 				where: {
-// 					place_id
-// 				},
-// 				defaults: {
-// 					name,
-// 					price,
-// 					rating,
-// 					place_id,
-// 					address,
-// 					coordLat,
-// 					coordLng
-// 				}, 
-// 				transaction: t
-// 			});
 
 app.post('/deleteFavorite', function(req, res) {
 	let user_id = req.body.userId;

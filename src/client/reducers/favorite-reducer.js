@@ -24,6 +24,7 @@ export default function(state=initState, action) {
     case DELETE_FAVORITE:
       return {...state, favoriteList: action.payload.data};
     case FETCH_JOIN:
+      console.log('this is fetch join payload', action.payload.data);
       return {...state, favoriteList: action.payload.data};
     case UPDATE_DATA:
       return {...state, favoriteList: action.payload.data};
