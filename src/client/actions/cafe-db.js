@@ -16,6 +16,7 @@ export function fetchData(cafeId) {
 };
 
 export function updateData(props) {
+  console.log("this is props", props);
   // let updateReq = {
   //   cafeId,
   //   updateFields //this is an object that is props
