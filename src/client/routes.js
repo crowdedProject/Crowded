@@ -7,6 +7,7 @@ import NeighborhoodList from './containers/neighborhood-list';
 import Auth0UserLogin from './containers/auth0_userLogin';
 import FavoriteList from './containers/favorite-list';
 import PrefUpdate from './components/prefUpdate';
+import About from './components/about';
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={PrefList} />
@@ -16,5 +17,6 @@ export default (
     <Route path="/favorite" component={FavoriteList} />
     <Route path="/loggedIn" component={PrefList} />
     <Route path="/updatepref" component={PrefUpdate} />
+    <Route path="/about" component={About} />
   </Route>
 );

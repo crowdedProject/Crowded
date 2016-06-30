@@ -105,11 +105,11 @@ app.post('/updateCafeData', function(req, res) {
 	let rating = req.body.rating;
 	let curr_seat = req.body.seats;
 	let outlet = req.body.outlets;
-	// let field = req.body.bathroomQuality;
-	// let field = req.body.crowded
-	// let field = req.body.noise;
-	// let field = req.body.price;
-	// let foreign_key;
+	let bathroomQuality = req.body.bathroomQuality;
+	let line_length = req.body.crowded
+	let noise = req.body.noise;
+	let price = req.body.price;
+	let foreign_key;
 	
 	return pgDatabase.Cafe.findOne({
 		where: {place_id}
@@ -120,8 +120,15 @@ app.post('/updateCafeData', function(req, res) {
 			field: value
 		}).then( () => { return pgDatabase.Update.create({ 
 			place_id,
-			update_field: field,
-			update_value: value,
+			coffee_quality,
+			ambiance,
+			rating,
+			curr_seat,
+			outlet,
+			bathroomQuality,
+			line_length,
+			noise,
+			price,
 			foreign_key
 			})
 		.catch((err) => console.error(err))
