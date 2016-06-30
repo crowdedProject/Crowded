@@ -72,15 +72,14 @@ app.post('/fetchCafeData', function(req, res) {
 
 app.post('/fetchJoin', function(req, res) {
 	let email = req.body.email
-	let userId = req.body.u
 	return pgDatabase.User.findOne({
 		where: {email}
 	})
 	.then((rowData) => {
 		console.log('this is a user', rowData)
 		let userId = rowData.userId;
-		return pgDatabase.UserCafe.findAll({ where: {userId}, include: [pgDatabase.Cafe]});
-		// return pgDatabase.Cafe.findAll({ where: {userId}, include: [pgDatabase.User]});
+		return pgDatabase.User.findAll({ where: {userId}, include: [pgDatabase.Cafe]});
+		// return pgDatabase.Cafe.findAll({ where: {userId}, include: [pgDatabase.Cafe]});
 	})
 	.then((joinData) => {
 		console.log('this is the join data', joinData);
@@ -129,13 +128,10 @@ app.post('/addFavorite', function(req, res) {
 		where: {email}
 		}, {transaction: t})
 		.then((user) => {
-			// console.log('this is a user', localUser);
 			return pgDatabase.Cafe.find({
 				where: {place_id}
 			}, {transaction: t})
 			.then((cafe) => {
-				// console.log('this is a cafe', cafe);
-				// console.log('this is a user', user);
 				return user.addCafe(cafe)
 			})
 		})

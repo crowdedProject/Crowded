@@ -43,7 +43,7 @@ pg.sync({force: false})
  
 // create joins
 User.belongsToMany(Cafe, {through: 'usercafe', foreignKey: 'userId' });
-Cafe.belongsToMany(User, {through: 'usercafe', foreignKey: 'cafeId' });
+Cafe.belongsToMany(User, {through: 'usercafe', foreignKey: 'cafeCafeId' });
 
 User.belongsToMany(Update, {through: 'UserUpdate', foreignKey: 'userId' });
 Update.belongsToMany(User, {through: 'UserUpdate', foreignKey: 'updateId' });
