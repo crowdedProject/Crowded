@@ -83,7 +83,11 @@ class Auth0UserLogin extends Component{
     if (this.state.idToken) {
        if (this.state.profile) {
          return (
-					 <div>
+           <div>
+           <div className="div-holder-two">
+           </div>
+					 <div className="cafe-list-holder">
+            <div>
 					   <h2>Welcome back, {this.state.profile.given_name}!</h2>
 						 <img className="avatar" src={this.state.profile.picture} />
                <div>
@@ -99,7 +103,9 @@ class Auth0UserLogin extends Component{
 						 <div>
 						   <a onClick={this.selfLogOut}>Log Out</a>
 						 </div>
+             </div>
 					 </div>
+           </div>
          );
        }else {
          return (

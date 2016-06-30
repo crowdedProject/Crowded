@@ -66,12 +66,12 @@ class FavoriteList extends Component {
   render() {
     console.log('this is an added favorite', this.props.addFavorite);
     return (
-      <div>
-        <div className="div-holder-no-height">
-          <div className="button-holder">
+      <div className="cafe-list-holder">
+        <div className="div-holder-medium">
+          <div className="small-print-button">
             <button type="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" onClick={() => browserHistory.push('/')}>Return Home</button>
           </div>
-          <div className="button-holder">
+          <div className="small-print-button">
             <button type="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" onClick={() => browserHistory.push('/cafes')}>Search Results</button>
           </div>
         </div>
