@@ -187,9 +187,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CafeList);
-  return bindActionCreators({fetchCafeListByGeoloc, fetchData, updateData, fetchCoordinates}, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(CafeList);
-
-
