@@ -6,7 +6,6 @@ class OrderMenu extends Component {
     console.log('ORDERMENU PROPS: ', props);
     super(props);
 
-
   }
 
   handleLinkClick() {
@@ -14,13 +13,19 @@ class OrderMenu extends Component {
   }
   
   populateMenu(props) {
-    let liArray = [];
+    let selectionArr = [];
     for (let item in props.prefObj) {
       if (props.prefObj[item] === true && item !== 'proximity') {
-        liArray.push(<li key={item}>{item}</li>);
+        selectionArr.push(
+          <div key={item}>
+            <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+            {item}
+            </button>
+          </div>
+        );
       }
     }
-    return liArray;
+    return selectionArr;
   }
 
 
@@ -32,9 +37,9 @@ class OrderMenu extends Component {
           ORDER BY PREFERENCE
         </DropdownTrigger>
         <DropdownContent>
-          <ul>
+          <div>
             {this.populateMenu(this.props)}
-          </ul>
+          </div>
         </DropdownContent>
       </Dropdown>
     );
