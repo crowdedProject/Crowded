@@ -132,51 +132,31 @@ app.post('/updateCafeData', function(req, res) {
 });
 
 app.post('/addFavorite', function(req, res) {
-	// let email = req.body.userEmail;
-	let email = 'ian.c.stinson@gmail.com';
+	let email = req.body.userEmail;
 	let place_id = req.body.cafeId;
-return pgDatabase.pg.transaction(function(t) {
-	return pgDatabase.User.find({ 
-		where: {email} 
-	}, {transaction: t})
-})
-	.then((user) => {
-		console.log('this gets to user', user);
-  	return pgDatabase.pg.transaction(function(t) {
-			return pgDatabase.Cafe.find({
-			where: {place_id}
+
+	return pgDatabase.pg.transaction(function(t) {
+		return pgDatabase.User.find({
+		where: {email}
 		}, {transaction: t})
+		.then((user) => {
+			// console.log('this is a user', localUser);
+			return pgDatabase.Cafe.find({
+				where: {place_id}
+			}, {transaction: t})
+			.then((cafe) => {
+				console.log('this is a cafe', cafe);
+				console.log('this is a user', user);
+				return user.addCafe(cafe)
+			})
 		})
-		.then((cafe) => {
-		console.log('this gets to cafe', cafe);
-    	user.setCafes([cafe]);
-  });      
+	})
+	.then((cafe) => {
+		console.log('this is a res', place_id)
+		res.send(place_id);
+	})
+	.catch((err) => console.error(err))
 });
-})
-// 	return pgDatabase.pg.transaction(function(t) {
-// 		return pgDatabase.User.find({
-// 		where: {email}
-// 		}, {transaction: t})
-// 		.then((user) => {
-// 			let localUser = user;
-// 			console.log('this is a user', localUser);
-// 			return pgDatabase.Cafe.find({
-// 				where: {place_id}
-// 			}, {transaction: t})
-// 			.then((cafe) => {
-// 				// console.log('this is a cafe', cafe);
-// 				// console.log('this is a user', user);
-// 				return localUser.setCafe(
-// 					[cafe], {transaction: t}
-// 					);
-// 			})
-// 		})
-// 	})
-// 	.then((cafe) => {
-// 		res.send(cafe);
-// 	})
-// 	.catch((err) => console.error(err))
-// });
 
 // pgDatabase.pg.transaction(function (t) {
 // 			return pgDatabase.Cafe.findOrCreate({

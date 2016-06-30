@@ -25,7 +25,7 @@ const Cafe = pg.import(`${__dirname}/db-models/db-cafe`);
 const Neighborhood = pg.import(`${__dirname}/db-models/db-neighborhood`);
 const Update = pg.import(`${__dirname}/db-models/db-update`);
 
-pg.sync({force: false})
+pg.sync({force: true})
   .then(() => {
     let createHood = (obj) => {
       for (let key in obj) {

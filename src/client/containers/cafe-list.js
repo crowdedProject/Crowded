@@ -22,6 +22,7 @@ class CafeList extends Component {
     this.fetchCafeData = this.fetchCafeData.bind(this);
     this.updateCafeData = this.updateCafeData.bind(this);
     this.onUpdate = this.onUpdate.bind(this);
+    this.signInAlert = this.signInAlert.bind(this);
   }
 
   signInAlert() {
@@ -33,13 +34,13 @@ class CafeList extends Component {
   }
 
   addToFavorite(cafeId) {
-    let userEmail = 'behrens.adam@gmail.com';
-    // let userEmail = this.props.profile.email;
-    // if(!userEmail) {
-    //   this.signInAlert();
-    // } else {
+    // let userEmail = 'behrens.adam@gmail.com';
+    let userEmail = this.props.profile.email;
+    if(!userEmail) {
+      this.signInAlert();
+    } else {
     this.props.addFavorite(userEmail, cafeId);
-    // }
+    }
   }
 
   updateCafeData(cafeId, columnHeader, newValue) {
