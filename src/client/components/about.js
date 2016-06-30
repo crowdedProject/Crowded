@@ -8,10 +8,10 @@ export default class About extends Component {
           <div className="teamHeader">
             <h1>About the Team</h1>
           </div>
-          <div className="mdl-grid">
+          <div className="mdl-grid small">
             <div className="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--3dp">
               <div class="mdl-card__media">
-                <img src="../assets/AdamPicturePlaceholder.png" />
+                <img src={require('../assets/AdamPicturePlaceholder.png')} />
               </div>
               <div>
                 <span class="aboutMe_Title">Adam Behrens</span><br/>
@@ -25,7 +25,7 @@ export default class About extends Component {
 
             <div className="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--3dp">
               <div class="mdl-card__media">
-                <img src="../assets/boPicturePlaceholder.svg" />
+                <img src={require('../assets/gitHubIcon.jpg')} />
               </div>
               <div>
                 <span class="aboutMe_Title">Bo Yao</span><br/>
@@ -39,7 +39,7 @@ export default class About extends Component {
 
             <div className="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--3dp">
               <div class="mdl-card__media">
-                <img src="../assets/ianPicturePlaceholder.png" />
+                <img src={require('../assets/ianPicturePlaceholder.png')} />
               </div>
               <div>
                 <span class="aboutMe_Title">Ian Stinson</span><br/>
