@@ -83,7 +83,6 @@ class CafeList extends Component {
     let seat = cafeData[0].curr_seat;
     let lon = Number(cafeData[0].coordLng);
     let lat = Number(cafeData[0].coordLat);
-
     return (
         <AccordionItem title={cafeData[0].name} key={cafeData[0].place_id}>
           <div>
@@ -95,8 +94,6 @@ class CafeList extends Component {
             </div>
             <button onClick={() => {this.addToFavorite(cafeData[0].place_id)}}>Add to favorites</button>
             <button onClick={() => {this.onUpdate(cafeData[0])}}>Check-In & Update Data</button>
-            <button>Check-In & Update Data</button>
-            <button>Add cafe to favorites</button>
           </div>
           <div className="map-div">
             <GoogleMap lon={lon} lat={lat} title={name}/>
