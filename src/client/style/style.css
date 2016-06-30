@@ -245,3 +245,16 @@ $gray: #ccc;
 .headerBtn {
   float: left;
 }
+
+.dropdown {
+    display: inline-block;
+}
+
+.dropdown__content {
+    display: none;
+    position: absolute;
+}
+
+.dropdown--active .dropdown__content {
+    display: block;
+}

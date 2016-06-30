@@ -58,14 +58,14 @@ var initState = {
 export default function(state=initState, action) {
   switch (action.type) {
     case FETCH_CAFELIST:
-      console.log('this is CAFELIST', action.payload);
       return {...state, cafeList: action.payload.data};
       // return [action.payload.data, ...state];
     case FETCH_DATA:
-      console.log('this is DATA', action.payload.data)
+      return {...state, cafeList: action.payload.data};
+      // return [action.payload.data, ...state];
+    case FETCH_DATA:
       return {...state, dbCafeList: action.payload.data};
     case PULL_CAFE:
-      console.log('this is PULL', action.payload);
       return {...state, cafeUpdated: action.payload};
   //   case UPDATE_DATA:
   //     action.payload.data)
