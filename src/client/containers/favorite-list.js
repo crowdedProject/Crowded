@@ -64,7 +64,7 @@ class FavoriteList extends Component {
  }
 
   render() {
-    console.log('this is an added favorite', this.props.addFavorite);
+    // console.log('this is favorite state', this.props.favorite);
     return (
       <div className="cafe-list-holder">
         <div className="div-holder-medium">

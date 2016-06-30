@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import _ from 'lodash';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {fetchData, updateData, addFavorite} from '../actions/cafe-db';
+import {fetchData, updateData, addFavorite, fetchJoin} from '../actions/cafe-db';
 import {pullCafeForForm} from '../actions/index';
 import {Link, browserHistory} from 'react-router';
 import {Accordion, AccordionItem} from 'react-sanfona';
@@ -26,6 +26,7 @@ class CafeList extends Component {
     this.updateCafeData = this.updateCafeData.bind(this);
     this.onUpdate = this.onUpdate.bind(this);
     this.signInAlert = this.signInAlert.bind(this);
+    this.fetchJoinData = this.fetchJoinData.bind(this);
   }
 
   signInAlert() {
@@ -37,7 +38,6 @@ class CafeList extends Component {
   }
 
   addToFavorite(cafeId) {
-    // let userEmail = 'behrens.adam@gmail.com';
     let userEmail = this.props.profile.email;
     if(!userEmail) {
       this.signInAlert();
@@ -54,6 +54,10 @@ class CafeList extends Component {
     this.props.pullCafeForForm(cafeInfo);
     browserHistory.push('/updatepref');
   }
+
+  fetchJoinData(email) {
+    this.props.fetchJoin(email);
+  };
   
   renderCafe(cafeData) {
     let searchPref = this.props.pref;
@@ -144,7 +148,10 @@ class CafeList extends Component {
       <div>
         <div className="div-holder">
           <div className="small-print-button">
-            <button type="submit " className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" id="button-image" src="src/client/assets/mdl-icons/undo.svg" onClick={() => browserHistory.push('/favorite')}>Favorites</button>
+            <button type="submit " className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" id="button-image" src="src/client/assets/mdl-icons/undo.svg" onClick={() => { 
+              this.fetchJoinData(this.props.profile.email);
+              browserHistory.push('/favorite');
+            }}>Favorites</button>
           </div>
           <div className="button-holder">
             <button type="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" id="button-image" src="src/client/assets/mdl-icons/undo.svg" onClick={() => browserHistory.push('/favorite')}>Favorites</button>
@@ -183,7 +190,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({fetchCafeListByGeoloc, fetchData, updateData, fetchCoordinates, pullCafeForForm, addFavorite}, dispatch);
+  return bindActionCreators({fetchCafeListByGeoloc, fetchData, updateData, fetchCoordinates, pullCafeForForm, addFavorite, fetchJoin}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CafeList);
