@@ -32,7 +32,6 @@ class Auth0UserLogin extends Component{
 			this.setState({profile});
       this.addUser(this.state.profile);
 		}.bind(this));
-    console.log('token state after did mount', this.state.idToken)
   }
   
   showLock() {

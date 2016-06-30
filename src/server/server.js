@@ -98,7 +98,7 @@ app.post('/fetchJoin', function(req, res) {
 });
 
 app.post('/updateCafeData', function(req, res) {
-	let place_id = req.body.cafeId;
+	let cafeId = req.body.cafeId;
 	let coffee_quality = req.body.coffeeQuality;
 	let ambiance = req.body.ambiance;
 	let rating = req.body.rating;
@@ -108,40 +108,7 @@ app.post('/updateCafeData', function(req, res) {
 	let line_length = req.body.crowded
 	let noise = req.body.noise;
 	let price = req.body.price;
-	let foreign_key;
-	// pgDatabase.Cafe.update(
-  // {
-  //     place_id,
-	// 		coffee_quality,
-	// 		ambiance,
-	// 		rating,
-	// 		curr_seat,
-	// 		outlet,
-	// 		bathroomQuality,
-	// 		line_length,
-	// 		noise,
-	// 		price
-  // },
-  // {
-  //   where: { place_id }
-  // })
-  // .success( () => { 
-	// 	return console.log('success');
-  // })
-  // .error((err) => {
-	// 	return console.error(err);
-  // });
-
-	
-	return pgDatabase.Cafe.findOne({
-		where: {place_id}
-	})
-	.then((cafe) => {
-		foreign_key = cafe[foreign_key];
-		cafe.update({
-			field: value
-		}).then( () => { return pgDatabase.Update.create({ 
-			place_id,
+	pgDatabase.Cafe.update({
 			coffee_quality,
 			ambiance,
 			rating,
@@ -150,15 +117,42 @@ app.post('/updateCafeData', function(req, res) {
 			bathroomQuality,
 			line_length,
 			noise,
-			price,
-			foreign_key
-			})
-		.catch((err) => console.error(err))
-		})
-	})
-	.then(() => res.send(console.log("Database entry successfully updated!")))
-	.catch((err) => console.error(err))
+			price
+  },
+  {where: {cafeId}})
+  .then(() => { 
+		return console.log('cafe updated successfully');
+  })
+  .error((err) => {
+		return console.error(err);
+  });
 });
+
+	
+// 	return pgDatabase.Cafe.findOne({
+// 		where: {cafeId}
+// 	})
+// 	.then((cafe) => {
+// 		cafe.update({
+// 			field: value
+// 		}).then( () => { return pgDatabase.Update.create({ 
+// 			place_id,
+// 			coffee_quality,
+// 			ambiance,
+// 			rating,
+// 			curr_seat,
+// 			outlet,
+// 			bathroomQuality,
+// 			line_length,
+// 			noise,
+// 			price
+// 		})
+// 		.catch((err) => console.error(err))
+// 		})
+// 	})
+// 	.then(() => res.send(console.log("Database entry successfully updated!")))
+// 	.catch((err) => console.error(err))
+// });
 
 app.post('/addFavorite', function(req, res) {
 	let email = req.body.userEmail;

@@ -7,7 +7,6 @@ export function fetchCafeListByGeoloc(data) {
     .then(res => {
       return axios.post('/cafeDatabase', res)
     });
-    
   return {
     type: FETCH_CAFELIST,
     payload: request
