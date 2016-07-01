@@ -85,18 +85,27 @@ class CafeList extends Component {
     let lat = Number(cafeData[0].coordLat);
     return (
         <AccordionItem title={cafeData[0].name} key={cafeData[0].place_id}>
-          <div>
-            <div className="expand-holder">
-              <AccordionData 
-                cafeData={cafeData} 
-                searchPref={searchPref}
-                referenceObj={referenceObj} />
-            </div>
-            <button onClick={() => {this.addToFavorite(cafeData[0].place_id)}}>Add to favorites</button>
-            <button onClick={() => {this.onUpdate(cafeData[0])}}>Check-In & Update Data</button>
+          <div className="expand-holder">
+            <AccordionData 
+              cafeData={cafeData} 
+              searchPref={searchPref}
+              referenceObj={referenceObj} />
           </div>
           <div className="map-div">
-            <GoogleMap lon={lon} lat={lat} title={name}/>
+            <span className="map-span">
+              <GoogleMap lon={lon} lat={lat} title={name}/>
+            </span>
+            <span className="update-span">
+              <div id="address">
+                {cafeData[0].address}
+              </div>
+              <div>
+                <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" id="checkin" onClick={() => {this.onUpdate(cafeData[0])}}>Check-In & Update Data</button>
+              </div>
+              <div>
+                <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" id="fav" onClick={() => {this.addToFavorite(cafeData[0].place_id)}}>Add to favorites</button>
+              </div>
+            </span>
           </div> 
         </AccordionItem>
     );
