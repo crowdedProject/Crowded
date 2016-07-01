@@ -9,6 +9,7 @@ export const ADD_USER = 'ADD_USER';
 
 export function fetchData(cafeId) {
   const request = axios.post('/fetchCafeData', {cafeId});
+  console.log(request);
   return {
     type: FETCH_DATA,
     payload: request
@@ -16,10 +17,7 @@ export function fetchData(cafeId) {
 };
 
 export function updateData(props) {
-  // let updateReq = {
-  //   cafeId,
-  //   updateFields //this is an object that is props
-  // }
+  console.log("this is props", props);
   const request = axios.post('/updateCafeData', props);
   return {
     type: UPDATE_DATA,
@@ -27,8 +25,8 @@ export function updateData(props) {
   };
 };
 
-export function fetchJoin(id) {
-  const request = axios.post('/fetchJoin', {id});
+export function fetchJoin(email) {
+  const request = axios.post('/fetchJoin', {email});
   return {
     type: FETCH_JOIN,
     payload: request

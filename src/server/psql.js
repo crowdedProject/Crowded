@@ -25,7 +25,7 @@ const Cafe = pg.import(`${__dirname}/db-models/db-cafe`);
 const Neighborhood = pg.import(`${__dirname}/db-models/db-neighborhood`);
 const Update = pg.import(`${__dirname}/db-models/db-update`);
 
-pg.sync({force: true})
+pg.sync({force: false})
   .then(() => {
     let createHood = (obj) => {
       for (let key in obj) {
@@ -42,8 +42,8 @@ pg.sync({force: true})
   })
  
 // create joins
-User.belongsToMany(Cafe, {through: 'UserCafe', foreignKey: 'userId' });
-Cafe.belongsToMany(User, {through: 'UserCafe', foreignKey: 'cafeId' });
+User.belongsToMany(Cafe, {through: 'usercafe', foreignKey: 'userId' });
+Cafe.belongsToMany(User, {through: 'usercafe', foreignKey: 'cafeCafeId' });
 
 User.belongsToMany(Update, {through: 'UserUpdate', foreignKey: 'userId' });
 Update.belongsToMany(User, {through: 'UserUpdate', foreignKey: 'updateId' });

@@ -3,6 +3,15 @@ import _ from 'lodash';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {fetchData, updateData, deleteFavorite, addUserData, fetchJoin, addFavorite} from '../actions/cafe-db';
+import {pullCafeForForm} from '../actions/index';
+import AccordionData from '../components/accordion';
+import {CafeField} from '../components/cafe-field';
+import OrderMenu from '../components/order-menu';
+import GoogleMap from '../components/google-cafe-map';
+import EventListener from 'react-event-listener';
+import {fetchCafeListByGeoloc} from '../actions/cafe-api';
+import {fetchCoordinates} from '../actions/index';
+import {orderCafeList} from '../actions/index';
 import {Link, browserHistory} from 'react-router';
 import {Accordion, AccordionItem} from 'react-sanfona';
 
@@ -28,19 +37,19 @@ class FavoriteList extends Component {
   removeFromList(userEmail, cafeId) {
     this.props.deleteFavorite(userEmail, cafeId);
   }
-  
+
   renderCafe(cafeData) {
-    let savedPref = this.props.pref;
+    let searchPref = this.props.pref;
 
     let referenceObj = {
-      proximity: 'Proximity',
+      proximity: 'Prox.',
       neighborhood: 'Neighborhood',
-      coffeeQuality: 'Coffee Quality',
+      coffeeQuality: 'Coffee',
       ambiance: 'Ambiance',
       rating: 'Rating',
       seats: 'Seats',
       outlets: 'Outlets',
-      bathroomQuality: 'Bathroom Quality',
+      bathroomQuality: 'Bathrooms',
       line: 'Line',
       noise: 'Noise',
       price: 'Price'
@@ -51,35 +60,33 @@ class FavoriteList extends Component {
     let rating = cafeData.rating;
     let price = cafeData.price_level;
     let seat = cafeData.curr_seat;
+    let lon = Number(cafeData.coordLng);
+    let lat = Number(cafeData.coordLat);
 
     return (
         <AccordionItem title={name} key={cafeId}>
-          <div>Checkin to Update data</div>
           <div>
-            <p>rating</p>
-            {rating}
+            <div className="expand-holder">
+              <AccordionData 
+                cafeData={cafeData} 
+                searchPref={searchPref}
+                referenceObj={referenceObj} />
+            </div>
+            <button onClick={() => {this.onUpdate(cafeData)}}>Check-In & Update Data</button>
           </div>
+          <div className="map-div">
+            <GoogleMap lon={lon} lat={lat} title={name}/>
+          </div> 
         </AccordionItem>
     );
- }
+  }
 
   render() {
-    console.log('this is an added favorite', this.props.addFavorite);
     return (
-      <div>
-        <div className="div-holder-no-height">
-          <div className="button-holder">
-            <button type="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" onClick={() => browserHistory.push('/')}>Return Home</button>
-          </div>
-          <div className="button-holder">
-            <button type="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" onClick={() => browserHistory.push('/cafes')}>Search Results</button>
-          </div>
-        </div>
         <div className='cafe-list-holder'>
           <Accordion>
           {this.props.favorite.map(this.renderCafe)}
           </Accordion>
-        </div>
       </div>
     )
   }
@@ -89,7 +96,7 @@ function mapStateToProps(state) {
   return ({
     favorite: state.favorite.favoriteList,
     addFavorite: state.favorite.addFavorite,
-    pref: state.favorite.savedPrefList,
+    pref: state.pref.pref,
     profile: state.login.profile
   })
 }

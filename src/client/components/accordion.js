@@ -1,6 +1,12 @@
 import React from 'react';
 
 const AccordionData = ({cafeData, searchPref, referenceObj}) => {
+    if (!cafeData[0]) {
+      let dataArray = [];
+      dataArray.push(cafeData);
+      cafeData = dataArray;
+    };
+
     let preferenceData = {
       proximity: null,
       neighborhood: null,
