@@ -7,6 +7,13 @@
   width: 650px;
   height: 650px;
 }
+
+.mdl-grid.tech {
+  margin: auto;
+  width: 650px;
+  height: 200px;
+}
+
 .mdl-grid.small {
   margin: auto;
   width: 800px;
@@ -260,16 +267,23 @@ $gray: #ccc;
 }
 
 /*style for about page*/
-.mdl-card__media {
-  background-color: #FBEDB8;
-  overflow: hidden;  
+
+img {
+    max-width:100%;
+    max-height:100%; 
 }
 
 .teamHeader {
+    text-align: center;
+}
+
+.textBlock {
+    display: inline-block;
+    text-align: center;
+    margin: auto;
+}
+
+.techIcon {
   text-align: center;
 }
 
-#card_subhead {
-  text-align: center;
-  font-weight: bold;
-}
