@@ -91,11 +91,11 @@ class CafeList extends Component {
               searchPref={searchPref}
               referenceObj={referenceObj} />
           </div>
-          <div className="map-div">
-            <span className="map-span">
+          <div className="mdl-grid-medium">
+            <div className="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
               <GoogleMap lon={lon} lat={lat} title={name}/>
-            </span>
-            <span className="update-span">
+            </div>
+            <div className="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
               <div id="address">
                 {cafeData[0].address}
               </div>
@@ -105,7 +105,7 @@ class CafeList extends Component {
               <div>
                 <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" id="fav" onClick={() => {this.addToFavorite(cafeData[0].place_id)}}>Add to favorites</button>
               </div>
-            </span>
+            </div>
           </div> 
         </AccordionItem>
     );
@@ -152,19 +152,21 @@ class CafeList extends Component {
   render() {
     return (
       <div>
-        <div className="div-holder">
-          <div className="button-holder">
+        <div className="cafe-list-holder">
+        <div className="div-holder-cafe2">
             <OrderMenu 
               prefObj={this.props.pref}/>
-          </div>
         </div>
-        <div className='cafe-list-holder'>
+        </div>
+        <div className="mdl-grid">
+          <div className="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
           <Accordion>
             {this.props.cafe.cafeList.sort((a, b) => {
               let order = this.props.order.orderedBy;
               return this.preferenceData(b)[order] - this.preferenceData(a)[order];
             }).map(this.renderCafe)}
           </Accordion>
+          </div>
         </div>
           <EventListener target={window} onload={this.handleRefresh} />
       </div>

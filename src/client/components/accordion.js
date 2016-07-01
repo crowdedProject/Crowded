@@ -26,15 +26,14 @@ const AccordionData = ({cafeData, searchPref, referenceObj}) => {
   for (let pref in searchPref) {
     if (searchPref[pref] === true && pref !== 'proximity') {
       spanArray.push(
-        <div className="mdl-cell mdl-cell--1-col unclicked" key={pref}>
+        <div className="mdl-cell mdl-cell--1-col mdl-cell--1-col-tablet mdl-cell--1-col-phone unclicked" key={pref}>
           <div>{referenceObj[pref]}</div>
           <div id="pref-number">{preferenceData[pref]}</div>
         </div>);
     }
   }
-  
   return (
-    <div className="mdl-grid small">
+    <div className="mdl-grid verySmall">
       {spanArray}
     </div>
   );
