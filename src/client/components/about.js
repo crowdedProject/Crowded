@@ -60,13 +60,74 @@ export default class About extends Component {
         </div>
         <div className="techStack">
           <div className="mainRepo">
-            <a href="https://github.com/crowdedProject/Crowded">
-              Check it out on Github
-            </a>
+            <a href="https://github.com/crowdedProject/Crowded" target="_blank" className="mdl-button mdl-js-button mdl-button--raised mdl-color--accent mdl-color-text--accent-contrast">View Source</a>
           </div>
-
           <div className="techIcon">
-            <h3>tech icon here</h3>
+            <h3>Tech Stack</h3>
+            <div className="mdl-grid tech">
+              <div className=" mdl-cell mdl-cell--6-col">
+                <div className="mdl-card__media">
+                  <img src={require('../assets/techStack/reactRedux.jpg')} />
+                </div>
+              </div>
+              <div className=" mdl-cell mdl-cell--6-col">
+                <div className="mdl-card__media">
+                  <img src={require('../assets/techStack/react-router.png')} />
+                </div>
+              </div>
+            </div>
+
+            <div className="mdl-grid tech">
+              <div className=" mdl-cell mdl-cell--6-col">
+                <div className="mdl-card__media">
+                  <img src={require('../assets/techStack/nodejs.png')} />
+                </div>
+              </div>
+              <div className=" mdl-cell mdl-cell--6-col">
+                <div className="mdl-card__media">
+                  <img src={require('../assets/techStack/express.png')} />
+                </div>
+              </div>
+            </div>
+
+            <div className="mdl-grid tech">
+              <div className=" mdl-cell mdl-cell--6-col">
+                <div className="mdl-card__media">
+                  <img src={require('../assets/techStack/postgres.gif')} />
+                </div>
+              </div>
+              <div className=" mdl-cell mdl-cell--6-col">
+                <div className="mdl-card__media">
+                  <img src={require('../assets/techStack/sequelize-logo.png')} />
+                </div>
+              </div>
+            </div>
+
+            <div className="mdl-grid tech">
+              <div className=" mdl-cell mdl-cell--6-col">
+                <div className="mdl-card__media">
+                  <img src={require('../assets/techStack/babel.png')} />
+                </div>
+              </div>
+              <div className=" mdl-cell mdl-cell--6-col">
+                <div className="mdl-card__media">
+                  <img src={require('../assets/techStack/webpack.png')} />
+                </div>
+              </div>
+            </div>
+
+            <div className="mdl-grid tech">
+              <div className=" mdl-cell mdl-cell--6-col">
+                <div className="mdl-card__media">
+                  <img src={require('../assets/techStack/mocha-chaijs.png')} />
+                </div>
+              </div>
+              <div className=" mdl-cell mdl-cell--6-col">
+                <div className="mdl-card__media">
+                  <img src={require('../assets/techStack/material-design-1.png')} />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
