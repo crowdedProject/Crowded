@@ -81,10 +81,6 @@ function mapStateToProps(state) {
   })
 }
 
-// function mapDispatchToProps(dispatch) {
-//   return bindActionCreators({updateData}, dispatch);
-// }
-
 export default reduxForm({
   form: 'PrefUpdateForm',
   fields: ['cafeId', 'coffeeQuality', 'ambiance', 'rating', 'seats', 'outlets', 'bathroomQuality', 'crowded', 'noise', 'price']
