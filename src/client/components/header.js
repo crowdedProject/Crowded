@@ -18,9 +18,10 @@ export default class Header extends Component {
     this.state = {
       valueSingle: ''
     };
+    this.handleChangeSingle = this.handleChangeSingle.bind(this);
   }
 
-  handleChangeSingle = (event, value) => {
+  handleChangeSingle(event, value) {
     this.setState({
       valueSingle: value,
     });
@@ -51,7 +52,6 @@ export default class Header extends Component {
     return { muiTheme: getMuiTheme(baseTheme) };
   }
 
-
   render() {
     return(
       <div>
@@ -59,26 +59,26 @@ export default class Header extends Component {
         title="CrowdedCafe"
         iconElementRight={
           <IconMenu
-      iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
-      anchorOrigin={{horizontal: 'left', vertical: 'top'}}
-      targetOrigin={{horizontal: 'left', vertical: 'top'}}
-      onChange={this.handleChangeSingle}
-          value={this.state.valueSingle}
-    >
-      <MenuItem value="1" primaryText="Login"/>
-      <MenuItem value="5" primaryText="Preferences"/>
-      <MenuItem value="2" primaryText="Search Results" />
-      <MenuItem value="3" primaryText="Favorites" />
-      <MenuItem value="4" primaryText="Neighborhood"/>
-      <MenuItem value="6" primaryText="Sign Out" />
-      <MenuItem value="7" primaryText="About"/>
-    </IconMenu>
-        }
-        />
-    </div>  
+          iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
+          anchorOrigin={{horizontal: 'left', vertical: 'top'}}
+          targetOrigin={{horizontal: 'left', vertical: 'top'}}
+          onChange={this.handleChangeSingle}
+          value={this.state.valueSingle}>
+
+            <MenuItem value="1" primaryText="Login"/>
+            <MenuItem value="5" primaryText="Preferences"/>
+            <MenuItem value="2" primaryText="Search Results" />
+            <MenuItem value="3" primaryText="Favorites" />
+            <MenuItem value="4" primaryText="Neighborhood"/>
+            <MenuItem value="6" primaryText="Sign Out" />
+            <MenuItem value="7" primaryText="About"/>
+         </IconMenu>
+        } />
+      </div>  
     );
   }
-} 
+}
+
 Header.childContextTypes = {
   muiTheme: React.PropTypes.object.isRequired,
 };
