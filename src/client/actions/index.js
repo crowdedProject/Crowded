@@ -38,7 +38,7 @@ export function submitPrefList(preferences) {
   
   return {
     type: SUBMIT_PREFS,
-    payload: '' //googlePlace + db (but whatever was submitted as a pref)
+    payload: ''
   }
 };
 
@@ -48,7 +48,6 @@ export function pullCafeForForm(cafeInfo) {
     payload: cafeInfo
   }
 };
-
 
 export function orderCafeList(orderPref) {
   return {

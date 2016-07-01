@@ -10,7 +10,9 @@ class PrefUpdate extends Component {
   const {fields: {cafeId, coffeeQuality, ambiance, rating, seats, outlets, bathroomQuality, crowded, noise, price},  handleSubmit} = this.props;
     return (
       <div>
-      <div className="cafe-list-holder">
+      <div className="mdl-grid">
+        <div className="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+        <div className="mdl-card">
         <div className="small-print-button">
           <button type="submit " className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" onClick={() => browserHistory.push('/cafes')}>Back to Cafes</button>
         </div>
@@ -68,6 +70,8 @@ class PrefUpdate extends Component {
           </div>   
           <button type="submit" onClick={() => browserHistory.push('/cafes')} className="btn btn-primary">Update</button>
         </form>
+        </div>
+        </div>
       </div>
       </div>
     );

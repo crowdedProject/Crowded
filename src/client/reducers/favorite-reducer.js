@@ -16,7 +16,6 @@ var initState = {
     price: false
   },
   favoriteList: [],
-  // favoriteList: [{name: 'test', rating: 5, place_id: 1}, {name: 'test2', rating: 1, place_id: 2}],
   addFavorite: []
 };
 

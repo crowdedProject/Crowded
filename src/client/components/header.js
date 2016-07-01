@@ -11,6 +11,25 @@ import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
+const muiTheme = getMuiTheme({
+  palette: {
+    primary1Color: '#783d12',
+    // primary2Color: cyan700,
+    // primary3Color: grey400,
+    // accent1Color: pinkA200,
+    // accent2Color: grey100,
+    // accent3Color: grey500,
+    // textColor: darkBlack,
+    // alternateTextColor: white,
+    // canvasColor: white,
+    // borderColor: grey300,
+    // disabledColor: fade(darkBlack, 0.3),
+    // pickerHeaderColor: cyan500,
+    // clockCircleColor: fade(darkBlack, 0.07),
+    // shadowColor: fullBlack,
+  }
+});
+
 export default class Header extends Component {
   constructor(props) {
     super(props);
@@ -20,7 +39,7 @@ export default class Header extends Component {
     };
     this.handleChangeSingle = this.handleChangeSingle.bind(this);
   }
-
+  
   handleChangeSingle(event, value) {
     this.setState({
       valueSingle: value,
@@ -49,13 +68,14 @@ export default class Header extends Component {
     }
 
   getChildContext() {
-    return { muiTheme: getMuiTheme(baseTheme) };
+    return { muiTheme: getMuiTheme(muiTheme) };
   }
 
   render() {
     return(
       <div>
       <AppBar
+        className="app-bar-styling"
         title="CrowdedCafe"
         iconElementRight={
           <IconMenu
