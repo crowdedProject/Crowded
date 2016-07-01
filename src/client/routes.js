@@ -6,7 +6,7 @@ import CafeList from './containers/cafe-list';
 import NeighborhoodList from './containers/neighborhood-list';
 import Auth0UserLogin from './containers/auth0_userLogin';
 import FavoriteList from './containers/favorite-list';
-import PrefUpdate from './components/prefUpdate';
+import PrefUpdate from './components/pref-update';
 import About from './components/about';
 export default (
   <Route path="/" component={App}>

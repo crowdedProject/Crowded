@@ -9,7 +9,7 @@ import {Accordion, AccordionItem} from 'react-sanfona';
 import {CafeField} from '../components/cafe-field';
 import AccordionData from '../components/accordion';
 import OrderMenu from '../components/order-menu';
-import GoogleMap from '../components/googleCafeMap';
+import GoogleMap from '../components/google-cafe-map';
 import EventListener from 'react-event-listener';
 import {fetchCafeListByGeoloc} from '../actions/cafe-api';
 import {fetchCoordinates} from '../actions/index';

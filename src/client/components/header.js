@@ -66,10 +66,10 @@ export default class Header extends Component {
           value={this.state.valueSingle}
     >
       <MenuItem value="1" primaryText="Login"/>
+      <MenuItem value="5" primaryText="Preferences"/>
       <MenuItem value="2" primaryText="Search Results" />
       <MenuItem value="3" primaryText="Favorites" />
       <MenuItem value="4" primaryText="Neighborhood"/>
-      <MenuItem value="5" primaryText="Preferences"/>
       <MenuItem value="6" primaryText="Sign Out" />
       <MenuItem value="7" primaryText="About"/>
     </IconMenu>
