@@ -141,12 +141,25 @@ app.post('/addFavorite', function(req, res) {
 });
 
 app.post('/deleteFavorite', function(req, res) {
-	let user_id = req.body.userId;
+	let email = req.body.userEmail;
 	let place_id = req.body.cafeId;
-	return pgDatabase.Cafe.findOne({
-		where: {place_id}
+
+	return pgDatabase.pg.transaction(function(t) {
+		return pgDatabase.User.find({
+		where: {email}
+		}, {transaction: t})
+		.then((user) => {
+			return pgDatabase.Cafe.find({
+				where: {place_id}
+			}, {transaction: t})
+			.then((cafe) => {
+				return user.removeCafe(cafe)
+			})
+		})
 	})
-	.then((rowData) => res.send(rowData))
+	.then((cafe) => {
+		res.send(place_id);
+	})
 	.catch((err) => console.error(err))
 });
 
