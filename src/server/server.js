@@ -24,7 +24,7 @@ app.post('/cafeResult', function(req, res) {
 
 app.post('/cafeDatabase', function(req, res) {
 	let request = req.body.data; 
-	let cafeArray = []; //send this back as one res send
+	let cafeArray = [];
 	let promiseArray = [];
 	for (let i=0; i<request.length; i++) {
 		let name = request[i].name;
@@ -62,7 +62,6 @@ app.post('/cafeDatabase', function(req, res) {
 
 app.post('/fetchCafeData', function(req, res) {
 	let place_id = req.body.cafeId;
-	// console.log('this is req.body', req.body);
 	return pgDatabase.Cafe.findOne({
 		where: {place_id}
 	})
@@ -79,7 +78,6 @@ app.post('/fetchJoin', function(req, res) {
 		console.log('this is a user', rowData)
 		let userId = rowData.userId;
 		return pgDatabase.User.findAll({ where: {userId}, include: [pgDatabase.Cafe]});
-		// return pgDatabase.Cafe.findAll({ where: {userId}, include: [pgDatabase.Cafe]});
 	})
 	.then((joinData) => {
 		console.log('this is the join data', joinData);
@@ -143,12 +141,25 @@ app.post('/addFavorite', function(req, res) {
 });
 
 app.post('/deleteFavorite', function(req, res) {
-	let user_id = req.body.userId;
+	let email = req.body.userEmail;
 	let place_id = req.body.cafeId;
-	return pgDatabase.Cafe.findOne({
-		where: {place_id}
+
+	return pgDatabase.pg.transaction(function(t) {
+		return pgDatabase.User.find({
+		where: {email}
+		}, {transaction: t})
+		.then((user) => {
+			return pgDatabase.Cafe.find({
+				where: {place_id}
+			}, {transaction: t})
+			.then((cafe) => {
+				return user.removeCafe(cafe)
+			})
+		})
 	})
-	.then((rowData) => res.send(rowData))
+	.then((cafe) => {
+		res.send(place_id);
+	})
 	.catch((err) => console.error(err))
 });
 

@@ -9,7 +9,7 @@ import {Accordion, AccordionItem} from 'react-sanfona';
 import {CafeField} from '../components/cafe-field';
 import AccordionData from '../components/accordion';
 import OrderMenu from '../components/order-menu';
-import GoogleMap from '../components/googleCafeMap';
+import GoogleMap from '../components/google-cafe-map';
 import EventListener from 'react-event-listener';
 import {fetchCafeListByGeoloc} from '../actions/cafe-api';
 import {fetchCoordinates} from '../actions/index';
@@ -153,18 +153,6 @@ class CafeList extends Component {
     return (
       <div>
         <div className="div-holder">
-          <div className="small-print-button">
-            <button type="submit " className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" id="button-image" src="src/client/assets/mdl-icons/undo.svg" onClick={() => { 
-              this.fetchJoinData(this.props.profile.email);
-              browserHistory.push('/favorite');
-            }}>Favorites</button>
-          </div>
-          <div className="button-holder">
-            <button type="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" id="button-image" src="src/client/assets/mdl-icons/undo.svg" onClick={() => browserHistory.push('/favorite')}>Favorites</button>
-          </div>
-          <div className="small-print-button">
-            <button type="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" onClick={() => browserHistory.push('/')}>Reset Preferences</button>
-          </div>
           <div className="button-holder">
             <OrderMenu 
               prefObj={this.props.pref}/>

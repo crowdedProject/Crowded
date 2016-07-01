@@ -7,7 +7,6 @@ import {orderCafeList} from '../actions/index';
 class OrderMenu extends Component {
   constructor (props) {
     super(props);
-
   }
 
   handleLinkClick() {
@@ -31,9 +30,7 @@ class OrderMenu extends Component {
     return selectionArr;
   }
 
-
   render() {
-
     return (
       <Dropdown>
         <DropdownTrigger className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">

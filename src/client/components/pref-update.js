@@ -12,9 +12,6 @@ class PrefUpdate extends Component {
       <div>
       <div className="cafe-list-holder">
         <div className="small-print-button">
-          <button type="submit " className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" onClick={() => browserHistory.push('/cafes')}>Update</button>
-        </div>
-        <div className="small-print-button">
           <button type="submit " className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" onClick={() => browserHistory.push('/cafes')}>Back to Cafes</button>
         </div>
         <form onSubmit={handleSubmit(this.props.updateData)}>
@@ -69,7 +66,7 @@ class PrefUpdate extends Component {
             <label>Price Level</label>
             <input type="number" className="form-control" value={this.props.cafeId.price} min="1" max="5" {...price} />
           </div>   
-          // <button type="submit" className="btn btn-primary">Update</button>
+          <button type="submit" onClick={() => browserHistory.push('/cafes')} className="btn btn-primary">Update</button>
         </form>
       </div>
       </div>
@@ -83,10 +80,6 @@ function mapStateToProps(state) {
     cafeId: state.cafe.cafeUpdated
   })
 }
-
-// function mapDispatchToProps(dispatch) {
-//   return bindActionCreators({updateData}, dispatch);
-// }
 
 export default reduxForm({
   form: 'PrefUpdateForm',

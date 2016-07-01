@@ -45,9 +45,6 @@ export default function(state=initState, action) {
       return {...state, dbCafeList: action.payload.data};
     case PULL_CAFE:
       return {...state, cafeUpdated: action.payload};
-  //   case UPDATE_DATA:
-  //     action.payload.data)
-  //     return {...state, cafeDbList: action.payload.data};
   }
   return state;
 }

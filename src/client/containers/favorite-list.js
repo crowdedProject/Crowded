@@ -7,7 +7,7 @@ import {pullCafeForForm} from '../actions/index';
 import AccordionData from '../components/accordion';
 import {CafeField} from '../components/cafe-field';
 import OrderMenu from '../components/order-menu';
-import GoogleMap from '../components/googleCafeMap';
+import GoogleMap from '../components/google-cafe-map';
 import EventListener from 'react-event-listener';
 import {fetchCafeListByGeoloc} from '../actions/cafe-api';
 import {fetchCoordinates} from '../actions/index';
@@ -37,40 +37,7 @@ class FavoriteList extends Component {
   removeFromList(userEmail, cafeId) {
     this.props.deleteFavorite(userEmail, cafeId);
   }
-  
-//   renderCafe(cafeData) {
-//     let savedPref = this.props.pref;
 
-//     let referenceObj = {
-//       proximity: 'Proximity',
-//       neighborhood: 'Neighborhood',
-//       coffeeQuality: 'Coffee Quality',
-//       ambiance: 'Ambiance',
-//       rating: 'Rating',
-//       seats: 'Seats',
-//       outlets: 'Outlets',
-//       bathroomQuality: 'Bathroom Quality',
-//       line: 'Line',
-//       noise: 'Noise',
-//       price: 'Price'
-//    };
-
-//     let cafeId = cafeData.place_id;
-//     let name = cafeData.name;
-//     let rating = cafeData.rating;
-//     let price = cafeData.price_level;
-//     let seat = cafeData.curr_seat;
-
-//     return (
-//         <AccordionItem title={name} key={cafeId}>
-//           <div>Checkin to Update data</div>
-//           <div>
-//             <p>rating</p>
-//             {rating}
-//           </div>
-//         </AccordionItem>
-//     );
-//  }
   renderCafe(cafeData) {
     let searchPref = this.props.pref;
 
@@ -115,22 +82,11 @@ class FavoriteList extends Component {
   }
 
   render() {
-    // console.log('this is favorite state', this.props.favorite);
     return (
-      <div className="cafe-list-holder">
-        <div className="div-holder-medium">
-          <div className="small-print-button">
-            <button type="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" onClick={() => browserHistory.push('/')}>Return Home</button>
-          </div>
-          <div className="small-print-button">
-            <button type="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" onClick={() => browserHistory.push('/cafes')}>Search Results</button>
-          </div>
-        </div>
         <div className='cafe-list-holder'>
           <Accordion>
           {this.props.favorite.map(this.renderCafe)}
           </Accordion>
-        </div>
       </div>
     )
   }

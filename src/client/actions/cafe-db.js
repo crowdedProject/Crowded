@@ -9,6 +9,7 @@ export const ADD_USER = 'ADD_USER';
 
 export function fetchData(cafeId) {
   const request = axios.post('/fetchCafeData', {cafeId});
+  console.log(request);
   return {
     type: FETCH_DATA,
     payload: request

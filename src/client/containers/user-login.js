@@ -48,13 +48,6 @@ class Auth0UserLogin extends Component{
     var idToken = localStorage.getItem('userToken');
     var authHash = this.lock.parseHash(window.location.hash);
 
-    // if(idToken){
-    //    const payload = jwtDecode(idToken);
-    //    if( payload.exp < Date.now() / 1000 ){ 
-    //       return null;
-    //    }
-    // }
-
     if (!idToken && authHash) {
       if (authHash.id_token) {
         idToken = authHash.id_token
