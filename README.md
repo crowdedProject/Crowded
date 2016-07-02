@@ -65,7 +65,7 @@ picture here
 
 ## Team Members
 
-We are a team of 3 full-stack sfotware engineers passionate about all aspects of software development. If you are interested in the porject please feel feel to contact us via email or just check out our Github Profile
+We are a team of 3 full-stack sfotware engineers passionate about all aspects of software development. If you are interested in the project please feel feel to contact us via email or just check out our Github Profile
 
 - Adam Behrens [<img src="http://cdn.flaticon.com/png/256/25231.png" width=20>](https://github.com/abe732) [<img src="https://cdn2.iconfinder.com/data/icons/freecns-cumulus/16/519948-008_Mail-128.png" width=20>](mailto:adam@adamjbehrens.com?Subject=crowdedPorject)
 - Bo Yao [<img src="http://cdn.flaticon.com/png/256/25231.png" width=20>](https://github.com/Boyaohrbc) [<img src="https://cdn2.iconfinder.com/data/icons/freecns-cumulus/16/519948-008_Mail-128.png" width=20>](mailto:boyao2005@gmail.com?Subject=crowdedPorject)
