@@ -11,7 +11,7 @@ export default class About extends Component {
           <div className="mdl-grid small">
             <div className="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--3dp">
               <div className="mdl-card__media">
-                <img src={require('../assets/AdamPicturePlaceholder.png')} />
+                <img src={require('../assets/profilePic/adamPic.jpg')} />
               </div>
               <div className="textBlock">
                 <span className="aboutMe_Title">Adam Behrens</span><br/>
@@ -27,7 +27,7 @@ export default class About extends Component {
 
             <div className="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--3dp">
               <div className="mdl-card__media">
-                <img src={require('../assets/boPicturePlaceholder.jpg')} />
+                <img src={require('../assets/profilePic/boPic.jpg')} />
               </div>
               <div className="textBlock">
                 <span className="aboutMe_Title">Bo Yao</span><br/>
@@ -43,7 +43,7 @@ export default class About extends Component {
 
             <div className="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--3dp">
               <div className="mdl-card__media">
-                <img src={require('../assets/ianPicturePlaceholder.png')} />
+                <img src={require('../assets/profilePic/ianPic.jpg')} />
               </div>
               <div className="textBlock">
                 <span className="aboutMe_Title">Ian Stinson</span><br/>
