@@ -87,6 +87,7 @@ app.post('/fetchJoin', function(req, res) {
 });
 
 app.post('/updateCafeData', function(req, res) {
+	console.log('this is a req', req.body)
 	let cafeId = req.body.cafeId;
 	let coffee_quality = req.body.coffeeQuality;
 	let ambiance = req.body.ambiance;

@@ -83,8 +83,10 @@ class CafeList extends Component {
     let seat = cafeData[0].curr_seat;
     let lon = Number(cafeData[0].coordLng);
     let lat = Number(cafeData[0].coordLat);
+    let address = cafeData[0].address.split(",")[0];
+    let title = cafeData[0].name + " (" + address + ")";
     return (
-        <AccordionItem title={cafeData[0].name} key={cafeData[0].place_id}>
+        <AccordionItem title={title} key={cafeData[0].place_id}>
           <div className="expand-holder">
             <AccordionData 
               cafeData={cafeData} 
@@ -104,10 +106,10 @@ class CafeList extends Component {
               </div>
               <div>
               <div className="button-sub-holder">
-                <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" id="checkin" onClick={() => {this.onUpdate(cafeData[0])}}>Check-In & Update Data</button>
+                <button className="mdl-button mdl-button--raised mdl-button--accent mdl-js-button mdl-js-ripple-effect" id="checkin" onClick={() => {this.onUpdate(cafeData[0])}}>Check-In & Update Data</button>
               </div>
               <div className="button-sub-holder">
-                <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" id="fav" onClick={() => {this.addToFavorite(cafeData[0].place_id)}}>Add to favorites</button>
+                <button className="mdl-button mdl-button--raised mdl-button--accent mdl-js-button mdl-js-ripple-effect" id="fav" onClick={() => {this.addToFavorite(cafeData[0].place_id)}}>Add to favorites</button>
               </div>
               </div>
               </div>

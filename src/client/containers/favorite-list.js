@@ -84,10 +84,10 @@ class FavoriteList extends Component {
               </div>
               <div>
               <div className="button-sub-holder">
-                <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" id="checkin" onClick={() => {this.onUpdate(cafeData)}}>Check-In & Update Data</button>
+                <button className="mdl-button mdl-button--raised mdl-button--accent mdl-js-button mdl-js-ripple-effect" id="checkin" onClick={() => {this.onUpdate(cafeData)}}>Check-In & Update Data</button>
               </div>
               <div className="button-sub-holder">
-                <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" id="fav" onClick={() => {this.addToFavorite(cafeData.place_id)}}>Remove from favorites</button>
+                <button className="mdl-button mdl-button--raised mdl-button--accent mdl-js-button mdl-js-ripple-effect" id="fav" onClick={() => {this.addToFavorite(cafeData.place_id)}}>Remove from favorites</button>
               </div>
               </div>
               </div>

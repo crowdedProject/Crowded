@@ -37,7 +37,7 @@ class NeighborhoodList extends Component {
     return (
       <div>
         <div className="search-button-neighborhood">
-              <button type="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onClick={this.onPrefSubmit}>Back to Prefs</button>
+              <button type="submit" className="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored" onClick={this.onPrefSubmit}>Back to Prefs</button>
         </div>
         <div className="mdl-grid">
           <div className="mdl-cell mdl-cell--4-col unclicked" value='37.759481,-122.414968' onClick={this.onHoodSubmit}>
