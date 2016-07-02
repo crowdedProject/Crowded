@@ -37,7 +37,7 @@ class OrderMenu extends Component {
           ORDER BY PREFERENCE
         </DropdownTrigger>
         <DropdownContent>
-          <div>
+          <div className="drop-down-adjust">
             {this.populateMenu(this.props)}
           </div>
         </DropdownContent>

@@ -91,19 +91,25 @@ class CafeList extends Component {
               searchPref={searchPref}
               referenceObj={referenceObj} />
           </div>
-          <div className="mdl-grid-medium">
+          <div className="mdl-grid">
             <div className="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+              <div>
               <GoogleMap lon={lon} lat={lat} title={name}/>
+              </div>
             </div>
             <div className="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+              <div>
               <div id="address">
                 {cafeData[0].address}
               </div>
               <div>
+              <div className="button-sub-holder">
                 <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" id="checkin" onClick={() => {this.onUpdate(cafeData[0])}}>Check-In & Update Data</button>
               </div>
-              <div>
+              <div className="button-sub-holder">
                 <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" id="fav" onClick={() => {this.addToFavorite(cafeData[0].place_id)}}>Add to favorites</button>
+              </div>
+              </div>
               </div>
             </div>
           </div> 
@@ -152,11 +158,11 @@ class CafeList extends Component {
   render() {
     return (
       <div>
-        <div className="cafe-list-holder">
-        <div className="div-holder-cafe2">
-            <OrderMenu 
+        <div className="div-holder-cafe">
+          <div className="small-print-button">
+           <OrderMenu 
               prefObj={this.props.pref}/>
-        </div>
+          </div>
         </div>
         <div className="mdl-grid">
           <div className="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">

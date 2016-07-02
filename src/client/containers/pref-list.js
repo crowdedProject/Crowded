@@ -70,31 +70,31 @@ class PrefList extends Component {
           </div>
         </div>
         <div className="mdl-grid">
-          <div className="mdl-cell mdl-cell--4-col unclicked" value='coffeeQuality' onClick={this.onPrefClick}>
+          <div className="mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-cell--1-col-phone unclicked" value='coffeeQuality' onClick={this.onPrefClick}>
             Coffee
           </div>
-          <div className="mdl-cell mdl-cell--4-col unclicked" value='ambiance' onClick={this.onPrefClick}>
+          <div className="mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-cell--1-col-phone unclicked" value='ambiance' onClick={this.onPrefClick}>
             Ambiance
           </div>
-          <div className="mdl-cell mdl-cell--4-col unclicked" value='rating' onClick={this.onPrefClick}>
+          <div className="mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-cell--1-col-phone unclicked" value='rating' onClick={this.onPrefClick}>
             Rating
           </div>
-          <div className="mdl-cell mdl-cell--4-col unclicked" value='seats' onClick={this.onPrefClick}>
+          <div className="mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-cell--1-col-phone unclicked" value='seats' onClick={this.onPrefClick}>
             Seats
           </div>
-          <div className="mdl-cell mdl-cell--4-col unclicked" value='outlets' onClick={this.onPrefClick}>
+          <div className="mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-cell--1-col-phone unclicked" value='outlets' onClick={this.onPrefClick}>
             Outlets
           </div>
-          <div className="mdl-cell mdl-cell--4-col unclicked" value='bathroomQuality' onClick={this.onPrefClick}>
+          <div className="mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-cell--1-col-phone unclicked" value='bathroomQuality' onClick={this.onPrefClick}>
             Bathrooms
           </div>
-          <div className="mdl-cell mdl-cell--4-col unclicked" value='line' onClick={this.onPrefClick}>
+          <div className="mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-cell--1-col-phone unclicked" value='line' onClick={this.onPrefClick}>
             Line
           </div>
-          <div className="mdl-cell mdl-cell--4-col unclicked" value='noise' onClick={this.onPrefClick}>
+          <div className="mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-cell--1-col-phone unclicked" value='noise' onClick={this.onPrefClick}>
             Noise
           </div>
-          <div className="mdl-cell mdl-cell--4-col unclicked" value='price' onClick={this.onPrefClick}>
+          <div className="mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-cell--1-col-phone unclicked" value='price' onClick={this.onPrefClick}>
             Price
           </div>
         </div>
