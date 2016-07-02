@@ -59,7 +59,7 @@ class PrefList extends Component {
   render() { 
     let cardClass = 'mdl-cell mdl-cell--4-col unclicked';
     return (
-      <div>
+      <div className="PrefList">
         <div className="div-holder">
           <div className="small-print">Location set closest to you</div>
           <div className="small-print-button">

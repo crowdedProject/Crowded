@@ -8,7 +8,8 @@
     "dev": "nodemon ./src/server/server.js",
     "devBuild": "webpack -d --watch",
     "build": "webpack -d",
-    "test": "mocha"
+    "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js 'test/**/*.js'",
+    "test:watch": "npm run test -- --watch"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,7 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "chai-jquery": "^2.0.0",
+    "jquery": "^3.0.0",
     "jsdom": "^9.2.1",
     "mocha": "^2.5.3",
     "react-addons-test-utils": "^15.1.0",
@@ -49,7 +51,7 @@
     "path": "^0.12.7",
     "pg": "^5.1.0",
     "pg-hstore": "^2.3.2",
-    "react": "^15.1.0",
+    "react": "^15.2.0",
     "react-dom": "^15.1.0",
     "react-event-listener": "^0.2.1",
     "react-google-maps": "^4.7.1",
