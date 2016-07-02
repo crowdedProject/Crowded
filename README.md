@@ -59,17 +59,20 @@ port: 8080
 
 ## Architecture
 ### High Level Architecture
-picture here
+
+![ProjectArchitecture](http://i68.tinypic.com/r8vzf5.jpg)
+
 ### Database Schema
-picture here
+
+![dataBaseSchema](http://i67.tinypic.com/339lik3.jpg)
 
 ## Team Members
 
 We are a team of 3 full-stack sfotware engineers passionate about all aspects of software development. If you are interested in the project please feel feel to contact us via email or just check out our Github Profile
 
-- Adam Behrens [<img src="http://cdn.flaticon.com/png/256/25231.png" width=20>](https://github.com/abe732) [<img src="https://cdn2.iconfinder.com/data/icons/freecns-cumulus/16/519948-008_Mail-128.png" width=20>](mailto:adam@adamjbehrens.com?Subject=crowdedPorject)
-- Bo Yao [<img src="http://cdn.flaticon.com/png/256/25231.png" width=20>](https://github.com/Boyaohrbc) [<img src="https://cdn2.iconfinder.com/data/icons/freecns-cumulus/16/519948-008_Mail-128.png" width=20>](mailto:boyao2005@gmail.com?Subject=crowdedPorject)
-- Ian Stinson [<img src="http://cdn.flaticon.com/png/256/25231.png" width=20>](https://github.com/istinson) [<img src="https://cdn2.iconfinder.com/data/icons/freecns-cumulus/16/519948-008_Mail-128.png" width=20>](mailto:	ian.c.stinson@gmail.com?Subject=crowdedPorject)
+- Adam Behrens [<img src="http://cdn.flaticon.com/png/256/25231.png" width=20>](https://github.com/abe732) [<img src="https://cdn2.iconfinder.com/data/icons/freecns-cumulus/16/519948-008_Mail-128.png" width=20>](mailto:adam@adamjbehrens.com?Subject=crowdedProject)
+- Bo Yao [<img src="http://cdn.flaticon.com/png/256/25231.png" width=20>](https://github.com/Boyaohrbc) [<img src="https://cdn2.iconfinder.com/data/icons/freecns-cumulus/16/519948-008_Mail-128.png" width=20>](mailto:boyao2005@gmail.com?Subject=crowdedProject)
+- Ian Stinson [<img src="http://cdn.flaticon.com/png/256/25231.png" width=20>](https://github.com/istinson) [<img src="https://cdn2.iconfinder.com/data/icons/freecns-cumulus/16/519948-008_Mail-128.png" width=20>](mailto:	ian.c.stinson@gmail.com?Subject=crowdedProject)
 
 "Distributed under the MIT License."
 
