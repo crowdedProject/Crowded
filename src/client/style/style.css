@@ -136,11 +136,30 @@ body {
   font-size: 30px;
   font-weight: 500;
 }
+.favorite-headers {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: auto;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 500;
+}
 .div-holder {
   margin: auto;
   width: 650px;
   height: 120px;
   padding-top: 5px;
+}
+/*gif-holder {
+  margin: auto;
+  text-align: center;
+  padding-top: 250px;
+  padding-left: 300px;
+}*/
+
+.photo-style {
+  text-align: center;
+  padding-left: 120px;
 }
 .padding-form {
   height: 10px;
