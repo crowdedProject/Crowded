@@ -64,70 +64,7 @@ export default class About extends Component {
           </div>
           <div className="techIcon">
             <h3>Tech Stack</h3>
-            <div className="mdl-grid tech">
-              <div className=" mdl-cell mdl-cell--6-col">
-                <div className="mdl-card__media">
-                  <img src={require('../assets/tech-stack/reactRedux.jpg')} />
-                </div>
-              </div>
-              <div className=" mdl-cell mdl-cell--6-col">
-                <div className="mdl-card__media">
-                  <img src={require('../assets/tech-stack/react-router.png')} />
-                </div>
-              </div>
-            </div>
-
-            <div className="mdl-grid tech">
-              <div className=" mdl-cell mdl-cell--6-col">
-                <div className="mdl-card__media">
-                  <img src={require('../assets/tech-stack/nodejs.png')} />
-                </div>
-              </div>
-              <div className=" mdl-cell mdl-cell--6-col">
-                <div className="mdl-card__media">
-                  <img src={require('../assets/tech-stack/express.png')} />
-                </div>
-              </div>
-            </div>
-
-            <div className="mdl-grid tech">
-              <div className=" mdl-cell mdl-cell--6-col">
-                <div className="mdl-card__media">
-                  <img src={require('../assets/tech-stack/postgres.gif')} />
-                </div>
-              </div>
-              <div className=" mdl-cell mdl-cell--6-col">
-                <div className="mdl-card__media">
-                  <img src={require('../assets/tech-stack/sequelize-logo.png')} />
-                </div>
-              </div>
-            </div>
-
-            <div className="mdl-grid tech">
-              <div className=" mdl-cell mdl-cell--6-col">
-                <div className="mdl-card__media">
-                  <img src={require('../assets/tech-stack/babel.png')} />
-                </div>
-              </div>
-              <div className=" mdl-cell mdl-cell--6-col">
-                <div className="mdl-card__media">
-                  <img src={require('../assets/tech-stack/webpack.png')} />
-                </div>
-              </div>
-            </div>
-
-            <div className="mdl-grid tech">
-              <div className=" mdl-cell mdl-cell--6-col">
-                <div className="mdl-card__media">
-                  <img src={require('../assets/tech-stack/mocha-chaijs.png')} />
-                </div>
-              </div>
-              <div className=" mdl-cell mdl-cell--6-col">
-                <div className="mdl-card__media">
-                  <img src={require('../assets/tech-stack/material-design-1.png')} />
-                </div>
-              </div>
-            </div>
+            <img src={require("../assets/tech-stack/masterTSList.png")} />
           </div>
         </div>
 
