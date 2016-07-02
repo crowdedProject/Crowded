@@ -65,17 +65,33 @@ class FavoriteList extends Component {
 
     return (
         <AccordionItem title={name} key={cafeId}>
-          <div>
-            <div className="expand-holder">
-              <AccordionData 
-                cafeData={cafeData} 
-                searchPref={searchPref}
-                referenceObj={referenceObj} />
-            </div>
-            <button onClick={() => {this.onUpdate(cafeData)}}>Check-In & Update Data</button>
+          <div className="expand-holder">
+            <AccordionData 
+              cafeData={cafeData} 
+              searchPref={searchPref}
+              referenceObj={referenceObj} />
           </div>
-          <div className="map-div">
-            <GoogleMap lon={lon} lat={lat} title={name}/>
+          <div className="mdl-grid">
+            <div className="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+              <div>
+              <GoogleMap lon={lon} lat={lat} title={name}/>
+              </div>
+            </div>
+            <div className="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+              <div>
+              <div id="address">
+                {cafeData.address}
+              </div>
+              <div>
+              <div className="button-sub-holder">
+                <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" id="checkin" onClick={() => {this.onUpdate(cafeData)}}>Check-In & Update Data</button>
+              </div>
+              <div className="button-sub-holder">
+                <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" id="fav" onClick={() => {this.addToFavorite(cafeData.place_id)}}>Remove from favorites</button>
+              </div>
+              </div>
+              </div>
+            </div>
           </div> 
         </AccordionItem>
     );
@@ -83,11 +99,17 @@ class FavoriteList extends Component {
 
   render() {
     return (
-        <div className='cafe-list-holder'>
+      <div>
+        <div className="div-holder-cafe">
+        </div>
+        <div className="mdl-grid">
+          <div className="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
           <Accordion>
           {this.props.favorite.map(this.renderCafe)}
           </Accordion>
-      </div>
+          </div>
+        </div>
+        </div>
     )
   }
 }

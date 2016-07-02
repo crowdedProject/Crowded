@@ -75,44 +75,29 @@ class Auth0UserLogin extends Component{
     if (this.state.idToken) {
        if (this.state.profile) {
          return (
+           <div className="div-holder">
+           <div>
            <div className="demo-card-wide mdl-card mdl-shadow--2dp">
              <div className="mdl-card__title">
                <h2 className="mdl-card__title-text">Welcome Back, {this.state.profile.given_name}</h2>
              </div>
              <div className="mdl-card__actions mdl-card--border">
-               <a onClick={() => browserHistory.push('/loggedIn')} className="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+               <a onClick={() => browserHistory.push('/loggedIn')} className="mdl-button secondary mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                 Continue
                </a>
-               <a onClick={() => browserHistory.push('/favorite')} className="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                Favorite
+               <a onClick={() => browserHistory.push('/favorite')} className="mdl-button secondary mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                Favorites
                </a>
-               <a onClick={this.socialLogOut} className="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+               <a onClick={this.socialLogOut} className="mdl-button secondary mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                 Not your account?
                </a>
-               <a onClick={this.selfLogOut} className="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+               <a onClick={this.selfLogOut} className="mdl-button secondary mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                 Log Out
                </a>
              </div>
+             </div>
           </div>
-					//  <div className="cafe-list-holder">
-          //    <div>
-					//      <h2>Welcome back, {this.state.profile.given_name}!</h2>
-					// 	   <img className="avatar" src={this.state.profile.picture} />
-          //    <div>
-          //      <Link to='/loggedIn'>Click Here to Continue</
-          //      Link>
-          //      </div>
-          //      <div>
-          //      <Link to='/favorite'>Go to your favorite list</Link>
-          //      </div>
-					// 	 <div>
-					// 	   <a onClick={this.socialLogOut}>Log in as different user on your favorite social network</a>
-					// 	 </div>
-					// 	 <div>
-					// 	   <a onClick={this.selfLogOut}>Log Out</a>
-					// 	 </div>
-          //    </div>
-					//  </div>
+          </div>
          );
        }else {
          return (

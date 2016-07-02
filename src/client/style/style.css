@@ -4,7 +4,14 @@ body {
 .mdl-grid {
   margin: auto;
   width: 650px;
-  height: 650px;
+}
+.mdl-grid.mdl-grid-tablet {
+  margin: auto;
+  width: 650px;
+}
+.mdl-grid.mdl-grid-phone {
+  margin: auto;
+  width: 420px;
 }
 
 .mdl-grid.tech {
@@ -14,7 +21,7 @@ body {
 }
 .mdl-grid.medium {
   margin: auto;
-  width: 700px;
+  width: 650px;
   height: 300px;
 }
 .mdl-grid.verySmall {
@@ -50,6 +57,28 @@ body {
   font-size: 20pt;
   background: #1969a4;
 }
+.mdl-cell.mdl-cell--3-col.unclicked {
+  width: 115px;
+  height: 80px;
+  text-align: center;
+  padding: 85px 0;
+  color: white;
+  text-transform: uppercase;
+  box-shadow: 2px 2px 2px #888888;
+  font-size: 16pt;
+  background: #124d78;
+}
+.mdl-cell.mdl-cell--3-col.clicked {
+  width: 115px;
+  height: 80px;
+  text-align: center;
+  padding: 85px 0;
+  color: white;
+  text-transform: uppercase;
+  box-shadow: 2px 2px 2px #888888;
+  font-size: 16pt;
+  background: #1969a4;
+}
 .mdl-cell.mdl-cell--1-col.unclicked {
   width: 65px;
   height: 65px;
@@ -73,11 +102,21 @@ body {
   margin: auto;
   text-align: center;
   width: 256px;
+  height: 20px;
+}
+.search-button-neighborhood {
+  margin: auto;
+  text-align: center;
+  width: 256px;
   height: 30px;
-  
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 .mdl-button {
   background-color: #1c78bb !important;
+}
+.mdl-button.secondary {
+  background-color: white !important;
 }
 
 /*.mdl-button--raised.main {
@@ -98,11 +137,16 @@ body {
   height: 120px;
   padding-top: 5px;
 }
+.button-sub-holder{
+  margin: auto;
+  padding-bottom: 10;
+  height: 50px;
+}
 .div-holder-cafe {
   margin: auto;
   width: 650px;
   height: 60px;
-  padding-top: 5px;
+  padding-top: 10px;
 }
 .div-holder-cafe2 {
   margin: auto;
@@ -135,6 +179,20 @@ body {
 }
 .mdl-card{
   background-color: #fdfaf4;
+}
+.mdl-cell.white{
+  background-color: #fdfaf4 !important;
+  box-shadow: 2px 2px 2px #888888;
+  padding-left: 10px;
+}
+.form-group {
+  width: 350px;
+  height: 40px;
+  font-size: 18pt;
+}
+.form-control {
+  width: 100px;
+  height: 40px;
 }
 /* /cafe route css below */
 .cafe-list-holder {
@@ -246,9 +304,12 @@ $gray: #ccc;
 }
 
 #address {
-  /*padding-top: 10px;
-  padding-bottom: 30px;*/
   height: 50px;
+  width: 250px;
+  font-size: 18px;
+}
+.app-bar-padding {
+  padding-left: 40px;
 }
 
 .react-sanfona {
@@ -316,6 +377,9 @@ $gray: #ccc;
 .dropdown {
     display: inline-block;
 }
+.drop-down-adjust{
+  width: 185px;
+}
 
 .app-bar-styling {
   color: #4c270c !important;
@@ -359,6 +423,6 @@ img {
 .demo-card-wide > .mdl-card__title {
   color: #fff;
   height: 176px;
-  background: url('../assets/logInBackgroundSmilly.png') center / cover;
+  background: url('../assets/coffee-cup-login.jpg') center / cover;
 }
 
