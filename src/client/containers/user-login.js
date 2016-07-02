@@ -82,18 +82,18 @@ class Auth0UserLogin extends Component{
                <h2 className="mdl-card__title-text">Welcome Back, {this.state.profile.given_name}</h2>
              </div>
              <div className="mdl-card__actions mdl-card--border">
-               <a onClick={() => browserHistory.push('/loggedIn')} className="mdl-button secondary mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+               <button onClick={() => browserHistory.push('/loggedIn')} className="mdl-button secondary mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                 Continue
-               </a>
-               <a onClick={() => browserHistory.push('/favorite')} className="mdl-button secondary mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+               </button>
+               <button onClick={() => browserHistory.push('/favorite')} className="mdl-button secondary mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                 Favorites
-               </a>
-               <a onClick={this.socialLogOut} className="mdl-button secondary mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+               </button>
+               <button onClick={this.socialLogOut} className="mdl-button secondary mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                 Not your account?
-               </a>
-               <a onClick={this.selfLogOut} className="mdl-button secondary mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+               </button>
+               <button onClick={this.selfLogOut} className="mdl-button secondary mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                 Log Out
-               </a>
+               </button>
              </div>
              </div>
           </div>

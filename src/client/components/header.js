@@ -82,7 +82,7 @@ export default class Header extends Component {
       <div>
       <AppBar
         className="app-bar-styling"
-        iconElementLeft={<img src={require('../assets/crowded-logo-3.png')} style={{height: '50px'}}/>}
+        iconElementLeft={<img src={require('../assets/crowded-logo-3.png')} style={{height: '50px'}} onClick={() => browserHistory.push('/')}/>}
         iconElementRight={
           <IconMenu
           iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
