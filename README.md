@@ -32,7 +32,7 @@ simply login using your favorite social network credential and click Find Cafe t
 For this porject, we are using webpack to bundle and build our react code base. We use bable to transplie the ES6 javascript,
 and webpack watch on the server. For developement purpose, run localhost at port 8080.
 
-- Frist fork the project repo from [Git Repo](https://github.com/crowdedProject/Crowded)
+- First fork the project repo from [Git Repo](https://github.com/crowdedProject/Crowded)
 - Then clone the project to your local machine.
 - For help please click [Here](https://help.github.com/articles/fork-a-repo/)
 
