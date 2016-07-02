@@ -34,7 +34,7 @@ class PrefList extends Component {
         this.props.fetchCoordinates(position);
       });
     } else {
-      console.log("Sorry your browser has not yet supporting Geo Location");
+      console.log("Sorry your browser is not supporting Geo Location");
     }
   }
 

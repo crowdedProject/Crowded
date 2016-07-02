@@ -2,31 +2,30 @@ import {renderComponent, expect} from '../../../test_helper';
 import PrefList from '../../../../src/client/containers/pref-list';
 
 describe('PrefList', () => {
-  let component;
+  let container;
 
   beforeEach(() => {
-    //const props = { comments: ['New Comment', 'Other New Comment'] };
-    component = renderComponent(PrefList);
+    container = renderComponent(PrefList);
   });
 
   it('has the correct class', () => {
-    expect(component).to.have.class('PrefList');
+    expect(container).to.have.class('PrefList');
   });
 
   it('shows the search and submit buttons', () => {
-    expect(component).to.contain('Choose Neighborhood');
-    expect(component).to.contain('Find Cafes')
+    expect(container).to.contain('Choose Neighborhood');
+    expect(container).to.contain('Find Cafes')
   });
 
   it('shows the 9 preference options', () => {
-    expect(component).to.contain('Coffee');
-    expect(component).to.contain('Ambiance');
-    expect(component).to.contain('Rating');
-    expect(component).to.contain('Seats');
-    expect(component).to.contain('Outlets');
-    expect(component).to.contain('Bathrooms');
-    expect(component).to.contain('Line');
-    expect(component).to.contain('Noise');
-    expect(component).to.contain('Price');
+    expect(container).to.contain('Coffee');
+    expect(container).to.contain('Ambiance');
+    expect(container).to.contain('Rating');
+    expect(container).to.contain('Seats');
+    expect(container).to.contain('Outlets');
+    expect(container).to.contain('Bathrooms');
+    expect(container).to.contain('Line');
+    expect(container).to.contain('Noise');
+    expect(container).to.contain('Price');
   });
 });
