@@ -5,6 +5,7 @@ import {bindActionCreators} from 'redux';
 import {fetchData, updateData, deleteFavorite, addUserData, fetchJoin, addFavorite} from '../actions/cafe-db';
 import {pullCafeForForm} from '../actions/index';
 import AccordionData from '../components/accordion';
+import LoginRedirect from '../components/login-redirect';
 import {CafeField} from '../components/cafe-field';
 import OrderMenu from '../components/order-menu';
 import GoogleMap from '../components/google-cafe-map';
@@ -100,6 +101,8 @@ class FavoriteList extends Component {
   render() {
     return (
       <div>
+      {this.props.profile.email ? (
+        <div>
         <div className="div-holder-cafe">
         </div>
         <div className="mdl-grid">
@@ -109,7 +112,8 @@ class FavoriteList extends Component {
           </Accordion>
           </div>
         </div>
-        </div>
+        </div>) : (<LoginRedirect />)}
+      </div>
     )
   }
 }

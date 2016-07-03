@@ -10,6 +10,7 @@ import {CafeField} from '../components/cafe-field';
 import AccordionData from '../components/accordion';
 import OrderMenu from '../components/order-menu';
 import GoogleMap from '../components/google-cafe-map';
+import Preloader from '../components/preloader';
 import EventListener from 'react-event-listener';
 import {fetchCafeListByGeoloc} from '../actions/cafe-api';
 import {fetchCoordinates} from '../actions/index';
@@ -160,6 +161,8 @@ class CafeList extends Component {
   render() {
     return (
       <div>
+      {this.props.cafe.cafeList.length ? (
+        <div>
         <div className="div-holder-cafe">
           <div className="small-print-button">
            <OrderMenu 
@@ -177,6 +180,7 @@ class CafeList extends Component {
           </div>
         </div>
           <EventListener target={window} onload={this.handleRefresh} />
+        </div>) : (<Preloader />)}
       </div>
     );
   }
