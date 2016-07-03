@@ -35,7 +35,7 @@ class NeighborhoodList extends Component {
  
   render() { 
     return (
-      <div>
+      <div className="NeighborhoodList">
         <div className="search-button-neighborhood">
               <button type="submit" className="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored" onClick={this.onPrefSubmit}>Back to Prefs</button>
         </div>
