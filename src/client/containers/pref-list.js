@@ -16,6 +16,7 @@ class PrefList extends Component {
   }
 
   onPrefClick(event) {
+    console.log(event.target.value);
     this.props.setPreferences(event.target.value);
     let flag = this.props.pref.pref[event.target.value];
     if (flag)  {
