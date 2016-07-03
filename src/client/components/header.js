@@ -79,7 +79,7 @@ export default class Header extends Component {
 
   render() {
     return(
-      <div>
+      <div className="app-bar-header">
       <AppBar
         className="app-bar-styling"
         iconElementLeft={<img src={require('../assets/crowded-logo-5.png')} style={{height: '50px'}} onClick={() => browserHistory.push('/')}/>}

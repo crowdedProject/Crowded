@@ -136,6 +136,9 @@ body {
   font-size: 30px;
   font-weight: 500;
 }
+/*.app-bar-header {
+  width: 100%;
+}*/
 .favorite-headers {
   padding-top: 10px;
   padding-bottom: 10px;
@@ -150,6 +153,9 @@ body {
   height: 120px;
   padding-top: 5px;
 }
+/*.mdl-js {
+  width: 100%;
+}*/
 /*gif-holder {
   margin: auto;
   text-align: center;
@@ -159,7 +165,8 @@ body {
 
 .photo-style {
   text-align: center;
-  padding-left: 120px;
+  padding-left: 110px;
+  padding-top: 200px;
 }
 .padding-form {
   height: 10px;
@@ -428,6 +435,7 @@ h3, h4 {
 .app-bar-styling {
   color: #4c270c !important;
 }
+.mdl-js
 
 .dropdown__content {
     display: none;
