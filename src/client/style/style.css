@@ -459,6 +459,10 @@ img {
   text-align: center;
 }
 
+.mainRepo {
+  text-align: center;
+}
+
 /*style for logIn Profile*/
 .demo-card-wide.mdl-card {
   width: 600px;
