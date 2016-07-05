@@ -8,7 +8,7 @@ export default class About extends Component {
           <div className="teamHeader">
             <h1>About the Team</h1>
           </div>
-          <div className="mdl-grid small">
+          <div className="mdl-grid tall">
             <div className="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--3dp">
               <div className="mdl-card__media">
                 <img src={require('../assets/profilePic/adamPic.jpg')} />
