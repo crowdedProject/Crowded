@@ -23,11 +23,9 @@ class NeighborhoodList extends Component {
       flag === true;
     }
   }
-  
   onPrefSubmit(props) {
-      browserHistory.push('/')
+    browserHistory.push('/')
   }
-  
   onHoodSubmit(event) {
     this.props.fetchCafeListByGeoloc(event.target.value);
     browserHistory.push('/cafes');

@@ -5,7 +5,6 @@ import {fetchCafeListByGeoloc} from '../actions/cafe-api';
 import {setNeighborhood, setPreferences, fetchCoordinates} from '../actions/index';
 import {Link, browserHistory} from 'react-router';
 
-
 class PrefList extends Component {
   constructor (props)  {
     super(props);
@@ -16,7 +15,6 @@ class PrefList extends Component {
   }
 
   onPrefClick(event) {
-    console.log(event.target.value);
     this.props.setPreferences(event.target.value);
     let flag = this.props.pref.pref[event.target.value];
     if (flag)  {
@@ -27,8 +25,6 @@ class PrefList extends Component {
       flag === true;
     }
   }
-  
-  //fetching geolocation here
   getCoords() {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(position => {
@@ -38,25 +34,21 @@ class PrefList extends Component {
       console.log("Sorry your browser is not supporting Geo Location");
     }
   }
-
   componentDidMount() {
     this.getCoords();
   }
-
   onPrefSubmit() { 
-       if(this.props.term === false) {
-         setTimeout(this.onPrefSubmit, 200);
-       } else {
-         this.props.fetchCafeListByGeoloc(this.props.term);
-         browserHistory.push('/cafes')
-       }    
+    if(this.props.term === false) {
+      setTimeout(this.onPrefSubmit, 200);
+    } else {
+      this.props.fetchCafeListByGeoloc(this.props.term);
+      browserHistory.push('/cafes')
+    }    
   }
-  
   onNeighborhoodChange(props) {
     browserHistory.push('/neighborhood')
   }
-  
-  //hoverable and waves effect
+
   render() { 
     let cardClass = 'mdl-cell mdl-cell--4-col unclicked';
     return (

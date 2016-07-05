@@ -7,12 +7,12 @@ const nData = require(`${__dirname}/neighborhood.json`);
 
 if (!global.hasOwnProperty('pg')) {
   global.pg = (() => {
-      return new Sequelize(db, {
-        dialectOptions: {
-        ssl: true
-        }
-      })
-    })();
+    return new Sequelize(db, {
+      dialectOptions: {
+      ssl: true
+      }
+    })
+  })();
 }
 
 pg
@@ -40,8 +40,7 @@ pg.sync({force: false})
   .catch(function(err) {
     console.log('table not created', err);
   })
- 
-// create joins
+
 User.belongsToMany(Cafe, {through: 'usercafe', foreignKey: 'userId' });
 Cafe.belongsToMany(User, {through: 'usercafe', foreignKey: 'cafeCafeId' });
 
