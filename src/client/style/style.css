@@ -1,5 +1,8 @@
 body {
-    background-color: #f7e7c7
+  background-color: #f7e7c7
+}
+.master-div-holder {
+  margin: auto !important;
 }
 .mdl-grid {
   margin: auto;
@@ -398,9 +401,9 @@ h3, h4 {
   color: #4c270c !important;
   width: 100%;
 }
-.mdl-js {
-  width: 650px;
-}
+/*.mdl-js {
+  width: 100%;
+}*/
 .dropdown__content {
   display: none;
   position: absolute;

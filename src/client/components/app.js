@@ -9,7 +9,7 @@ export default class App extends Component {
         <div>
           <Header />
         </div>
-        <div>
+        <div className="master-div-holder">
           {this.props.children}
         </div>
       </div>
