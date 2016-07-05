@@ -31,6 +31,7 @@ class CafeList extends Component {
   }
 
   signInAlert() {
+    browserHistory.push('/login');
   }
 
   fetchCafeData(cafeId) {
