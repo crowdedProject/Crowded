@@ -30,8 +30,13 @@ body {
 }
 .mdl-grid.small {
   margin: auto;
-  width: 650px;
+  width: 630px;
   height: 500px;
+}
+.mdl-grid.tall {
+  margin: auto;
+  width: 630px;
+  height: 1400px;
 }
 .mdl-cell.mdl-cell--4-col.unclicked {
   width: 200px;
