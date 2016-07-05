@@ -40,7 +40,6 @@ export default function(state=initState, action) {
   switch (action.type) {
     case FETCH_CAFELIST:
       return {...state, cafeList: action.payload.data};
-      // return [action.payload.data, ...state];
     case FETCH_DATA:
       return {...state, dbCafeList: action.payload.data};
     case PULL_CAFE:

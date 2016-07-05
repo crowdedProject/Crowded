@@ -13,7 +13,6 @@ body {
   margin: auto;
   width: 420px;
 }
-
 .mdl-grid.tech {
   margin: auto;
   width: 650px;
@@ -29,7 +28,6 @@ body {
   width: 650px;
   height: 80px;
 }
-
 .mdl-grid.small {
   margin: auto;
   width: 650px;
@@ -119,26 +117,10 @@ body {
 .mdl-button.secondary {
   background-color: white !important;
 }
-
-/*.mdl-button--raised.main {
-  text-transform: uppercase;
-  font-size: 16pt;
-  padding: auto;
-  width: 200px;
-  height: 32px;
-  background: #AED073;
-}*/
-
-/*.mdl-button {
-
-}*/
 .form-headers {
   font-size: 30px;
   font-weight: 500;
 }
-/*.app-bar-header {
-  width: 100%;
-}*/
 .favorite-headers {
   padding-top: 10px;
   padding-bottom: 10px;
@@ -153,16 +135,6 @@ body {
   height: 120px;
   padding-top: 5px;
 }
-/*.mdl-js {
-  width: 100%;
-}*/
-/*gif-holder {
-  margin: auto;
-  text-align: center;
-  padding-top: 250px;
-  padding-left: 300px;
-}*/
-
 .photo-style {
   text-align: center;
   padding-left: 110px;
@@ -240,7 +212,6 @@ body {
   width: 200px;
   text-align: left;
 }
-/* /cafe route css below */
 .cafe-list-holder {
   margin: auto;
   width: 650px;
@@ -310,16 +281,6 @@ body {
   height: 20px;
   width: 20px
 }
-
-/*$primary-color: #03a9f4;
-$gray: #ccc;
-
-*,
-*:after,
-*:before {
-  box-sizing: border-box;
-}
-*/
 h3, h4 {
   font-family: "Roboto","Helvetica","Arial",sans-serif;
   font-weight: 600 !important;
@@ -335,7 +296,6 @@ h3, h4 {
   margin-top: 5px;
   display: inline-block;
 }
-
 .update-span {
   padding-left: 20px;
   align: float;
@@ -344,31 +304,26 @@ h3, h4 {
   display: inline-block;
   font-size: 2em;
 }
-
 #fav {
   margin-bottom: 20px;
   padding-bottom: 5px;
 }
-
 #checkin {
   margin-bottom: 60px;
 }
-
 #address {
   height: 50px;
   width: 250px;
   font-size: 18px;
 }
-.app-bar-padding {
+/*.app-bar-padding {
   padding-left: 40px;
-}
-
+}*/
 .react-sanfona {
   border: 1px solid #ccc;
   border-radius: 3px;
   margin-bottom: 30px;
 }
-
 .react-sanfona-item-title {
     background-color: #6db5ea;
     border-bottom: 1px solid #ccc;
@@ -387,7 +342,6 @@ h3, h4 {
   background-color: #6db5ea;
   color: #fdfaf4;
 }
-
 .react-sanfona-item-body-wrapper {
   color: #666;
   background-color: #fdfaf4;
@@ -397,7 +351,6 @@ h3, h4 {
 .react-sanfona-item-body-wrapper:hover .tooltip {
   opacity: 1;
 }
-
 .react-sanfona-item-body-wrapper-img {
   display: block;
   max-width: 100%;
@@ -413,65 +366,51 @@ h3, h4 {
   position: absolute;
   transition: opacity .3s;
 }
-
-/* style for user profile page*/
 .avatar {
-    width: 75px;
-    height: 75px;
+  width: 75px;
+  height: 75px;
 }
-
-/* style for header Component */
 .headerBtn {
-    float: left;
+  float: left;
 }
-
 .dropdown {
-    display: inline-block;
+  display: inline-block;
 }
 .drop-down-adjust{
   width: 185px !important;
 }
-
 .app-bar-styling {
   color: #4c270c !important;
+  width: 100%;
 }
-.mdl-js
-
+.mdl-js {
+  width: 650px;
+}
 .dropdown__content {
-    display: none;
-    position: absolute;
+  display: none;
+  position: absolute;
 }
-
 .dropdown--active .dropdown__content {
     display: block;
 }
-
-/*style for about page*/
-
 img {
-    max-width:100%;
-    max-height:100%; 
+  max-width:100%;
+  max-height:100%; 
 }
-
 .teamHeader {
-    text-align: center;
+  text-align: center;
 }
-
 .textBlock {
-    display: inline-block;
-    text-align: center;
-    margin: auto;
+  display: inline-block;
+  text-align: center;
+  margin: auto;
 }
-
 .techIcon {
   text-align: center;
 }
-
 .mainRepo {
   text-align: center;
 }
-
-/*style for logIn Profile*/
 .demo-card-wide.mdl-card {
   width: 600px;
   height: 300px;

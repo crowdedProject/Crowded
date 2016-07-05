@@ -24,7 +24,6 @@ export default function(state=initState, action) {
     case DELETE_FAVORITE:
       return {...state, favoriteList: action.payload.data};
     case FETCH_JOIN:
-      console.log('this is fetch join payload', action.payload.data);
       let cafeArray = action.payload.data[0].caves;
       return {...state, favoriteList: cafeArray};
     case UPDATE_DATA:

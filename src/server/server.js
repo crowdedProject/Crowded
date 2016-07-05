@@ -75,19 +75,16 @@ app.post('/fetchJoin', function(req, res) {
 		where: {email}
 	})
 	.then((rowData) => {
-		console.log('this is a user', rowData)
 		let userId = rowData.userId;
 		return pgDatabase.User.findAll({ where: {userId}, include: [pgDatabase.Cafe]});
 	})
 	.then((joinData) => {
-		console.log('this is the join data', joinData);
 		res.send(joinData);
 	})
 	.catch((err) => console.error(err))
 });
 
 app.post('/updateCafeData', function(req, res) {
-	console.log('this is a req', req.body)
 	let cafeId = req.body.cafeId;
 	let coffee_quality = req.body.coffeeQuality;
 	let ambiance = req.body.ambiance;
@@ -99,15 +96,15 @@ app.post('/updateCafeData', function(req, res) {
 	let noise = req.body.noise;
 	let price = req.body.price;
 	pgDatabase.Cafe.update({
-			coffee_quality,
-			ambiance,
-			rating,
-			curr_seat,
-			outlet,
-			bathroomQuality,
-			line_length,
-			noise,
-			price
+		coffee_quality,
+		ambiance,
+		rating,
+		curr_seat,
+		outlet,
+		bathroomQuality,
+		line_length,
+		noise,
+		price
   },
   {where: {cafeId}})
   .then(() => { 
@@ -165,7 +162,6 @@ app.post('/deleteFavorite', function(req, res) {
 });
 
 app.post('/addUser', function(req, res) {
-	console.log('add user endpoint', req.body.email);
 	let email = req.body.email;
 	let first_name = req.body.given_name;
 	let last_name = req.body.family_name;
@@ -181,7 +177,6 @@ app.post('/addUser', function(req, res) {
 	.then((row) => res.send(req.body))
 	.catch((err) => console.error(err))
 });
-
 
 app.get('*', function (request, response){
   response.sendFile(path.resolve(__dirname, '../../dist/index.html'))
