@@ -85,6 +85,16 @@ body {
   color: white;
   text-transform: lowercase;
   box-shadow: 2px 2px 2px #888888;
+  background: #124d78;
+}
+.mdl-cell.mdl-cell--1-col.clicked {
+  width: 65px;
+  height: 65px;
+  text-align: center;
+  padding: 5px 0;
+  color: white;
+  text-transform: lowercase;
+  box-shadow: 2px 2px 2px #888888;
   background: #1969a4;
 }
 .small-print {
