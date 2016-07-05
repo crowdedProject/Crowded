@@ -4,6 +4,7 @@ import CafeReducer from './cafe-list-reducer';
 import FavoriteReducer from './favorite-reducer';
 import LoginReducer from './login-reducer';
 import createLogger from 'redux-logger';
+import OrderReducer from './order-reducer';
 import {reducer as formReducer} from 'redux-form';
 
 const logger = createLogger();
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
   cafe: CafeReducer,
   favorite: FavoriteReducer,
   login: LoginReducer,
-  form: formReducer
+  form: formReducer,
+  order: OrderReducer
 });
 
 const StoreHolder = createStore(rootReducer, {}, applyMiddleware(logger));
