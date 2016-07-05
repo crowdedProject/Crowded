@@ -9,6 +9,7 @@ export const SUBMIT_PREFS = 'SUBMIT_PREFS';
 export const NEIGHBORHOOD_PREFS = 'NEIGBHORHOOD_PREFS';
 export const FETCH_COORD = 'FETCH_COORD';
 export const PULL_CAFE = 'PULL_CAFE';
+export const ORDER_CAFELIST = 'ORDER_CAFELIST';
 
 export function setPreferences(pref) {
   return {
@@ -37,7 +38,7 @@ export function submitPrefList(preferences) {
   
   return {
     type: SUBMIT_PREFS,
-    payload: '' //googlePlace + db (but whatever was submitted as a pref)
+    payload: ''
   }
 };
 
@@ -48,4 +49,9 @@ export function pullCafeForForm(cafeInfo) {
   }
 };
 
-
+export function orderCafeList(orderPref) {
+  return {
+    type: ORDER_CAFELIST,
+    payload: orderPref
+  }
+}

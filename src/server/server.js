@@ -3,22 +3,9 @@
 const axios = require('axios');
 const app = require('./config/server-config.js');
 const path = require('path');
-// const Yelp = require('../client/yelpApiCall/yelpSearch');
 const pgDatabase = require('./psql.js');
 
 let port = process.env.PORT || 8080;
-
-app.post('/signup', function(req, res) {
-	//placeholder
-});
-
-app.post('/login', function(req, res) {
-	//placeholder
-});
-
-app.post('/cafeResult/seat', function(req, res) {
-	//placeholder
-});
 
 app.post('/cafeResult', function(req, res) {
   const API_KEY = 'AIzaSyDkRyt36Yj2FYAiJklN810C_UWN8GF6gD0';
@@ -37,7 +24,7 @@ app.post('/cafeResult', function(req, res) {
 
 app.post('/cafeDatabase', function(req, res) {
 	let request = req.body.data; 
-	let cafeArray = []; //send this back as one res send
+	let cafeArray = [];
 	let promiseArray = [];
 	for (let i=0; i<request.length; i++) {
 		let name = request[i].name;
@@ -75,7 +62,6 @@ app.post('/cafeDatabase', function(req, res) {
 
 app.post('/fetchCafeData', function(req, res) {
 	let place_id = req.body.cafeId;
-	// console.log('this is req.body', req.body);
 	return pgDatabase.Cafe.findOne({
 		where: {place_id}
 	})
@@ -85,21 +71,21 @@ app.post('/fetchCafeData', function(req, res) {
 
 app.post('/fetchJoin', function(req, res) {
 	let email = req.body.email
-	// console.log('this is req.body', req.body);
 	return pgDatabase.User.findOne({
 		where: {email}
 	})
 	.then((rowData) => {
-		let user_id = rowData.user_id;
-		pgDatabase.UserCafe.findAll({
-			where: {user_id}
-		});
-	}).then((joinData) => res.send(joinData))
+		let userId = rowData.userId;
+		return pgDatabase.User.findAll({ where: {userId}, include: [pgDatabase.Cafe]});
+	})
+	.then((joinData) => {
+		res.send(joinData);
+	})
 	.catch((err) => console.error(err))
 });
 
 app.post('/updateCafeData', function(req, res) {
-	let place_id = req.body.cafeId;
+	let cafeId = req.body.cafeId;
 	let coffee_quality = req.body.coffeeQuality;
 	let ambiance = req.body.ambiance;
 	let rating = req.body.rating;
@@ -109,33 +95,24 @@ app.post('/updateCafeData', function(req, res) {
 	let line_length = req.body.crowded
 	let noise = req.body.noise;
 	let price = req.body.price;
-	let foreign_key;
-	
-	return pgDatabase.Cafe.findOne({
-		where: {place_id}
-	})
-	.then((cafe) => {
-		foreign_key = cafe[foreign_key];
-		cafe.update({
-			field: value
-		}).then( () => { return pgDatabase.Update.create({ 
-			place_id,
-			coffee_quality,
-			ambiance,
-			rating,
-			curr_seat,
-			outlet,
-			bathroomQuality,
-			line_length,
-			noise,
-			price,
-			foreign_key
-			})
-		.catch((err) => console.error(err))
-		})
-	})
-	.then(() => res.send(console.log("Database entry successfully updated!")))
-	.catch((err) => console.error(err))
+	pgDatabase.Cafe.update({
+		coffee_quality,
+		ambiance,
+		rating,
+		curr_seat,
+		outlet,
+		bathroomQuality,
+		line_length,
+		noise,
+		price
+  },
+  {where: {cafeId}})
+  .then(() => { 
+		return console.log('cafe updated successfully');
+  })
+  .error((err) => {
+		return console.error(err);
+  });
 });
 
 app.post('/addFavorite', function(req, res) {
@@ -147,53 +124,44 @@ app.post('/addFavorite', function(req, res) {
 		where: {email}
 		}, {transaction: t})
 		.then((user) => {
-			// console.log('this is a user', localUser);
 			return pgDatabase.Cafe.find({
 				where: {place_id}
 			}, {transaction: t})
 			.then((cafe) => {
-				console.log('this is a cafe', cafe);
-				console.log('this is a user', user);
 				return user.addCafe(cafe)
 			})
 		})
 	})
 	.then((cafe) => {
-		console.log('this is a res', place_id)
 		res.send(place_id);
 	})
 	.catch((err) => console.error(err))
 });
 
-// pgDatabase.pg.transaction(function (t) {
-// 			return pgDatabase.Cafe.findOrCreate({
-// 				where: {
-// 					place_id
-// 				},
-// 				defaults: {
-// 					name,
-// 					price,
-// 					rating,
-// 					place_id,
-// 					address,
-// 					coordLat,
-// 					coordLng
-// 				}, 
-// 				transaction: t
-// 			});
-
 app.post('/deleteFavorite', function(req, res) {
-	let user_id = req.body.userId;
+	let email = req.body.userEmail;
 	let place_id = req.body.cafeId;
-	return pgDatabase.Cafe.findOne({
-		where: {place_id}
+
+	return pgDatabase.pg.transaction(function(t) {
+		return pgDatabase.User.find({
+		where: {email}
+		}, {transaction: t})
+		.then((user) => {
+			return pgDatabase.Cafe.find({
+				where: {place_id}
+			}, {transaction: t})
+			.then((cafe) => {
+				return user.removeCafe(cafe)
+			})
+		})
 	})
-	.then((rowData) => res.send(rowData))
+	.then((cafe) => {
+		res.send(place_id);
+	})
 	.catch((err) => console.error(err))
 });
 
 app.post('/addUser', function(req, res) {
-	console.log('add user endpoint', req.body.email);
 	let email = req.body.email;
 	let first_name = req.body.given_name;
 	let last_name = req.body.family_name;
@@ -209,7 +177,6 @@ app.post('/addUser', function(req, res) {
 	.then((row) => res.send(req.body))
 	.catch((err) => console.error(err))
 });
-
 
 app.get('*', function (request, response){
   response.sendFile(path.resolve(__dirname, '../../dist/index.html'))

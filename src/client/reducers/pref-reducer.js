@@ -22,12 +22,9 @@ var initState = {
   profile: {}
 }
 
-
 export default function(state=initState, action) {
   switch(action.type) {
     case USER_PREFS:
-      // console.log(state);
-      // return [action.payload, ...state]
       switch(action.payload) {
         case 'coffeeQuality':
           if (state.pref.coffeeQuality === true) {
@@ -105,7 +102,6 @@ export default function(state=initState, action) {
           return state;
       }
       case FETCH_COORD:
-          // state.term = action.payload.coords.latitude + "," action.payload.coords.longitude;
           return Object.assign({}, state, {
             term: `${action.payload.coords.latitude},${action.payload.coords.longitude}`
           });

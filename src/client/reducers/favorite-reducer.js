@@ -15,7 +15,7 @@ var initState = {
     noise: false,
     price: false
   },
-  favoriteList: [{name: 'test', rating: 5, place_id: 1}, {name: 'test2', rating: 1, place_id: 2}],
+  favoriteList: [],
   addFavorite: []
 };
 
@@ -24,7 +24,8 @@ export default function(state=initState, action) {
     case DELETE_FAVORITE:
       return {...state, favoriteList: action.payload.data};
     case FETCH_JOIN:
-      return {...state, favoriteList: action.payload.data};
+      let cafeArray = action.payload.data[0].caves;
+      return {...state, favoriteList: cafeArray};
     case UPDATE_DATA:
       return {...state, favoriteList: action.payload.data};
     case ADD_FAVORITE:
